@@ -22,7 +22,7 @@ import time
 
 def extract_fn_from_filename(s):
     # 定义两个正则表达式模式
-    pattern_root = r'scc_\d+_root_\d+_(.*)'
+    pattern_root = r'scc_\d+_leaf_\d+_(.*)'
     pattern_non_root = r'scc_\d+_(?!root)(.*)'
 
     # 首先尝试匹配包含 'root' 的模式
@@ -120,13 +120,13 @@ def dfs_topological_sort(matrix_with_indegree):
         result.append(node)
 
     # 从入度为0的节点开始
-    root_sccs = [i for i, deg in enumerate(indegree) if deg == 0]
-    for i in root_sccs:
+    leaf_sccs = [i for i, deg in enumerate(indegree) if deg == 0]
+    for i in leaf_sccs:
         if not visited[i]:
             dfs(i)
             
     # 由于我们在后序中追加了节点，所以返回反向结果
-    return result[::-1], root_sccs
+    return result[::-1], leaf_sccs
 
 
 
@@ -217,7 +217,7 @@ def hsl_to_rgb(h, s, l):
     r, g, b = colorsys.hls_to_rgb(h / 360.0, l, s)
     return f"#{int(r * 255):02x}{int(g * 255):02x}{int(b * 255):02x}"
 
-def generate_gif_from_order(reverse_am, order, root_scc_indices, sccs=None):
+def generate_gif_from_order(reverse_am, order, leaf_scc_indices, sccs=None):
     if sccs:
         idx_to_scc = {idx: ', '.join(map(str, component)) for idx, component in enumerate(sccs)}
     else:
@@ -262,7 +262,7 @@ def generate_gif_from_order(reverse_am, order, root_scc_indices, sccs=None):
     visited_nodes = set()
 
     for idx in order:
-        if idx in root_scc_indices:
+        if idx in leaf_scc_indices:
             highlight_image = generate_graph_image(visited_nodes, {idx})
             output_svg = highlight_image.pipe()   # Directly get the binary data
             output_png = cairosvg.svg2png(bytestring=output_svg, dpi=300)
@@ -520,7 +520,7 @@ def extract_function_source(filename, function_name):
         if node.type == "function_definition" or node.type == "declaration":
             dfs_search(node, 0)  # Start DFS with current pointer level as 0
 
-    for child in tree.root_node.children:
+    for child in tree.leaf_node.children:
         find_functions(child)
 
     return '\n\n'.join(extracted_code)
@@ -589,8 +589,8 @@ with open(callgraph_dot_file, "r") as f:
     print("reverse_am",reverse_am)
     print("scc_al",scc_al)
     print("sccs",sccs)     
-    order, root_scc_indices = dfs_topological_sort(reverse_am)
-    print("order", order, "root_scc_indices", root_scc_indices)
+    order, leaf_scc_indices = dfs_topological_sort(reverse_am)
+    print("order", order, "leaf_scc_indices", leaf_scc_indices)
 
     # 从当前目录路径中提取文件夹名称
     folder_name = os.path.basename(absolute_path)
@@ -620,9 +620,9 @@ with open(callgraph_dot_file, "r") as f:
     
 # 1st iteration
     fns_file_map = {}
-    total_cnt = root_scc_count = 1
+    total_cnt = leaf_scc_count = 1
     with open(seq_filename, 'w', encoding='utf-8') as f:
-        total_cnt = root_scc_count = 1
+        total_cnt = leaf_scc_count = 1
         for idx, o in enumerate(order):
             fn_names_list = sccs[o]
             fn_names = ', '.join(fn_names_list)
@@ -649,9 +649,9 @@ with open(callgraph_dot_file, "r") as f:
             fn_name_arr.append(cleaned_fn_name)
         linked_fn_name_str = "_".join(fn_name_arr)
         abc = ""
-        if o in root_scc_indices: 
-            abc = "scc_"+str(total_cnt)+"_root_"+str(root_scc_count)+"_"+linked_fn_name_str+".rs"
-            root_scc_count += 1
+        if o in leaf_scc_indices: 
+            abc = "scc_"+str(total_cnt)+"_leaf_"+str(leaf_scc_count)+"_"+linked_fn_name_str+".rs"
+            leaf_scc_count += 1
         else:
             abc = "scc_"+str(total_cnt)+"_"+linked_fn_name_str+".rs"      
         fns_file_map[linked_fn_name_str] = abc
@@ -666,7 +666,7 @@ with open(callgraph_dot_file, "r") as f:
     filename_to_folder_map = {}
     all_mismatched_key = set()
     with open(seq_filename, 'w', encoding='utf-8') as f:
-        total_cnt = root_scc_count = 1
+        total_cnt = leaf_scc_count = 1
         for idx, o in enumerate(order):
             fn_names_list = sccs[o]
             fn_names = ', '.join(fn_names_list)
@@ -696,34 +696,27 @@ with open(callgraph_dot_file, "r") as f:
             # 从第一个函数名中获取matched_key
        
             # for fn_names_list
-            # if "getargs" in fn_names_list[0]:
-            print("fn_names_list[0]",fn_names_list[0])
-            matched_key = check_match(fn_names_list[0], fn_to_vars)
-            
-            if matched_key == False:
-                print("matched_key❌",matched_key)
-                all_mismatched_key.add(fn_names_list[0])
 
-            print("root_scc_indices:",root_scc_indices)
+            print("leaf_scc_indices:",leaf_scc_indices)
             # time.sleep(120)
-            # 用于记录每个元素在root_scc_indices中对应的字符串
+            # 用于记录每个元素在leaf_scc_indices中对应的字符串
             folder_path = os.path.join(rs_dir, output_fname)
             fn_name_s = []
-            if o in root_scc_indices: 
+            if o in leaf_scc_indices: 
                 for fn in sccs[o]:
                     cleaned_fn_name = clean_string(extract_short_fn_name(fn))
                     fn_name_s.append(cleaned_fn_name)
 
                     
                 fn_name = "_".join(fn_name_s)
-                prefix = f"ROOT_{root_scc_count}_SCC: # {total_cnt}"
-                rs_filename = os.path.join(folder_path, f"scc_{total_cnt}_root_{root_scc_count}_{fn_name}.rs")
+                prefix = f"leaf_{leaf_scc_count}_SCC: # {total_cnt}"
+                rs_filename = os.path.join(folder_path, f"scc_{total_cnt}_leaf_{leaf_scc_count}_{fn_name}.rs")
                 # 在这里记录
-                filename_to_cnt_map[f"scc_{total_cnt}_root_{root_scc_count}_{fn_name}"] = o+1
+                filename_to_cnt_map[f"scc_{total_cnt}_leaf_{leaf_scc_count}_{fn_name}"] = o+1
                 
-                filename_to_folder_map[f"scc_{total_cnt}_root_{root_scc_count}_{fn_name}"] = output_fname
+                filename_to_folder_map[f"scc_{total_cnt}_leaf_{leaf_scc_count}_{fn_name}"] = output_fname
                 
-                root_scc_count += 1
+                leaf_scc_count += 1
             else:
                 fn_name = clean_string(extract_short_fn_name(sccs[o][0]))
                 prefix = f"SCC: # {total_cnt}"
@@ -740,33 +733,9 @@ with open(callgraph_dot_file, "r") as f:
                 function_code = extract_function_source(full_filename_path, fndef_grandchild)
                 all_function_code += function_code + '\n\n' 
             os.makedirs(os.path.dirname(rs_filename), exist_ok=True)
-            # with open(rs_filename, 'a', encoding='utf-8') as rs_file:
-            #     global_vars_list = ""      # Fetch the global variables if we have a match
-            #     if matched_key and matched_key in fn_to_vars:
-            #         community_to_vars = {}
-            #         for var in fn_to_vars[matched_key]:
-            #             community = f"C{var_to_community[var]}"
-            #             if community not in community_to_vars:
-            #                 community_to_vars[community] = []
-            #             community_to_vars[community].append(var)
-
-            #         # Write variables per community to the rs_file
-            #         for community, vars_list in community_to_vars.items():
-            #             vars_str = ', '.join(vars_list)
-            #             rs_file.write(f"// use crate::global_vars::{folder_name}_{community.lower()}::{{{vars_str}}};\n")
-
-            #         rs_file.write("\n")
-            #     else:
-            #         global_vars_list = ""
-                
-            #     rs_file.write("\n")
-            #     rs_file.write(all_function_code)
-
-            #     total_cnt += 1
 
             # Write to the sequence file
-            indicator = "🔹" if o in root_scc_indices else "      🔸"
-            f.write(f"{indicator} {prefix}   {fn_names} [#SCCs: {o:<2}] {global_vars_list}\n")
+            indicator = "🔹" if o in leaf_scc_indices else "      🔸"
 
     # 👆上面global_vars_list是空的，因为没有匹配到👆
 
@@ -901,19 +870,19 @@ with open(callgraph_dot_file, "r") as f:
             
 
     if create_gif == "gif":
-        gif_image = generate_gif_from_order(reverse_am, order, root_scc_indices, sccs)
+        gif_image = generate_gif_from_order(reverse_am, order, leaf_scc_indices, sccs)
         gif_image.show()
 
     current_root = None
-    root_traverse_dict = {}
+    leaf_traverse_dict = {}
     for idx in order:
-        if idx in root_scc_indices:
+        if idx in leaf_scc_indices:
             current_root = idx
-            root_traverse_dict[str(current_root)] = []
+            leaf_traverse_dict[str(current_root)] = []
         else:
             print(idx, end=" ")
             if current_root is not None:
-                root_traverse_dict[str(current_root)].append(str(idx))
+                leaf_traverse_dict[str(current_root)].append(str(idx))
          
 
     for dirpath, _, filenames in os.walk(rs_dir):

@@ -1,0 +1,65 @@
+digraph G {
+rankdir="LR";
+    main [label="int main ()
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:1099"]
+    main -> gpt2_build_from_checkpoint
+    main -> fopen
+    main -> printf
+    main -> fread
+    main -> malloc_and_point_parameters
+    main -> malloc
+    main -> fclose
+    main -> free
+    main -> gpt2_free
+    main -> access
+    main -> dataloader_init
+    main -> tokenizer_init
+    main -> mallocCheck
+    main -> dataloader_free
+    main -> tokenizer_free
+    gpt2_build_from_checkpoint [label="void gpt2_build_from_checkpoint (GPT2 *model, const char *checkpoint_path)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:631"]
+    gpt2_build_from_checkpoint -> fopenCheck
+    gpt2_build_from_checkpoint -> printf
+    gpt2_build_from_checkpoint -> exit
+    gpt2_build_from_checkpoint -> freadCheck
+    gpt2_build_from_checkpoint -> fill_in_parameter_sizes
+    gpt2_build_from_checkpoint -> malloc_and_point_parameters
+    gpt2_build_from_checkpoint -> fcloseCheck
+    fopenCheck [label="fopenCheck()"]
+    printf [label="printf()"]
+    exit [label="exit()"]
+    freadCheck [label="freadCheck()"]
+    fill_in_parameter_sizes [label="void fill_in_parameter_sizes (size_t *param_sizes, GPT2Config config)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:510"]
+    malloc_and_point_parameters [label="float *malloc_and_point_parameters (ParameterTensors *params, size_t *param_sizes)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:534"]
+    malloc_and_point_parameters -> mallocCheck
+    mallocCheck [label="mallocCheck()"]
+    fcloseCheck [label="fcloseCheck()"]
+    fopen [label="fopen()"]
+    fread [label="fread()"]
+    malloc [label="malloc()"]
+    fclose [label="fclose()"]
+    free [label="free()"]
+    gpt2_free [label="void gpt2_free (GPT2 *model)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:982"]
+    gpt2_free -> free
+    access [label="access()"]
+    dataloader_init [label="void dataloader_init (DataLoader *loader, const char *filename, int B, int T)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:1016"]
+    dataloader_init -> fopen
+    dataloader_init -> printf
+    dataloader_init -> exit
+    dataloader_init -> fseekCheck
+    dataloader_init -> ftell
+    dataloader_init -> mallocCheck
+    fseekCheck [label="fseekCheck()"]
+    ftell [label="ftell()"]
+    tokenizer_init [label="tokenizer_init()"]
+    dataloader_free [label="void dataloader_free (DataLoader *loader)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:1062"]
+    dataloader_free -> fcloseCheck
+    dataloader_free -> free
+    tokenizer_free [label="tokenizer_free()"]
+}

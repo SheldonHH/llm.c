@@ -8,10 +8,10 @@ pip3 install graphviz; pip3 install imageio; pip3 install cairosvg; pip3 install
 ```
 
 
-
+# Step 1
 ```bash
 cd RustMap-Tools
-python3 cflow_generation.py ..
+python3 cflow_generation.py /Users/mac/sheldonhh-fork/llm.c 
 
 ```
 
@@ -22,6 +22,9 @@ python3 cflow_generation.py ..
 cd RustMap-Tools
 git clone https://github.com/tree-sitter/tree-sitter-c.git
 cd tree-sitter-c
+tree-sitter generate
+gcc -shared -o tree-sitter-c.so -fPIC src/parser.c 
+
 ```
 
 

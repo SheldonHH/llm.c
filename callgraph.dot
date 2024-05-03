@@ -1,0 +1,145 @@
+digraph G {
+	graph [bb="0,0,2001.1,1015.4",
+		rankdir=LR
+	];
+	node [label="\N"];
+	main	[height=0.80532,
+		label="int main ()
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:1099",
+		pos="209.13,391",
+		width=5.8091];
+	gpt2_build_from_checkpoint	[height=0.80532,
+		label="void gpt2_build_from_checkpoint (GPT2 *model, const char *checkpoint_path)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:631",
+		pos="775.81,721",
+		width=8.9321];
+	main -> gpt2_build_from_checkpoint	[pos="e,576.38,697.86 228.55,420.34 264.66,475.22 350.33,593.13 454.25,652 488.21,671.24 526.97,685.12 565.52,695.13"];
+	fopen	[height=0.5,
+		label="fopen()",
+		pos="1483,384",
+		width=1.0568];
+	main -> fopen	[pos="e,1444.8,382.26 336.08,414.41 373.93,420.41 415.66,426.01 454.25,429 739.23,451.05 819.19,494.67 1097.4,429 1114.8,424.89 1116.1,\
+415.78 1133.4,411 1237.5,382.13 1365.3,380.35 1433.6,381.95"];
+	printf	[height=0.5,
+		label="printf()",
+		pos="1483,638",
+		width=1.0426];
+	main -> printf	[pos="e,1445.5,640.78 229.78,419.99 266.67,471.52 351.86,577.52 454.25,619 635.04,692.23 1256.4,654.26 1434.2,641.59"];
+	fread	[height=0.5,
+		label="fread()",
+		pos="775.81,288",
+		width=0.99992];
+	main -> fread	[pos="e,739.88,289.39 289.76,363.82 337.04,348.7 398.46,330.8 454.25,320 550.72,301.32 665.74,293.21 728.43,289.96"];
+	malloc_and_point_parameters	[height=0.80532,
+		label="float *malloc_and_point_parameters (ParameterTensors *params, size_t *param_sizes)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:\
+534",
+		pos="1483,941",
+		width=9.7129];
+	main -> malloc_and_point_parameters	[pos="e,1148.8,949.77 220.54,420.28 247.26,490.93 325.38,671.4 454.25,759 653.93,894.73 924.17,938.48 1137.4,949.22"];
+	malloc	[height=0.5,
+		label="malloc()",
+		pos="775.81,234",
+		width=1.1847];
+	main -> malloc	[pos="e,733.1,232.23 251.51,362.17 298.33,331.22 378.03,283.47 454.25,261 545.41,234.13 657.01,231.05 721.6,232.01"];
+	fclose	[height=0.5,
+		label="fclose()",
+		pos="775.81,180",
+		width=1.0852];
+	main -> fclose	[pos="e,737.29,176.6 237.26,362.06 279.17,319.5 364.27,241.38 454.25,207 545.36,172.19 661.34,172.31 725.86,175.9"];
+	free	[height=0.5,
+		label="free()",
+		pos="1483,330",
+		width=0.87197];
+	main -> free	[pos="e,1451.3,329.21 338.34,367.79 375.6,361.93 416.44,356.35 454.25,353 835.59,319.2 1299.4,325.89 1439.8,328.95"];
+	gpt2_free	[height=0.80532,
+		label="void gpt2_free (GPT2 *model)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:982",
+		pos="775.81,391",
+		width=5.6765];
+	main -> gpt2_free	[pos="e,570.96,391 418.39,391 464.41,391 513.27,391 559.56,391"];
+	access	[height=0.5,
+		label="access()",
+		pos="775.81,126",
+		width=1.1279];
+	main -> access	[pos="e,736.2,121.17 229.46,361.84 266.14,309.33 351.41,199.96 454.25,153 542.92,112.51 659.67,114.68 725.01,120.16"];
+	dataloader_init	[height=0.80532,
+		label="void dataloader_init (DataLoader *loader, const char *filename, int B, int T)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:1016",
+		pos="775.81,581",
+		width=8.5197];
+	main -> dataloader_init	[pos="e,530.26,563.38 245.16,419.86 290.4,455.38 372.99,514.49 454.25,543 474.95,550.26 496.81,556.19 519,561.03"];
+	tokenizer_init	[height=0.5,
+		label="tokenizer_init()",
+		pos="775.81,72",
+		width=1.8956];
+	main -> tokenizer_init	[pos="e,714.31,63.814 224.4,361.65 256.03,300.3 338.45,159.18 454.25,99 532.02,58.589 634.89,57.575 702.88,62.843"];
+	mallocCheck	[height=0.5,
+		label="mallocCheck()",
+		pos="1934.9,941",
+		width=1.8387];
+	main -> mallocCheck	[pos="e,1901,956.78 215.71,420.38 233.46,505.12 296.98,751.21 454.25,866 702.51,1047.2 1530.3,1033.9 1832.7,979 1852.3,975.45 1873,968.32 \
+1890.5,961.19"];
+	dataloader_free	[height=0.80532,
+		label="void dataloader_free (DataLoader *loader)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:1062",
+		pos="775.81,505",
+		width=5.8091];
+	main -> dataloader_free	[pos="e,608.04,487.44 291.84,418.09 338.9,432.85 399.41,450.41 454.25,462 500.16,471.7 550.24,479.64 596.89,485.95"];
+	tokenizer_free	[height=0.5,
+		label="tokenizer_free()",
+		pos="775.81,18",
+		width=1.9525];
+	main -> tokenizer_free	[pos="e,714.86,8.7118 220.73,361.68 247.51,292.42 325.07,119 454.25,45 530.92,1.0864 635.24,1.135 703.76,7.582"];
+	gpt2_build_from_checkpoint -> printf	[pos="e,1445.3,639.89 925.65,694.95 989.45,684.48 1064.9,673.01 1133.4,665 1240.3,652.48 1366.4,644.35 1433.8,640.53"];
+	gpt2_build_from_checkpoint -> malloc_and_point_parameters	[pos="e,1180.7,926.24 897.08,748.26 961.68,767.45 1039.6,798.4 1097.4,846 1120.5,865.06 1107.9,887.13 1133.4,903 1145.1,910.31 1157.5,\
+916.63 1170.3,922.07"];
+	fopenCheck	[height=0.5,
+		label="fopenCheck()",
+		pos="1483,800",
+		width=1.7108];
+	gpt2_build_from_checkpoint -> fopenCheck	[pos="e,1422.1,796.59 935.81,746.53 997.4,755.81 1068.6,765.77 1133.4,773 1229.1,783.68 1340.1,791.49 1410.7,795.89"];
+	exit	[height=0.5,
+		label="exit()",
+		pos="1483,692",
+		width=0.85775];
+	gpt2_build_from_checkpoint -> exit	[pos="e,1452,693.24 1069.8,708.95 1212.3,703.09 1368.1,696.68 1440.6,693.7"];
+	freadCheck	[height=0.5,
+		label="freadCheck()",
+		pos="1483,746",
+		width=1.6539];
+	gpt2_build_from_checkpoint -> freadCheck	[pos="e,1423.6,743.93 1076.1,731.61 1200.4,736.02 1333.8,740.74 1412.4,743.53"];
+	fill_in_parameter_sizes	[height=0.80532,
+		label="void fill_in_parameter_sizes (size_t *param_sizes, GPT2Config config)
+/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c:510",
+		pos="1483,865",
+		width=8.0335];
+	gpt2_build_from_checkpoint -> fill_in_parameter_sizes	[pos="e,1257.4,846.56 857.19,749.43 928.77,773.66 1036.8,807.55 1133.4,827 1169.6,834.3 1208.3,840.28 1246.2,845.15"];
+	fcloseCheck	[height=0.5,
+		label="fcloseCheck()",
+		pos="1483,546",
+		width=1.7392];
+	gpt2_build_from_checkpoint -> fcloseCheck	[pos="e,1426.7,554.31 859.27,692.6 931.05,668.6 1038.2,634.46 1133.4,611 1230.5,587.05 1344.8,567.32 1415.3,556.1"];
+	malloc_and_point_parameters -> mallocCheck	[pos="e,1868.2,941 1832.9,941 1841.3,941 1849.3,941 1857,941"];
+	gpt2_free -> free	[pos="e,1451.7,332.17 944.54,374.39 1004.1,368.65 1071.7,362.33 1133.4,357 1244.1,347.43 1374.8,337.74 1440.3,332.99"];
+	dataloader_init -> fopen	[pos="e,1449.2,375.38 1057.3,569.19 1071.7,562.15 1085.2,553.52 1097.4,543 1143.4,503.3 1086.5,449.75 1133.4,411 1220.6,338.84 1365.8,\
+357.5 1438.2,372.94"];
+	dataloader_init -> printf	[pos="e,1445.5,635.05 1011.1,599.94 1163.1,612.22 1348.3,627.19 1434.1,634.12"];
+	dataloader_init -> mallocCheck	[pos="e,1931.1,922.66 1082.9,581.04 1384,582.4 1803,588.39 1832.7,611 1881.6,648.23 1917.1,837.59 1929.3,911.45"];
+	dataloader_init -> exit	[pos="e,1452,691.23 876.28,608.78 947.35,627.56 1045.5,651.34 1133.4,665 1243.5,682.13 1375,688.58 1440.5,690.85"];
+	fseekCheck	[height=0.5,
+		label="fseekCheck()",
+		pos="1483,492",
+		width=1.6681];
+	dataloader_init -> fseekCheck	[pos="e,1424.4,487.73 1023.8,563.7 1049,558.39 1074,551.62 1097.4,543 1115.4,536.35 1115.2,525.28 1133.4,519 1226.4,486.87 1341.4,484.6 \
+1413.2,487.26"];
+	ftell	[height=0.5,
+		label="ftell()",
+		pos="1483,438",
+		width=0.88619];
+	dataloader_init -> ftell	[pos="e,1453.1,431.26 1051.8,568.2 1068,561.5 1083.3,553.21 1097.4,543 1128.3,520.56 1102,486.8 1133.4,465 1227.6,399.48 1372.7,415.98 \
+1442.2,429.11"];
+	dataloader_free -> free	[pos="e,1453.3,323.49 957.55,490.43 1006.9,479.32 1057.6,460.52 1097.4,429 1125.4,406.78 1103.7,376.97 1133.4,357 1228.4,293.09 1372.6,\
+308.69 1442,321.34"];
+	dataloader_free -> fcloseCheck	[pos="e,1421.3,542.47 969.52,516.2 1115.2,524.67 1307.1,535.83 1409.8,541.8"];
+}
