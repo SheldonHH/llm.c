@@ -3,10 +3,18 @@ name = "_rs_gpt"
 version = "0.1.0"
 edition = "2021"
 default-run = "_rs_gpt"
+default-run = "_rs_gpt"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[lib]
+name = "_rs_gpt"
+
+[[bin]]
+name = "_rs_gpt"
+path = "src/bin/main.rs"
 
 [lib]
 name = "_rs_gpt"

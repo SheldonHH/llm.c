@@ -1,0 +1,14 @@
+digraph G {
+rankdir="LR";
+    main [label="int main ()
+example.c:16"]
+    main -> foo
+    foo [label="void foo (int a)
+example.c:11"]
+    foo -> cWorld
+    foo -> printf
+    cWorld [label="void cWorld ()
+example.c:5"]
+    cWorld -> printf
+    printf [label="printf()"]
+}

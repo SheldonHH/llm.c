@@ -1,0 +1,14 @@
+digraph G {
+rankdir="LR";
+    main [label="int main ()
+/Users/mac/sheldonhh-fork/llm.c/RustMap-Tools/example/example.c:16"]
+    main -> foo
+    foo [label="void foo (int a)
+/Users/mac/sheldonhh-fork/llm.c/RustMap-Tools/example/example.c:11"]
+    foo -> CALL_CWORLD
+    foo -> printf
+    foo -> SQUARE
+    CALL_CWORLD [label="CALL_CWORLD()"]
+    printf [label="printf()"]
+    SQUARE [label="SQUARE()"]
+}

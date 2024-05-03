@@ -1,5 +1,6 @@
 from collections import defaultdict
 import re
+
 import imageio
 import graphviz
 from PIL import Image
@@ -374,8 +375,6 @@ def create_rust_project(original_folder_path):
     with open(cargo_toml_path, 'w') as file:
         file.writelines(lines)
 
-
-
     
     with open(cargo_toml_path, 'a') as file:
         # Step 3: Append the required content
@@ -531,7 +530,7 @@ if len(sys.argv) < 2:
     print("使用方法: python3 abc.py <绝对路径>")
     sys.exit(1)
 
-absolute_path = sys.argv[1]
+c_proj_path = sys.argv[1]
 create_gif = create_tree = "", 
 if len(sys.argv) > 2:
     create_gif = sys.argv[2]
@@ -539,13 +538,13 @@ if len(sys.argv) > 3:
     create_tree = sys.argv[3]
 
 
-callgraph_dot_file = os.path.join(absolute_path, "callgraph.dot")
+callgraph_dot_file = os.path.join(c_proj_path, "callgraph.dot")
 
 # 使用上面定义的函数从dot内容中提取adjList
 with open(callgraph_dot_file, "r") as f:
     dot_content = f.read()
     adjList = extract_adjList_from_dot(dot_content)
-    ctagsop_file = os.path.join(absolute_path, "ctagop.txt")
+    ctagsop_file = os.path.join(c_proj_path, "ctagop.txt")
     time.sleep(3)
     # 两个星星（**）用在字典前面时是一个特殊的语法，表示字典解包（Dictionary Unpacking）。
     
@@ -553,7 +552,7 @@ with open(callgraph_dot_file, "r") as f:
 
 
     function_relations = read_and_process_dot_file(callgraph_dot_file)
-    rest = return_dot_content(callgraph_dot_file)
+    rest = return_dot_content(c_proj_path)
     print("rest dot content", rest)
 
     print("function_relations: ",function_relations)
@@ -566,7 +565,7 @@ with open(callgraph_dot_file, "r") as f:
 
     # time.sleep(12)
     
-    new_project_name = create_rust_project(absolute_path)
+    new_project_name = create_rust_project(c_proj_path)
     
     # time.sleep(5)
 
@@ -585,8 +584,8 @@ with open(callgraph_dot_file, "r") as f:
     print("order", order, "leaf_scc_indices", leaf_scc_indices)
 
     # 从当前目录路径中提取文件夹名称
-    folder_name = os.path.basename(absolute_path)
-    seq_filename = os.path.join(absolute_path, folder_name + "-sequence.txt")
+    folder_name = os.path.basename(c_proj_path)
+    seq_filename = os.path.join(c_proj_path, folder_name + "-sequence.txt")
 
     print("new_project_name", new_project_name)
     dep = generate_dependency(scc_al)
@@ -610,7 +609,7 @@ with open(callgraph_dot_file, "r") as f:
     # 👆 Create mod.rs inside the src directory 👆      
     
     
-# 1st iteration
+    # 1st iteration
     fns_file_map = {}
     total_cnt = leaf_scc_count = 1
     with open(seq_filename, 'w', encoding='utf-8') as f:
@@ -720,7 +719,7 @@ with open(callgraph_dot_file, "r") as f:
 
             all_function_code = ''
             for idx, ip_f in enumerate(input_fname_list):
-                full_filename_path = os.path.join(absolute_path, ip_f)
+                full_filename_path = os.path.join(c_proj_path, ip_f)
                 fndef_grandchild = fn_names_list[idx].split("(")[0].split()[-1]  # int main取 main
                 function_code = extract_function_source(full_filename_path, fndef_grandchild)
                 all_function_code += function_code + '\n\n' 
