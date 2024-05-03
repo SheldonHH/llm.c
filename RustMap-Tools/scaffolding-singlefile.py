@@ -795,48 +795,48 @@ with open(callgraph_dot_file, "r") as f:
 
 
 
-    未找到
-    # new_function_relations = {}
-    # not_found = set()
-    # for key, values in reverse_function_relations.items():
-    #     new_key = fn_scc_map.get(key)
-    #     if new_key is None:
-    #         not_found.add(key)
-    #         continue
-    #     # new_key = new_key.split("/")[-1].split(".rs")[-1]
-    #     new_values = []
-    #     for value in values:
-    #         new_value = fn_scc_map.get(value)
-    #         if new_value is None:
-    #             not_found.add(value)
-    #             continue
-    #         new_values.append(new_value.split("/")[-1].split(".rs")[0])
+    new_function_relations = {}
+    not_found = set()
+    for key, values in reverse_function_relations.items():
+        new_key = fn_scc_map.get(key)
+        if new_key is None:
+            not_found.add(key)
+            continue
+        # new_key = new_key.split("/")[-1].split(".rs")[-1]
+        new_values = []
+        for value in values:
+            new_value = fn_scc_map.get(value)
+            if new_value is None:
+                not_found.add(value)
+                continue
+            new_values.append(new_value.split("/")[-1].split(".rs")[0])
 
-    #     new_function_relations[new_key] = new_values
-    # print("new_function_relations",new_function_relations)
-    # # 打印未找到的键或值
-    # for item in not_found:
-    #     print(f"未找到: {item}")
-    # print("len(not_found)",len(not_found)) 
+        new_function_relations[new_key] = new_values
+    print("new_function_relations",new_function_relations)
+    # 打印未找到的键或值
+    for item in not_found:
+        print(f"未找到: {item}")
+    print("len(not_found)",len(not_found)) 
     
-    # header_content = ""
+    header_content = ""
     
 
-#     for k, v in reverse_function_relations.items():
-#         scc_file = k
-#         # filename_folder_key_str = scc_file.split("/")[-1].split(".rs")[0]
-#         for each_v in v:
-#             print("each_v",each_v)
-#             folder_name = filename_to_folder_map.get(each_v)
-#             header_content += f"// use crate::{folder_name}::{each_v}::*;\\n"
+    for k, v in reverse_function_relations.items():
+        scc_file = k
+        # filename_folder_key_str = scc_file.split("/")[-1].split(".rs")[0]
+        for each_v in v:
+            print("each_v",each_v)
+            folder_name = filename_to_folder_map.get(each_v)
+            header_content += f"// use crate::{folder_name}::{each_v}::*;\\n"
+            print("header_content",header_content)
             
         
 
-#         # Use sed to prepend header content to the file
-#         sed_command = f"sed -i '1i {header_content}' {scc_file}"
-#         os.system(sed_command)
+        # Use sed to prepend header content to the file
+        # sed_command = f"sed -i '1i {header_content}' {scc_file}"
+        # os.system(sed_command)
 
-#         print(scc_file, "scc_file updated with sed")
+        # print(scc_file, "scc_file updated with sed")
 
 #             # 提取文件名
 #             # base_name = os.path.basename(file)
