@@ -1,6 +1,7 @@
 import os
 import subprocess
 import sys
+import graphviz
 
 
 def generate_cflow_dot(folder_path, file_extension):
@@ -16,6 +17,16 @@ def generate_cflow_dot(folder_path, file_extension):
     # 调用 cflow 来生成 dot 文件
     command = f'cflow --format=dot {cflow_command_input}'
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+
+    # 检查命令是否成功执行
+    if process.returncode == 0:
+        print("项目创建成功！")
+        print(process.stdout)  # 打印输出信息
+    else:
+        print("项目创建失败：")
+        print(process.stderr)  # 打印错误信息
+
+
     dot_content = process.communicate()[0].decode()
 
     # 去除生成内容的头部和尾部，因为我们只需要中间部分

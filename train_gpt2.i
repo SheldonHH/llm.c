@@ -2758,7 +2758,7 @@ void tokenizer_init(Tokenizer *tokenizer, const char *filename) {
     }
 
     uint32_t header[256];
-    fread_check(header, sizeof(uint32_t), 256, file, "./tokenizer.h", 55);
+    fread_check(header, sizeof(uint32_t), 256, file, "/Users/mac/sheldonhh-fork/llm.c/tokenizer.h", 55);
     (__builtin_expect(!(header[0] == 20240328), 0) ? __assert_rtn(__func__, "tokenizer.h", 56, "header[0] == 20240328") : (void)0);
     int version = header[1];
     tokenizer->vocab_size = header[2];
@@ -2775,17 +2775,17 @@ void tokenizer_init(Tokenizer *tokenizer, const char *filename) {
     }
 
     unsigned char length;
-    tokenizer->token_table = (char **)malloc_check(tokenizer->vocab_size * sizeof(char *), "./tokenizer.h", 72);
+    tokenizer->token_table = (char **)malloc_check(tokenizer->vocab_size * sizeof(char *), "/Users/mac/sheldonhh-fork/llm.c/tokenizer.h", 72);
     for (uint32_t i = 0; i < tokenizer->vocab_size; i++) {
-        fread_check(&length, sizeof(unsigned char), 1, file, "./tokenizer.h", 74);
+        fread_check(&length, sizeof(unsigned char), 1, file, "/Users/mac/sheldonhh-fork/llm.c/tokenizer.h", 74);
         (__builtin_expect(!(length > 0), 0) ? __assert_rtn(__func__, "tokenizer.h", 75, "length > 0") : (void)0);
-        char *token_bytes = (char *)malloc_check(length + 1, "./tokenizer.h", 76);
-        fread_check(token_bytes, sizeof(char), length, file, "./tokenizer.h", 77);
+        char *token_bytes = (char *)malloc_check(length + 1, "/Users/mac/sheldonhh-fork/llm.c/tokenizer.h", 76);
+        fread_check(token_bytes, sizeof(char), length, file, "/Users/mac/sheldonhh-fork/llm.c/tokenizer.h", 77);
         token_bytes[length] = '\0';
         tokenizer->token_table[i] = token_bytes;
     }
 
-    fclose_check(file, "./tokenizer.h", 82);
+    fclose_check(file, "/Users/mac/sheldonhh-fork/llm.c/tokenizer.h", 82);
     tokenizer->init_ok = 1;
 }
 
@@ -3321,7 +3321,7 @@ float* malloc_and_point_parameters(ParameterTensors* params, size_t* param_sizes
         num_parameters += param_sizes[i];
     }
 
-    float* params_memory = (float*)malloc_check(num_parameters * sizeof(float), "train_gpt2.c", 540);
+    float* params_memory = (float*)malloc_check(num_parameters * sizeof(float), "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 540);
 
     float** ptrs[] = {
         &params->wte, &params->wpe, &params->ln1w, &params->ln1b, &params->qkvw, &params->qkvb,
@@ -3368,7 +3368,7 @@ float* malloc_and_point_activations(ActivationTensors* acts, size_t* act_sizes) 
     for (size_t i = 0; i < 23; i++) {
         num_activations += act_sizes[i];
     }
-    float* acts_memory = (float*)malloc_check(num_activations * sizeof(float), "train_gpt2.c", 587);
+    float* acts_memory = (float*)malloc_check(num_activations * sizeof(float), "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 587);
     float** ptrs[] = {
         &acts->encoded, &acts->ln1, &acts->ln1_mean, &acts->ln1_rstd, &acts->qkv, &acts->atty,
         &acts->preatt, &acts->att, &acts->attproj, &acts->residual2, &acts->ln2, &acts->ln2_mean,
@@ -3415,10 +3415,10 @@ typedef struct {
 void gpt2_build_from_checkpoint(GPT2 *model, const char* checkpoint_path) {
 
 
-    FILE *model_file = fopen_check(checkpoint_path, "rb", "train_gpt2.c", 634);
+    FILE *model_file = fopen_check(checkpoint_path, "rb", "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 634);
     if (model_file == ((void *)0)) { printf("Error opening model file\n"); exit(1); }
     int model_header[256];
-    fread_check(model_header, sizeof(int), 256, model_file, "train_gpt2.c", 637);
+    fread_check(model_header, sizeof(int), 256, model_file, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 637);
     if (model_header[0] != 20240326) { printf("Bad magic model file\n"); exit(1); }
     if (model_header[1] != 3) {
         printf("Bad version in model file\n");
@@ -3455,8 +3455,8 @@ void gpt2_build_from_checkpoint(GPT2 *model, const char* checkpoint_path) {
 
 
     model->params_memory = malloc_and_point_parameters(&model->params, model->param_sizes);
-    fread_check(model->params_memory, sizeof(float), num_parameters, model_file, "train_gpt2.c", 674);
-    fclose_check(model_file, "train_gpt2.c", 675);
+    fread_check(model->params_memory, sizeof(float), num_parameters, model_file, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 674);
+    fclose_check(model_file, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 675);
 
 
     model->acts_memory = ((void *)0);
@@ -3532,8 +3532,8 @@ void gpt2_forward(GPT2 *model, int* inputs, int* targets, size_t B, size_t T) {
         model->num_activations = num_activations;
         model->acts_memory = malloc_and_point_activations(&model->acts, model->act_sizes);
 
-        model->inputs = (int*)malloc_check(B * T * sizeof(int), "train_gpt2.c", 751);
-        model->targets = (int*)malloc_check(B * T * sizeof(int), "train_gpt2.c", 752);
+        model->inputs = (int*)malloc_check(B * T * sizeof(int), "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 751);
+        model->targets = (int*)malloc_check(B * T * sizeof(int), "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 752);
     } else {
 
 
@@ -3801,9 +3801,9 @@ void dataloader_init(DataLoader *loader, const char* filename, int B, int T) {
     }
 
 
-    fseek_check(loader->tokens_file, 0, 2, "train_gpt2.c", 1028);
+    fseek_check(loader->tokens_file, 0, 2, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1028);
     loader->file_size = ftell(loader->tokens_file);
-    fseek_check(loader->tokens_file, 0, 0, "train_gpt2.c", 1030);
+    fseek_check(loader->tokens_file, 0, 0, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1030);
     if (loader->file_size < (B * T + 1) * sizeof(int)) {
         printf("Error: file size is too small for the batch size and sequence length\n");
         exit(1);
@@ -3811,7 +3811,7 @@ void dataloader_init(DataLoader *loader, const char* filename, int B, int T) {
     loader->current_position = 0;
 
 
-    loader->batch = (int*) malloc_check((B * T + 1) * sizeof(int), "train_gpt2.c", 1038);
+    loader->batch = (int*) malloc_check((B * T + 1) * sizeof(int), "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1038);
     loader->inputs = loader->batch;
     loader->targets = loader->batch + 1;
     loader->num_batches = loader->file_size / (B * T * sizeof(int));
@@ -3829,14 +3829,14 @@ void dataloader_next_batch(DataLoader *loader) {
         loader->current_position = 0;
     }
 
-    fseek_check(loader->tokens_file, loader->current_position, 0, "train_gpt2.c", 1056);
-    fread_check(loader->batch, sizeof(int), B*T+1, loader->tokens_file, "train_gpt2.c", 1057);
+    fseek_check(loader->tokens_file, loader->current_position, 0, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1056);
+    fread_check(loader->batch, sizeof(int), B*T+1, loader->tokens_file, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1057);
 
     loader->current_position += B*T * sizeof(int);
 }
 
 void dataloader_free(DataLoader *loader) {
-    fclose_check(loader->tokens_file, "train_gpt2.c", 1063);
+    fclose_check(loader->tokens_file, "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1063);
     free(loader->batch);
 }
 
@@ -3901,7 +3901,7 @@ int main() {
 
 
     unsigned long long rng_state = 1337;
-    int* gen_tokens = (int*)malloc_check(B * T * sizeof(int), "train_gpt2.c", 1128);
+    int* gen_tokens = (int*)malloc_check(B * T * sizeof(int), "/Users/mac/sheldonhh-fork/llm.c/train_gpt2.c", 1128);
     const int genT = 64;
 
 

@@ -327,22 +327,21 @@ def generate_dependency(adj_list):
 
     return result
 
-def create_rust_project(original_folder_path):
+def create_rust_project(callgraph_dot_file):
     # TODO:单一文件改动点
-    # folder_name = os.path.basename(original_folder_path)
-    single_file_dot_name = os.path.basename(original_folder_path)[2:-14]
+    single_file_dot_name = os.path.basename(callgraph_dot_file)[2:-14]
     print("single_file_dot_name",single_file_dot_name)
-    dir_path = os.path.dirname(original_folder_path)
-    print("dir_path",dir_path)
     new_project_name = f"{single_file_dot_name}_rs_gpt"
-    new_project_path = os.path.join(os.path.dirname(original_folder_path), new_project_name)
+    # // 它连接了 callgraph_dot_file 的目录、一个名为 "RustMap-Tools" 的子目录，以及一个变量 new_project_name。
+    new_project_belonging_dir = os.path.join(os.path.dirname(callgraph_dot_file), "RustMap-Tools")
+    new_project_path = os.path.join(os.path.dirname(callgraph_dot_file), "RustMap-Tools", new_project_name)
     
     # Create a new Rust project using cargo
     print("new_project_name",new_project_name)
     print("new_project_path",new_project_path)
-    print("original_folder_path", original_folder_path)
+    print("callgraph_dot_file", callgraph_dot_file)
     time.sleep(3) 
-    result = subprocess.run(["cargo", "new", new_project_name], capture_output=True, text=True, cwd=dir_path)
+    result = subprocess.run(["cargo", "new", new_project_name], capture_output=True, text=True, cwd=new_project_belonging_dir)
     # 检查命令是否成功执行
     if result.returncode == 0:
         print("项目创建成功！")
@@ -354,7 +353,7 @@ def create_rust_project(original_folder_path):
 
         
     # Step 2: Open the Cargo.toml file of the new project
-    cargo_toml_path = os.path.join(os.path.dirname(original_folder_path), new_project_name, "Cargo.toml")
+    cargo_toml_path = os.path.join(os.path.dirname(callgraph_dot_file), "RustMap-Tools", new_project_name, "Cargo.toml")
     with open(cargo_toml_path, 'r') as file:
         lines = file.readlines()
     # Find the index after the edition line
@@ -499,6 +498,48 @@ def read_and_process_dot_file(file_path):
         print(f"An error occurred: {e}")
     
     return data_dict
+
+
+
+
+def extract_headers_and_create_files_20240504(source_file_path, target_directory):
+    # 确保目标目录存在，如果不存在则创建
+    if not os.path.exists(target_directory):
+        os.makedirs(target_directory)
+
+    # 打开并读取源文件
+    with open(source_file_path, 'r') as file:
+        content = file.read()
+    
+    # 使用正则表达式查找所有匹配的include语句
+    pattern = r'#include\s+"([^"]+)"'
+    includes = re.findall(pattern, content)
+    
+    # 为每个找到的头文件名创建一个对应的.rs文件
+    for header in includes:
+        rs_file_path = os.path.join(target_directory, f"{header}.rs")
+        with open(rs_file_path, 'w') as file:
+            file.write("// Generated for corresponding C header\n")
+
+    return includes
+
+
+
+
+def create_file_with_directories_20240504(relative_path):
+    # 检查目录是否存在，如果不存在就创建
+    directory = os.path.dirname(relative_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    # 在指定的路径下创建（如果不存在）并打开文件
+    with open(relative_path, 'a') as file:
+        # 'a'模式是追加模式，如果文件不存在会创建一个新文件
+        # 如果需要在文件创建时写入特定内容，可以在这里使用file.write()
+        pass  # 这里不执行任何操作，只是确保文件存在
+
+    # 打印文件创建成功的消息
+    print(f"File created or already exists: {relative_path}")
 
 
 def return_dot_content(folder_path):
@@ -656,8 +697,9 @@ with open(callgraph_dot_file, "r") as f:
     filename_to_folder_map = {}
     all_mismatched_key = set()
     with open(seq_filename, 'w', encoding='utf-8') as f:
-        total_cnt = leaf_scc_count = 1
+        total_cnt = leaf_scc_count = 0
         for idx, o in enumerate(order):
+            total_cnt +=1
             fn_names_list = sccs[o]
             fn_names = ', '.join(fn_names_list)
             print("第二次遍历🔥-fn_names_list",fn_names_list)
@@ -690,20 +732,20 @@ with open(callgraph_dot_file, "r") as f:
             folder_path = os.path.join(rs_dir, output_fname)
             fn_name_s = []
             if o in leaf_scc_indices: 
+                leaf_scc_count += 1
                 for fn in sccs[o]:
                     cleaned_fn_name = clean_string(extract_short_fn_name(fn))
                     fn_name_s.append(cleaned_fn_name)
-
+                print("卡卡",fn_name_s)
+                # time.sleep(122)
                     
                 fn_name = "_".join(fn_name_s)
                 prefix = f"leaf_{leaf_scc_count}_SCC: # {total_cnt}"
                 rs_filename = os.path.join(folder_path, f"scc_{total_cnt}_leaf_{leaf_scc_count}_{fn_name}.rs")
                 # 在这里记录
                 filename_to_cnt_map[f"scc_{total_cnt}_leaf_{leaf_scc_count}_{fn_name}"] = o+1
-                
                 filename_to_folder_map[f"scc_{total_cnt}_leaf_{leaf_scc_count}_{fn_name}"] = output_fname
                 
-                leaf_scc_count += 1
             else:
                 fn_name = clean_string(extract_short_fn_name(sccs[o][0]))
                 prefix = f"SCC: # {total_cnt}"
@@ -719,7 +761,9 @@ with open(callgraph_dot_file, "r") as f:
                 fndef_grandchild = fn_names_list[idx].split("(")[0].split()[-1]  # int main取 main
                 function_code = extract_function_source(full_filename_path, fndef_grandchild)
                 all_function_code += function_code + '\n\n' 
-            os.makedirs(os.path.dirname(rs_filename), exist_ok=True)
+
+            create_file_with_directories_20240504(rs_filename)
+
 
             # Write to the sequence file
             indicator = "🔹" if o in leaf_scc_indices else "      🔸"
@@ -743,7 +787,6 @@ with open(callgraph_dot_file, "r") as f:
         print("base_name",base_name)
         print(f"Processing: 🔥{pure_filename}")
         abc_fn = extract_fn_from_filename(pure_filename)
-        print("abc_fn", abc_fn) # BZ2_hbAssignCodes
         for scc_filename in found_scc_files:
             if abc_fn in scc_filename:
                 fn_scc_map[abc_fn] = scc_filename
@@ -751,133 +794,127 @@ with open(callgraph_dot_file, "r") as f:
         # map: {fn: scc}
 
 
-    # 因为，当前fn_scc是一一对应的，所以我们重写 function_relations
-    # 重写 function_relations
-    # 写入 function之间的关系   
-        # fn_scc_map  {'BZ2_hbMakeCodeLengths': 'scc_67_BZ2_hbMakeCodeLengths.rs', 'BZ2_hbAssignCodes': 'scc_50_BZ2_hbAssignCodes.rs'}
-        # function_relations: {'BZ2_hbMakeCodeLengths': ['BZ2_hbAssignCodes', 'BZ2_hbCreateDecodeTables']}
-        # 遍历function_relations
-      
 
-    new_function_relations = {}
-    not_found = set()
-    for key, values in reverse_function_relations.items():
-        new_key = fn_scc_map.get(key)
-        if new_key is None:
-            not_found.add(key)
-            continue
-        # new_key = new_key.split("/")[-1].split(".rs")[-1]
-        new_values = []
-        for value in values:
-            new_value = fn_scc_map.get(value)
-            if new_value is None:
-                not_found.add(value)
-                continue
-            new_values.append(new_value.split("/")[-1].split(".rs")[0])
+    未找到
+    # new_function_relations = {}
+    # not_found = set()
+    # for key, values in reverse_function_relations.items():
+    #     new_key = fn_scc_map.get(key)
+    #     if new_key is None:
+    #         not_found.add(key)
+    #         continue
+    #     # new_key = new_key.split("/")[-1].split(".rs")[-1]
+    #     new_values = []
+    #     for value in values:
+    #         new_value = fn_scc_map.get(value)
+    #         if new_value is None:
+    #             not_found.add(value)
+    #             continue
+    #         new_values.append(new_value.split("/")[-1].split(".rs")[0])
 
-        new_function_relations[new_key] = new_values
-    print("new_function_relations",new_function_relations)
-    # 打印未找到的键或值
-    for item in not_found:
-        print(f"未找到: {item}")
-    print("len(not_found)",len(not_found)) 
+    #     new_function_relations[new_key] = new_values
+    # print("new_function_relations",new_function_relations)
+    # # 打印未找到的键或值
+    # for item in not_found:
+    #     print(f"未找到: {item}")
+    # print("len(not_found)",len(not_found)) 
     
-    header_content = ""
+    # header_content = ""
     
 
-    for k, v in new_function_relations.items():
-        scc_file = k
-        # filename_folder_key_str = scc_file.split("/")[-1].split(".rs")[0]
-        for each_v in v:
-            print("each_v",each_v)
-            folder_name = filename_to_folder_map.get(each_v)
-            header_content += f"// use crate::{folder_name}::{each_v}::*;\\n"
+#     for k, v in reverse_function_relations.items():
+#         scc_file = k
+#         # filename_folder_key_str = scc_file.split("/")[-1].split(".rs")[0]
+#         for each_v in v:
+#             print("each_v",each_v)
+#             folder_name = filename_to_folder_map.get(each_v)
+#             header_content += f"// use crate::{folder_name}::{each_v}::*;\\n"
             
         
 
-        # Use sed to prepend header content to the file
-        sed_command = f"sed -i '1i {header_content}' {scc_file}"
-        os.system(sed_command)
+#         # Use sed to prepend header content to the file
+#         sed_command = f"sed -i '1i {header_content}' {scc_file}"
+#         os.system(sed_command)
 
-        print(scc_file, "scc_file updated with sed")
+#         print(scc_file, "scc_file updated with sed")
 
-            # 提取文件名
-            # base_name = os.path.basename(file)
-            # pure_filename, _ = os.path.splitext(base_name)
-            # print("base_name",base_name)
-            # print(f"Processing: 🔥{pure_filename}")
-            # abc_fn = extract_fn_from_filename(pure_filename)
-            # print("abc_fn", abc_fn)
-        # Now, read the entire file and rearrange
-        with open(scc_file, 'r+', encoding='utf-8') as file:
-            content = file.read()
-            # Move the appended header content to the beginning of the file
-            content = header_content + content.replace(header_content, '', 1)
+#             # 提取文件名
+#             # base_name = os.path.basename(file)
+#             # pure_filename, _ = os.path.splitext(base_name)
+#             # print("base_name",base_name)
+#             # print(f"Processing: 🔥{pure_filename}")
+#             # abc_fn = extract_fn_from_filename(pure_filename)
+#             # print("abc_fn", abc_fn)
+#         # Now, read the entire file and rearrange
+#         with open(scc_file, 'r+', encoding='utf-8') as file:
+#             content = file.read()
+#             # Move the appended header content to the beginning of the file
+#             content = header_content + content.replace(header_content, '', 1)
 
             
-# First append the header content to the end of the file
+# # First append the header content to the end of the file
     
 
                             
 
         
-        # file.seek(0)
-        # file.write(content)
-        # file.truncate()  # Truncate to ensure no leftover data
+#         # file.seek(0)
+#         # file.write(content)
+#         # file.truncate()  # Truncate to ensure no leftover data
 
-    print(all_mismatched_key,"all_mismatched_key",len(all_mismatched_key))
-    amk_path = os.path.join(rs_dir, "all_mismatched_key.txt")
+#     print(all_mismatched_key,"all_mismatched_key",len(all_mismatched_key))
+#     amk_path = os.path.join(rs_dir, "all_mismatched_key.txt")
     
 
 
     
-    with open(amk_path, "w", encoding="utf-8") as f:
-        for item in all_mismatched_key:
-            f.write(item + "\n")
-        f.write(str(len(all_mismatched_key)))
+#     with open(amk_path, "w", encoding="utf-8") as f:
+#         for item in all_mismatched_key:
+#             f.write(item + "\n")
+#         f.write(str(len(all_mismatched_key)))
     
-    base_directory = os.path.dirname(os.path.abspath(rs_filename))
-    src_directory = os.path.dirname(base_directory)
-    # 遍历该目录下的所有子文件夹，创建mod.rs
-    for subdir in os.listdir(src_directory):
-        subdir_path = os.path.join(src_directory, subdir)        
-        # 确保它是一个文件夹
-        if os.path.isdir(subdir_path) and subdir != 'bin':
-            # 对每一个子文件夹调用 create_mod_rs
-            create_mod_rs(subdir_path)
-    # 创建lib.rs
-    print(src_directory,"src_directory🐶")
-    if os.path.exists(src_directory):
-        subdirs = [d for d in os.listdir(src_directory) if os.path.isdir(os.path.join(src_directory, d))]
-        lib_rs_path = os.path.join(src_directory, "lib.rs")
-        with open(lib_rs_path, 'w', encoding='utf-8') as lib_file:
-            for subdir in subdirs:
-                lib_file.write(f"pub mod {subdir};\n")
+#     base_directory = os.path.dirname(os.path.abspath(rs_filename))
+#     src_directory = os.path.dirname(base_directory)
+#     # 遍历该目录下的所有子文件夹，创建mod.rs
+#     for subdir in os.listdir(src_directory):
+#         subdir_path = os.path.join(src_directory, subdir)        
+#         # 确保它是一个文件夹
+#         if os.path.isdir(subdir_path) and subdir != 'bin':
+#             # 对每一个子文件夹调用 create_mod_rs
+#             create_mod_rs(subdir_path)
+#     # 创建lib.rs
+#     print(src_directory,"src_directory🐶")
+#     if os.path.exists(src_directory):
+#         subdirs = [d for d in os.listdir(src_directory) if os.path.isdir(os.path.join(src_directory, d))]
+#         lib_rs_path = os.path.join(src_directory, "lib.rs")
+#         with open(lib_rs_path, 'w', encoding='utf-8') as lib_file:
+#             for subdir in subdirs:
+#                 lib_file.write(f"pub mod {subdir};\n")
             
-    current_root = None
-    leaf_traverse_dict = {}
-    for idx in order:
-        if idx in leaf_scc_indices:
-            current_root = idx
-            leaf_traverse_dict[str(current_root)] = []
-        else:
-            print(idx, end=" ")
-            if current_root is not None:
-                leaf_traverse_dict[str(current_root)].append(str(idx))
+#     current_root = None
+#     leaf_traverse_dict = {}
+#     for idx in order:
+#         if idx in leaf_scc_indices:
+#             current_root = idx
+#             leaf_traverse_dict[str(current_root)] = []
+#         else:
+#             print(idx, end=" ")
+#             if current_root is not None:
+#                 leaf_traverse_dict[str(current_root)].append(str(idx))
          
 
-    for dirpath, _, filenames in os.walk(rs_dir):
-        for filename in filenames:
-            if filename.endswith(".rs"):
-                # 获取文件名（不包括扩展名）
-                base_name = os.path.splitext(filename)[0]
-                # 创建新的.c文件的路径
-                # c_file_path = os.path.join(dirpath, f"{base_name}.c")
-                # 获取原始.rs文件的完整路径
-                rs_file_path = os.path.join(dirpath, filename)
-                # 复制文件内容
-                # shutil.copy2(rs_file_path, c_file_path)
+#     for dirpath, _, filenames in os.walk(rs_dir):
+#         for filename in filenames:
+#             if filename.endswith(".rs"):
+#                 # 获取文件名（不包括扩展名）
+#                 base_name = os.path.splitext(filename)[0]
+#                 # 创建新的.c文件的路径
+#                 # c_file_path = os.path.join(dirpath, f"{base_name}.c")
+#                 # 获取原始.rs文件的完整路径
+#                 rs_file_path = os.path.join(dirpath, filename)
+#                 # 复制文件内容
+#                 # shutil.copy2(rs_file_path, c_file_path)
                 
-                # 创建同名的空.md文件
-                # md_file_path = os.path.join(dirpath, f"{base_name}.md")
-                # with open(md_file_path, 'w') as md_file: pass
+#                 # 创建同名的空.md文件
+#                 # md_file_path = os.path.join(dirpath, f"{base_name}.md")
+#                 # with open(md_file_path, 'w') as md_file: pass

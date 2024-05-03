@@ -40,7 +40,7 @@ if __name__ == '__main__':
     # 修改输出文件名，仅包含文件名而不是完整路径
     output_prefix = os.path.splitext(os.path.basename(file_path))[0] + "-callgraph"
     callgraph_svg_file = f"{output_prefix}.svg"
-    callgraph_dot_file = f"{output_prefix}.dot"
+    callgraph_dot_file = f"i-{output_prefix}.dot"
 
     # 输出文件路径设置为文件原路径
     output_folder = os.path.dirname(file_path)
