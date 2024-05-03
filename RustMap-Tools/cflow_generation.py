@@ -18,6 +18,7 @@ def generate_cflow_dot(folder_path):
     command = f'cflow --format=dot {cflow_command_input}'
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     dot_content = process.communicate()[0].decode()
+    print("🔥dot_content:", dot_content)
 
     # 去除生成内容的头部和尾部，因为我们只需要中间部分
     dot_lines = dot_content.split('\n')[2:-2]
@@ -27,7 +28,7 @@ def generate_cflow_dot(folder_path):
 
     all_dot_content += "}"
 
-    return all_dot_content
+    return all_dot_content,dot_content
 
 
 

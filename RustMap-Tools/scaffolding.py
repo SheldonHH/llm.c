@@ -320,23 +320,7 @@ def extract_function_from_var_description(var_desc):
     # 假设函数描述的格式为 "function_name file_name:line_number"
     return var_desc.split(' ')[0]
 
-def name_communities(grouped_vars):
-    community_names = {}
-    for community_id, vars_list in grouped_vars.items():
-        # 从每个社群中提取函数名
-        function_names = [extract_function_from_var_description(var) for var in vars_list if " " in var]
-        # 取最常引用的函数名作为社群名称
-        most_common_function = max(set(function_names), key=function_names.count, default="")
-        community_name = most_common_function or f"Community"
-        community_names[community_id] = f"{community_name}_{community_id}"
-    return community_names
 
-def create_var_to_community_mapping(grouped_vars):
-    var_to_community = {}
-    for community_id, vars_list in grouped_vars.items():
-        for var in vars_list:
-            var_to_community[var] = community_id
-    return var_to_community
 
 
 
@@ -354,7 +338,7 @@ def generate_dependency(adj_list):
 
     return result
 
-def create_rust_project(original_folder_path, grouped_vars, typedef_name_def_map, direct_structs_name_def_map):
+def create_rust_project(original_folder_path):
     folder_name = os.path.basename(original_folder_path)
     new_project_name = f"{folder_name}_rs_gpt"
     new_project_path = os.path.join(os.path.dirname(original_folder_path), new_project_name)
@@ -405,41 +389,11 @@ def create_rust_project(original_folder_path, grouped_vars, typedef_name_def_map
     with open(main_rs_path, 'w') as f:
         f.write("// TODO: Add your Rust code here\n")
 
-    # Create src/global_vars folder inside the new Rust project
-    global_vars_path = os.path.join(new_project_path, "src", "global_vars")
-    os.makedirs(global_vars_path, exist_ok=True)
     print(f"Rust project created at: {new_project_path}")
     return new_project_name
     
     
     
-import networkx as nx
-def group_variables(var_to_functions, weighted_edges):
-    print("进入group_variables fn")
-    # 创建一个图
-    G = nx.Graph()
-    # 添加节点
-    for var in var_to_functions:
-        G.add_node(var)
-    # 添加边
-    for var1 in var_to_functions:
-        for var2 in var_to_functions:
-            if var1 != var2 and any(func in var_to_functions[var1] for func in var_to_functions[var2]):
-                weight = weighted_edges.get((var1, var2), 1)  # Default weight is 1 if not present in the dictionary
-                G.add_edge(var1, var2, weight=weight)
-
-    # 运行Louvain社群检测算法
-    partition = community_louvain.best_partition(G)
-    # 根据社群划分变量
-    grouped_vars = {}
-    for var, community_id in partition.items():
-        # 修改社区ID使其从1开始
-        adjusted_community_id = community_id + 1
-        if adjusted_community_id not in grouped_vars:
-            grouped_vars[adjusted_community_id] = []
-        grouped_vars[adjusted_community_id].append(var)
-
-    return grouped_vars
 
 
 
@@ -527,7 +481,47 @@ def extract_function_source(filename, function_name):
 
 # Assuming the extract_function_pointer_level function is already defined
 
+def read_and_process_dot_file(file_path):
+    # 创建一个空字典来存储数据
+    data_dict = {}
+    
+    # 尝试打开并读取文件
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                # 去除行尾的换行符并按" -> "分割
+                parts = line.strip().split(" -> ")
+                if len(parts) == 2:
+                    key, value = parts
+                    # 如果键已经在字典中，添加到对应的列表
+                    if key in data_dict:
+                        data_dict[key].append(value)
+                    else:
+                        # 否则，为这个键创建新列表
+                        data_dict[key] = [value]
+    except FileNotFoundError:
+        print(f"Error: The file '{file_path}' does not exist.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    
+    return data_dict
 
+
+def return_dot_content(folder_path):
+    # 遍历文件夹内的所有 .i 文件
+    c_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.c')]
+
+    # 将所有的 .i 文件作为 cflow 命令的参数
+    cflow_command_input = ' '.join(c_files)
+
+    all_dot_content = "digraph G {\n"
+    all_dot_content += 'rankdir="LR";\n'  # 使其从左到右布局
+
+    # 调用 cflow 来生成 dot 文件
+    command = f'cflow --format=dot {cflow_command_input}'
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    dot_content = process.communicate()[0].decode()
+    return dot_content
 
 
 import os
@@ -554,10 +548,14 @@ with open(callgraph_dot_file, "r") as f:
     ctagsop_file = os.path.join(absolute_path, "ctagop.txt")
     time.sleep(3)
     # 两个星星（**）用在字典前面时是一个特殊的语法，表示字典解包（Dictionary Unpacking）。
-    # 这两个字典的键值对解包到 all_vars 字典中，从而合并这两个字典。
-    # 结果是一个新的字典，其中包含了 global_vars 和 static_global_vars 的所有键值对。    
+    
 
-    # time.sleep(5)
+
+
+    function_relations = read_and_process_dot_file(callgraph_dot_file)
+    rest = return_dot_content(callgraph_dot_file)
+    print("rest dot content", rest)
+
     print("function_relations: ",function_relations)
     reverse_function_relations = defaultdict(set)
     for src, dests in function_relations.items():
@@ -567,16 +565,10 @@ with open(callgraph_dot_file, "r") as f:
     # function_relations = reverse_function_relations
 
     # time.sleep(12)
-    with open('fn_to_vars.json', 'w', encoding='utf-8') as file:
-        json.dump(fn_to_vars, file, ensure_ascii=False, indent=4)
-    time.sleep(3)
-
     
     new_project_name = create_rust_project(absolute_path)
     
     # time.sleep(5)
-    integrated_output_file = os.path.join(absolute_path, "integrated_output.svg")
-    integrated_dot.render(filename=integrated_output_file, format="svg", view=False)
 
     r_aL = reverse_AL(adjList)
     sccs = tarjan(r_aL)
@@ -737,7 +729,6 @@ with open(callgraph_dot_file, "r") as f:
             # Write to the sequence file
             indicator = "🔹" if o in leaf_scc_indices else "      🔸"
 
-    # 👆上面global_vars_list是空的，因为没有匹配到👆
 
 
     # 在rs_dir的子文件夹下找到所有以scc_*.rs的文件
