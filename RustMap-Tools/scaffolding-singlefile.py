@@ -303,19 +303,7 @@ def clean_string(s):
     s = s.strip()  # 去除前后空格
     return s.lstrip('*')  # 去除左侧所有的星号
 
-def check_match(fn_name_0, fn_to_vars):
-    short_fn_name = clean_string(extract_short_fn_name(fn_name_0))
-    
-    
-    for key in fn_to_vars.keys():
-        cleaned_key = clean_string(key)
-        # 检查short_fn_name是否是key从第一个chacter到首先碰到 ( 位的前一个character的substring
-        if short_fn_name in key.split('(')[0]:
-            print("🐯",key.split('(')[0])
-            print("short_fn_name",short_fn_name)
-            # time.sleep(4)
-            return key
-    return False
+
 
 def extract_function_from_var_description(var_desc):
     # 假设函数描述的格式为 "function_name file_name:line_number"
@@ -340,23 +328,30 @@ def generate_dependency(adj_list):
     return result
 
 def create_rust_project(original_folder_path):
-    folder_name = os.path.basename(original_folder_path)
-    new_project_name = f"{folder_name}_rs_gpt"
+    # TODO:单一文件改动点
+    # folder_name = os.path.basename(original_folder_path)
+    single_file_dot_name = os.path.basename(original_folder_path)[2:-14]
+    print("single_file_dot_name",single_file_dot_name)
+    dir_path = os.path.dirname(original_folder_path)
+    print("dir_path",dir_path)
+    new_project_name = f"{single_file_dot_name}_rs_gpt"
     new_project_path = os.path.join(os.path.dirname(original_folder_path), new_project_name)
     
     # Create a new Rust project using cargo
-    subprocess.run(["cargo", "new", "--bin", new_project_name], cwd=os.path.dirname(original_folder_path))
-    time.sleep(0.5)  # sleep for half a second
-    # 定义 src/bin 的路径
-    bin_directory = os.path.join(new_project_path, "src", "bin")
-    # 创建目录，如果它还不存在
-    os.makedirs(bin_directory, exist_ok=True)
-    # 定义 main.rs 的路径
-    main_rs_path = os.path.join(bin_directory, "main.rs")
-    # 创建并打开 main.rs 文件，只需简单地打印 "Hello, world!" 作为起始内容
-    with open(main_rs_path, 'w') as file:
-        file.write('fn main() {\n    println!("Hello, world!");\n}\n')
-        
+    print("new_project_name",new_project_name)
+    print("new_project_path",new_project_path)
+    print("original_folder_path", original_folder_path)
+    time.sleep(3) 
+    result = subprocess.run(["cargo", "new", new_project_name], capture_output=True, text=True, cwd=dir_path)
+    # 检查命令是否成功执行
+    if result.returncode == 0:
+        print("项目创建成功！")
+        print(result.stdout)  # 打印输出信息
+    else:
+        print("项目创建失败：")
+        print(result.stderr)  # 打印错误信息  # sleep for half a second
+    time.sleep(1)
+
         
     # Step 2: Open the Cargo.toml file of the new project
     cargo_toml_path = os.path.join(os.path.dirname(original_folder_path), new_project_name, "Cargo.toml")
@@ -473,7 +468,7 @@ def extract_function_source(filename, function_name):
         if node.type == "function_definition" or node.type == "declaration":
             dfs_search(node, 0)  # Start DFS with current pointer level as 0
 
-    for child in tree.leaf_node.children:
+    for child in tree.root_node.children:
         find_functions(child)
 
     return '\n\n'.join(extracted_code)
@@ -523,28 +518,30 @@ def return_dot_content(folder_path):
     return dot_content
 
 
-import os
-import sys
-# 获取从命令行传入的绝对路径
+# Verify that the correct number of arguments has been provided
 if len(sys.argv) < 2:
-    print("使用方法: python3 abc.py <绝对路径>")
+    print("Usage: python scaffolding.py <path_to_callgraph.dot>")
     sys.exit(1)
 
-c_proj_path = sys.argv[1]
-create_gif = create_tree = "", 
-if len(sys.argv) > 2:
-    create_gif = sys.argv[2]
-if len(sys.argv) > 3:
-    create_tree = sys.argv[3]
+# Path to the callgraph.dot file passed as the first command line argument
+callgraph_dot_file = sys.argv[1]
+
+# Read the content of the provided callgraph.dot file
+try:
+    with open(callgraph_dot_file, "r") as f:
+        dot_content = f.read()
+except FileNotFoundError:
+    print(f"Error: File '{callgraph_dot_file}' not found.")
+    sys.exit(1)
 
 
-callgraph_dot_file = os.path.join(c_proj_path, "callgraph.dot")
+# callgraph_dot_file = os.path.join(c_proj_path, "callgraph.dot")
 
 # 使用上面定义的函数从dot内容中提取adjList
 with open(callgraph_dot_file, "r") as f:
     dot_content = f.read()
     adjList = extract_adjList_from_dot(dot_content)
-    ctagsop_file = os.path.join(c_proj_path, "ctagop.txt")
+    # ctagsop_file = os.path.join(c_proj_path, "ctagop.txt")
     time.sleep(3)
     # 两个星星（**）用在字典前面时是一个特殊的语法，表示字典解包（Dictionary Unpacking）。
     
@@ -552,8 +549,8 @@ with open(callgraph_dot_file, "r") as f:
 
 
     function_relations = read_and_process_dot_file(callgraph_dot_file)
-    rest = return_dot_content(c_proj_path)
-    print("rest dot content", rest)
+    # rest = return_dot_content(c_proj_path)
+    # print("rest dot content", rest)
 
     print("function_relations: ",function_relations)
     reverse_function_relations = defaultdict(set)
@@ -562,10 +559,12 @@ with open(callgraph_dot_file, "r") as f:
             reverse_function_relations[dest].add(src)
     print("reverse_function_relations: ",reverse_function_relations)
     # function_relations = reverse_function_relations
-
-    # time.sleep(12)
-    
-    new_project_name = create_rust_project(c_proj_path)
+    print("callgraph_dot_file:",callgraph_dot_file)
+    single_file_belong_dir = os.path.dirname(callgraph_dot_file)
+    single_file_name = os.path.basename(callgraph_dot_file)
+    # c_proj_path = os.path.dirname(callgraph_dot_file)
+    # print("c_proj_path:",c_proj_path)
+    new_project_name = create_rust_project(callgraph_dot_file)
     
     # time.sleep(5)
 
@@ -584,8 +583,8 @@ with open(callgraph_dot_file, "r") as f:
     print("order", order, "leaf_scc_indices", leaf_scc_indices)
 
     # 从当前目录路径中提取文件夹名称
-    folder_name = os.path.basename(c_proj_path)
-    seq_filename = os.path.join(c_proj_path, folder_name + "-sequence.txt")
+    folder_name = single_file_name
+    seq_filename = os.path.join(single_file_belong_dir, folder_name + "-sequence.txt")
 
     print("new_project_name", new_project_name)
     dep = generate_dependency(scc_al)
@@ -610,43 +609,43 @@ with open(callgraph_dot_file, "r") as f:
     
     
     # 1st iteration
-    fns_file_map = {}
-    total_cnt = leaf_scc_count = 1
-    with open(seq_filename, 'w', encoding='utf-8') as f:
-        total_cnt = leaf_scc_count = 1
-        for idx, o in enumerate(order):
-            fn_names_list = sccs[o]
-            fn_names = ', '.join(fn_names_list)
-    for idx, o in enumerate(order):
-            # 从fn_names的第一个函数名中提取文件名
-        input_fname_list = []
-        # double modf (double __x, double *__iptr)units_222/parse.tab.i:1039 fn_names
-        file_matches = re.findall(r'([a-zA-Z0-9_\-\.]+)\.(c|i|h):', fn_names)
-        if len(file_matches) > 1:
-            output_fname = "multi_files"
-            for subf in file_matches:
-                input_fname_list.append(subf[0] + '.' + subf[1])
-        else:
-            output_fname = file_matches[0][0] + '.' + file_matches[0][1]
-            input_fname_list.append(output_fname)
-            if output_fname.endswith("tab.i"):
-                print(file_matches,"file_matches",fn_names,"fn_names")
-            if output_fname.endswith('.i'):
-                output_fname = output_fname[:-2]
-        folder_path = os.path.join(rs_dir, output_fname)
-        fn_name_arr = []
-        for fn in sccs[o]:
-            cleaned_fn_name = clean_string(extract_short_fn_name(fn))
-            fn_name_arr.append(cleaned_fn_name)
-        linked_fn_name_str = "_".join(fn_name_arr)
-        abc = ""
-        if o in leaf_scc_indices: 
-            abc = "scc_"+str(total_cnt)+"_leaf_"+str(leaf_scc_count)+"_"+linked_fn_name_str+".rs"
-            leaf_scc_count += 1
-        else:
-            abc = "scc_"+str(total_cnt)+"_"+linked_fn_name_str+".rs"      
-        fns_file_map[linked_fn_name_str] = abc
-        total_cnt += 1
+    # fns_file_map = {}
+    # total_cnt = leaf_scc_count = 1
+    # with open(seq_filename, 'w', encoding='utf-8') as f:
+    #     for idx, o in enumerate(order):
+    #         fn_names_list = sccs[o]
+    #         fn_names = ', '.join(fn_names_list)
+
+    # for idx, o in enumerate(order):
+    #         # 从fn_names的第一个函数名中提取文件名
+    #     input_fname_list = []
+    #     # double modf (double __x, double *__iptr)units_222/parse.tab.i:1039 fn_names
+    #     file_matches = re.findall(r'([a-zA-Z0-9_\-\.]+)\.(c|i|h):', fn_names)
+    #     if len(file_matches) > 1:
+    #         output_fname = "multi_files"
+    #         for subf in file_matches:
+    #             input_fname_list.append(subf[0] + '.' + subf[1])
+    #     else:
+    #         output_fname = file_matches[0][0] + '.' + file_matches[0][1]
+    #         input_fname_list.append(output_fname)
+    #         if output_fname.endswith("tab.i"):
+    #             print(file_matches,"file_matches",fn_names,"fn_names")
+    #         if output_fname.endswith('.i'):
+    #             output_fname = output_fname[:-2]
+    #     folder_path = os.path.join(rs_dir, output_fname)
+    #     fn_name_arr = []
+    #     for fn in sccs[o]:
+    #         cleaned_fn_name = clean_string(extract_short_fn_name(fn))
+    #         fn_name_arr.append(cleaned_fn_name)
+    #     linked_fn_name_str = "_".join(fn_name_arr)
+    #     abc = ""
+    #     if o in leaf_scc_indices: 
+    #         abc = "scc_"+str(total_cnt)+"_leaf_"+str(leaf_scc_count)+"_"+linked_fn_name_str+".rs"
+    #         leaf_scc_count += 1
+    #     else:
+    #         abc = "scc_"+str(total_cnt)+"_"+linked_fn_name_str+".rs"      
+    #     fns_file_map[linked_fn_name_str] = abc
+    #     total_cnt += 1
         
 
 
@@ -661,6 +660,7 @@ with open(callgraph_dot_file, "r") as f:
         for idx, o in enumerate(order):
             fn_names_list = sccs[o]
             fn_names = ', '.join(fn_names_list)
+            print("第二次遍历🔥-fn_names_list",fn_names_list)
         
             # 从fn_names的第一个函数名中提取文件名
             input_fname_list = []
@@ -684,11 +684,7 @@ with open(callgraph_dot_file, "r") as f:
             
             print(input_fname_list,"input_fname_list")
             
-            # 从第一个函数名中获取matched_key
-       
-            # for fn_names_list
-
-            print("leaf_scc_indices:",leaf_scc_indices)
+            print("leaf_scc_indicesleaf_scc_indicesleaf_scc_indices:",leaf_scc_indices)
             # time.sleep(120)
             # 用于记录每个元素在leaf_scc_indices中对应的字符串
             folder_path = os.path.join(rs_dir, output_fname)
@@ -719,7 +715,7 @@ with open(callgraph_dot_file, "r") as f:
 
             all_function_code = ''
             for idx, ip_f in enumerate(input_fname_list):
-                full_filename_path = os.path.join(c_proj_path, ip_f)
+                full_filename_path = os.path.join(single_file_belong_dir, ip_f)
                 fndef_grandchild = fn_names_list[idx].split("(")[0].split()[-1]  # int main取 main
                 function_code = extract_function_source(full_filename_path, fndef_grandchild)
                 all_function_code += function_code + '\n\n' 
@@ -858,11 +854,6 @@ with open(callgraph_dot_file, "r") as f:
             for subdir in subdirs:
                 lib_file.write(f"pub mod {subdir};\n")
             
-
-    if create_gif == "gif":
-        gif_image = generate_gif_from_order(reverse_am, order, leaf_scc_indices, sccs)
-        gif_image.show()
-
     current_root = None
     leaf_traverse_dict = {}
     for idx in order:
