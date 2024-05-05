@@ -775,7 +775,7 @@ with open(callgraph_dot_file, "r") as f:
 
     new_function_relations = {}
     not_found = set()
-    for key, values in reverse_function_relations.items():
+    for key, values in function_relations.items():
         new_key = fn_scc_map.get(key)
         if new_key is None:
             not_found.add(key)
@@ -797,9 +797,7 @@ with open(callgraph_dot_file, "r") as f:
     print("len(not_found)",len(not_found)) 
     
     header_content = ""
-    
-
-    for k, v in reverse_function_relations.items():
+    for k, v in new_function_relations.items():
         scc_file = k
         # filename_folder_key_str = scc_file.split("/")[-1].split(".rs")[0]
         for each_v in v:

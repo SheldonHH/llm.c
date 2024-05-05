@@ -1,8 +1,16 @@
 [package]
-name = "my_project"
+name = "train_gpt2_rs_gpt"
 version = "0.1.0"
 edition = "2021"
+default-run = "train_gpt2_rs_gpt"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[lib]
+name = "train_gpt2_rs_gpt"
+
+[[bin]]
+name = "train_gpt2_rs_gpt"
+path = "src/bin/main.rs"
