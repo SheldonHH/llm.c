@@ -1,7 +1,7 @@
 digraph G {
 rankdir="LR";
     main [label="int main ()
-/root/llm.c/train_gpt2.i:5599"]
+/root/llm.c/train_gpt2.i:3875"]
     main -> gpt2_build_from_checkpoint
     main -> access
     main -> dataloader_init
@@ -13,7 +13,7 @@ rankdir="LR";
     main -> gpt2_free
     main -> free
     gpt2_build_from_checkpoint [label="void gpt2_build_from_checkpoint (GPT2 *model, const char *checkpoint_path)
-/root/llm.c/train_gpt2.i:5075"]
+/root/llm.c/train_gpt2.i:3415"]
     gpt2_build_from_checkpoint -> fopen_check
     gpt2_build_from_checkpoint -> printf
     gpt2_build_from_checkpoint -> exit
@@ -21,11 +21,17 @@ rankdir="LR";
     gpt2_build_from_checkpoint -> fill_in_parameter_sizes
     gpt2_build_from_checkpoint -> malloc_and_point_parameters
     gpt2_build_from_checkpoint -> fclose_check
-    fopen_check [label="fopen_check()"]
-    printf [label="printf()"]
+    fopen_check [label="FILE *fopen_check (const char *path, const char *mode, const char *file, int line)
+/root/llm.c/train_gpt2.i:2636"]
+    fopen_check -> fopen
+    fopen_check -> fprintf
+    fopen_check -> exit
+    fopen [label="fopen()"]
+    fprintf [label="fprintf()"]
     exit [label="exit()"]
+    printf [label="printf()"]
     fread_check [label="void fread_check (void *ptr, size_t size, size_t nmemb, FILE *stream, const char *file, int line)
-/root/llm.c/train_gpt2.i:4204"]
+/root/llm.c/train_gpt2.i:2653"]
     fread_check -> fread
     fread_check -> feof
     fread_check -> fprintf
@@ -33,45 +39,42 @@ rankdir="LR";
     fread_check -> exit
     fread [label="fread()"]
     feof [label="feof()"]
-    fprintf [label="fprintf()"]
     ferror [label="ferror()"]
     fill_in_parameter_sizes [label="void fill_in_parameter_sizes (size_t *param_sizes, GPT2Config config)
-/root/llm.c/train_gpt2.i:4954"]
+/root/llm.c/train_gpt2.i:3294"]
     malloc_and_point_parameters [label="float *malloc_and_point_parameters (ParameterTensors *params, size_t *param_sizes)
-/root/llm.c/train_gpt2.i:4978"]
+/root/llm.c/train_gpt2.i:3318"]
     malloc_and_point_parameters -> malloc_check
     malloc_check [label="void *malloc_check (size_t size, const char *file, int line)
-/root/llm.c/train_gpt2.i:4297"]
+/root/llm.c/train_gpt2.i:2704"]
     malloc_check -> malloc
     malloc_check -> fprintf
     malloc_check -> exit
     malloc [label="malloc()"]
     fclose_check [label="void fclose_check (FILE *fp, const char *file, int line)
-/root/llm.c/train_gpt2.i:4244"]
+/root/llm.c/train_gpt2.i:2675"]
     fclose_check -> fclose
     fclose_check -> fprintf
     fclose_check -> exit
     fclose [label="fclose()"]
-    access [label="int access (const char *__name, int __type)
-/root/llm.c/train_gpt2.i:2993"]
+    access [label="access()"]
     dataloader_init [label="void dataloader_init (DataLoader *loader, const char *filename, int B, int T)
-/root/llm.c/train_gpt2.i:5508"]
+/root/llm.c/train_gpt2.i:3792"]
     dataloader_init -> fopen
     dataloader_init -> printf
     dataloader_init -> exit
     dataloader_init -> fseek_check
     dataloader_init -> ftell
     dataloader_init -> malloc_check
-    fopen [label="fopen()"]
     fseek_check [label="void fseek_check (FILE *fp, long off, int whence, const char *file, int line)
-/root/llm.c/train_gpt2.i:4266"]
+/root/llm.c/train_gpt2.i:2687"]
     fseek_check -> fseek
     fseek_check -> fprintf
     fseek_check -> exit
     fseek [label="fseek()"]
     ftell [label="ftell()"]
     tokenizer_init [label="void tokenizer_init (Tokenizer *tokenizer, const char *filename)
-/root/llm.c/train_gpt2.i:4363"]
+/root/llm.c/train_gpt2.i:2747"]
     tokenizer_init -> fopen
     tokenizer_init -> printf
     tokenizer_init -> fread_check
@@ -80,14 +83,14 @@ rankdir="LR";
     tokenizer_init -> malloc_check
     tokenizer_init -> fclose_check
     dataloader_free [label="void dataloader_free (DataLoader *loader)
-/root/llm.c/train_gpt2.i:5562"]
+/root/llm.c/train_gpt2.i:3838"]
     dataloader_free -> fclose_check
     dataloader_free -> free
     free [label="free()"]
     tokenizer_free [label="void tokenizer_free (Tokenizer *tokenizer)
-/root/llm.c/train_gpt2.i:4454"]
+/root/llm.c/train_gpt2.i:2804"]
     tokenizer_free -> free
     gpt2_free [label="void gpt2_free (GPT2 *model)
-/root/llm.c/train_gpt2.i:5482"]
+/root/llm.c/train_gpt2.i:3766"]
     gpt2_free -> free
 }

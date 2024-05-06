@@ -1,224 +1,33 @@
 
-
-
-
-
-
-
-
-
-
-
-
-typedef long unsigned int size_t;
-
-
-typedef __builtin_va_list __gnuc_va_list;
-
-
-
-typedef unsigned char __u_char;
-typedef unsigned short int __u_short;
-typedef unsigned int __u_int;
-typedef unsigned long int __u_long;
-
-
 typedef signed char __int8_t;
+
+
+
 typedef unsigned char __uint8_t;
-typedef signed short int __int16_t;
-typedef unsigned short int __uint16_t;
-typedef signed int __int32_t;
+typedef short __int16_t;
+typedef unsigned short __uint16_t;
+typedef int __int32_t;
 typedef unsigned int __uint32_t;
+typedef long long __int64_t;
+typedef unsigned long long __uint64_t;
 
-typedef signed long int __int64_t;
-typedef unsigned long int __uint64_t;
-
-
-
-
-
-
-typedef __int8_t __int_least8_t;
-typedef __uint8_t __uint_least8_t;
-typedef __int16_t __int_least16_t;
-typedef __uint16_t __uint_least16_t;
-typedef __int32_t __int_least32_t;
-typedef __uint32_t __uint_least32_t;
-typedef __int64_t __int_least64_t;
-typedef __uint64_t __uint_least64_t;
-
-
-
-typedef long int __quad_t;
-typedef unsigned long int __u_quad_t;
+typedef long __darwin_intptr_t;
+typedef unsigned int __darwin_natural_t;
+typedef int __darwin_ct_rune_t;
 
 
 
 
 
-
-
-typedef long int __intmax_t;
-typedef unsigned long int __uintmax_t;
-
-
-typedef unsigned long int __dev_t;
-typedef unsigned int __uid_t;
-typedef unsigned int __gid_t;
-typedef unsigned long int __ino_t;
-typedef unsigned long int __ino64_t;
-typedef unsigned int __mode_t;
-typedef unsigned int __nlink_t;
-typedef long int __off_t;
-typedef long int __off64_t;
-typedef int __pid_t;
-typedef struct { int __val[2]; } __fsid_t;
-typedef long int __clock_t;
-typedef unsigned long int __rlim_t;
-typedef unsigned long int __rlim64_t;
-typedef unsigned int __id_t;
-typedef long int __time_t;
-typedef unsigned int __useconds_t;
-typedef long int __suseconds_t;
-typedef long int __suseconds64_t;
-
-typedef int __daddr_t;
-typedef int __key_t;
-
-
-typedef int __clockid_t;
-
-
-typedef void * __timer_t;
-
-
-typedef int __blksize_t;
-
-
-
-
-typedef long int __blkcnt_t;
-typedef long int __blkcnt64_t;
-
-
-typedef unsigned long int __fsblkcnt_t;
-typedef unsigned long int __fsblkcnt64_t;
-
-
-typedef unsigned long int __fsfilcnt_t;
-typedef unsigned long int __fsfilcnt64_t;
-
-
-typedef long int __fsword_t;
-
-typedef long int __ssize_t;
-
-
-typedef long int __syscall_slong_t;
-
-typedef unsigned long int __syscall_ulong_t;
-
-
-
-typedef __off64_t __loff_t;
-typedef char *__caddr_t;
-
-
-typedef long int __intptr_t;
-
-
-typedef unsigned int __socklen_t;
-
-
-
-
-typedef int __sig_atomic_t;
-
-
-
-
-typedef struct
-{
-  int __count;
-  union
-  {
-    unsigned int __wch;
-    char __wchb[4];
-  } __value;
+typedef union {
+ char __mbstate8[128];
+ long long _mbstateL;
 } __mbstate_t;
 
+typedef __mbstate_t __darwin_mbstate_t;
 
 
-
-typedef struct _G_fpos_t
-{
-  __off_t __pos;
-  __mbstate_t __state;
-} __fpos_t;
-typedef struct _G_fpos64_t
-{
-  __off64_t __pos;
-  __mbstate_t __state;
-} __fpos64_t;
-
-
-
-struct _IO_FILE;
-typedef struct _IO_FILE __FILE;
-
-
-
-struct _IO_FILE;
-
-
-typedef struct _IO_FILE FILE;
-struct _IO_FILE;
-struct _IO_marker;
-struct _IO_codecvt;
-struct _IO_wide_data;
-
-
-
-
-typedef void _IO_lock_t;
-
-
-
-
-
-struct _IO_FILE
-{
-  int _flags;
-
-
-  char *_IO_read_ptr;
-  char *_IO_read_end;
-  char *_IO_read_base;
-  char *_IO_write_base;
-  char *_IO_write_ptr;
-  char *_IO_write_end;
-  char *_IO_buf_base;
-  char *_IO_buf_end;
-
-
-  char *_IO_save_base;
-  char *_IO_backup_base;
-  char *_IO_save_end;
-
-  struct _IO_marker *_markers;
-
-  struct _IO_FILE *_chain;
-
-  int _fileno;
-  int _flags2;
-  __off_t _old_offset;
-
-
-  unsigned short _cur_column;
-  signed char _vtable_offset;
-  char _shortbuf[1];
-
-  _IO_lock_t *_lock;
+typedef long int __darwin_ptrdiff_t;
 
 
 
@@ -226,693 +35,635 @@ struct _IO_FILE
 
 
 
-  __off64_t _offset;
+typedef long unsigned int __darwin_size_t;
 
-  struct _IO_codecvt *_codecvt;
-  struct _IO_wide_data *_wide_data;
-  struct _IO_FILE *_freeres_list;
-  void *_freeres_buf;
-  size_t __pad5;
-  int _mode;
 
-  char _unused2[15 * sizeof (int) - 4 * sizeof (void *) - sizeof (size_t)];
+
+
+
+typedef __builtin_va_list __darwin_va_list;
+
+
+
+
+
+typedef int __darwin_wchar_t;
+
+
+
+
+typedef __darwin_wchar_t __darwin_rune_t;
+
+
+typedef int __darwin_wint_t;
+
+
+
+
+typedef unsigned long __darwin_clock_t;
+typedef __uint32_t __darwin_socklen_t;
+typedef long __darwin_ssize_t;
+typedef long __darwin_time_t;
+typedef __int64_t __darwin_blkcnt_t;
+typedef __int32_t __darwin_blksize_t;
+typedef __int32_t __darwin_dev_t;
+typedef unsigned int __darwin_fsblkcnt_t;
+typedef unsigned int __darwin_fsfilcnt_t;
+typedef __uint32_t __darwin_gid_t;
+typedef __uint32_t __darwin_id_t;
+typedef __uint64_t __darwin_ino64_t;
+
+typedef __darwin_ino64_t __darwin_ino_t;
+
+
+
+typedef __darwin_natural_t __darwin_mach_port_name_t;
+typedef __darwin_mach_port_name_t __darwin_mach_port_t;
+typedef __uint16_t __darwin_mode_t;
+typedef __int64_t __darwin_off_t;
+typedef __int32_t __darwin_pid_t;
+typedef __uint32_t __darwin_sigset_t;
+typedef __int32_t __darwin_suseconds_t;
+typedef __uint32_t __darwin_uid_t;
+typedef __uint32_t __darwin_useconds_t;
+typedef unsigned char __darwin_uuid_t[16];
+typedef char __darwin_uuid_string_t[37];
+
+struct __darwin_pthread_handler_rec {
+ void (*__routine)(void *);
+ void *__arg;
+ struct __darwin_pthread_handler_rec *__next;
 };
-typedef __gnuc_va_list va_list;
-typedef __off_t off_t;
-typedef __ssize_t ssize_t;
 
+struct _opaque_pthread_attr_t {
+ long __sig;
+ char __opaque[56];
+};
 
+struct _opaque_pthread_cond_t {
+ long __sig;
+ char __opaque[40];
+};
 
+struct _opaque_pthread_condattr_t {
+ long __sig;
+ char __opaque[8];
+};
 
+struct _opaque_pthread_mutex_t {
+ long __sig;
+ char __opaque[56];
+};
 
+struct _opaque_pthread_mutexattr_t {
+ long __sig;
+ char __opaque[8];
+};
 
-typedef __fpos_t fpos_t;
-extern FILE *stdin;
-extern FILE *stdout;
-extern FILE *stderr;
+struct _opaque_pthread_once_t {
+ long __sig;
+ char __opaque[8];
+};
 
+struct _opaque_pthread_rwlock_t {
+ long __sig;
+ char __opaque[192];
+};
 
+struct _opaque_pthread_rwlockattr_t {
+ long __sig;
+ char __opaque[16];
+};
 
+struct _opaque_pthread_t {
+ long __sig;
+ struct __darwin_pthread_handler_rec *__cleanup_stack;
+ char __opaque[8176];
+};
 
+typedef struct _opaque_pthread_attr_t __darwin_pthread_attr_t;
+typedef struct _opaque_pthread_cond_t __darwin_pthread_cond_t;
+typedef struct _opaque_pthread_condattr_t __darwin_pthread_condattr_t;
+typedef unsigned long __darwin_pthread_key_t;
+typedef struct _opaque_pthread_mutex_t __darwin_pthread_mutex_t;
+typedef struct _opaque_pthread_mutexattr_t __darwin_pthread_mutexattr_t;
+typedef struct _opaque_pthread_once_t __darwin_pthread_once_t;
+typedef struct _opaque_pthread_rwlock_t __darwin_pthread_rwlock_t;
+typedef struct _opaque_pthread_rwlockattr_t __darwin_pthread_rwlockattr_t;
+typedef struct _opaque_pthread_t *__darwin_pthread_t;
+typedef int __darwin_nl_item;
+typedef int __darwin_wctrans_t;
 
+typedef __uint32_t __darwin_wctype_t;
 
-extern int remove (const char *__filename) __attribute__ ((__nothrow__ , __leaf__));
 
-extern int rename (const char *__old, const char *__new) __attribute__ ((__nothrow__ , __leaf__));
 
+typedef signed char int8_t;
+typedef short int16_t;
+typedef int int32_t;
+typedef long long int64_t;
 
+typedef unsigned char u_int8_t;
+typedef unsigned short u_int16_t;
+typedef unsigned int u_int32_t;
+typedef unsigned long long u_int64_t;
 
-extern int renameat (int __oldfd, const char *__old, int __newfd,
-       const char *__new) __attribute__ ((__nothrow__ , __leaf__));
-extern int fclose (FILE *__stream);
-extern FILE *tmpfile (void)
-  __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (fclose, 1))) ;
-extern char *tmpnam (char[20]) __attribute__ ((__nothrow__ , __leaf__)) ;
 
+typedef int64_t register_t;
 
 
 
-extern char *tmpnam_r (char __s[20]) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern char *tempnam (const char *__dir, const char *__pfx)
-   __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (__builtin_free, 1)));
 
 
+typedef __darwin_intptr_t intptr_t;
+typedef unsigned long uintptr_t;
 
 
 
 
-extern int fflush (FILE *__stream);
-extern int fflush_unlocked (FILE *__stream);
-extern FILE *fopen (const char *__restrict __filename,
-      const char *__restrict __modes)
-  __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (fclose, 1))) ;
+typedef u_int64_t user_addr_t;
+typedef u_int64_t user_size_t;
+typedef int64_t user_ssize_t;
+typedef int64_t user_long_t;
+typedef u_int64_t user_ulong_t;
+typedef int64_t user_time_t;
+typedef int64_t user_off_t;
+typedef u_int64_t syscall_arg_t;
+typedef __darwin_va_list va_list;
+typedef __darwin_size_t size_t;
 
+int renameat(int, const char *, int, const char *) __attribute__((availability(macosx,introduced=10.10)));
 
 
 
-extern FILE *freopen (const char *__restrict __filename,
-        const char *__restrict __modes,
-        FILE *__restrict __stream) ;
-extern FILE *fdopen (int __fd, const char *__modes) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (fclose, 1))) ;
-extern FILE *fmemopen (void *__s, size_t __len, const char *__modes)
-  __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (fclose, 1))) ;
+int renamex_np(const char *, const char *, unsigned int) __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));
+int renameatx_np(int, const char *, int, const char *, unsigned int) __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));
 
+typedef __darwin_off_t fpos_t;
+struct __sbuf {
+ unsigned char *_base;
+ int _size;
+};
 
 
+struct __sFILEX;
+typedef struct __sFILE {
+ unsigned char *_p;
+ int _r;
+ int _w;
+ short _flags;
+ short _file;
+ struct __sbuf _bf;
+ int _lbfsize;
 
-extern FILE *open_memstream (char **__bufloc, size_t *__sizeloc) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (fclose, 1))) ;
-extern void setbuf (FILE *__restrict __stream, char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
 
+ void *_cookie;
+ int (* _Nullable _close)(void *);
+ int (* _Nullable _read) (void *, char *, int);
+ fpos_t (* _Nullable _seek) (void *, fpos_t, int);
+ int (* _Nullable _write)(void *, const char *, int);
 
 
-extern int setvbuf (FILE *__restrict __stream, char *__restrict __buf,
-      int __modes, size_t __n) __attribute__ ((__nothrow__ , __leaf__));
+ struct __sbuf _ub;
+ struct __sFILEX *_extra;
+ int _ur;
 
 
+ unsigned char _ubuf[3];
+ unsigned char _nbuf[1];
 
 
-extern void setbuffer (FILE *__restrict __stream, char *__restrict __buf,
-         size_t __size) __attribute__ ((__nothrow__ , __leaf__));
+ struct __sbuf _lb;
 
 
-extern void setlinebuf (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
+ int _blksize;
+ fpos_t _offset;
+} FILE;
 
 
 
+extern FILE *__stdinp;
+extern FILE *__stdoutp;
+extern FILE *__stderrp;
+void clearerr(FILE *);
+int fclose(FILE *);
+int feof(FILE *);
+int ferror(FILE *);
+int fflush(FILE *);
+int fgetc(FILE *);
+int fgetpos(FILE * restrict, fpos_t *);
+char *fgets(char * restrict, int, FILE *);
 
 
 
+FILE *fopen(const char * restrict __filename, const char * restrict __mode) __asm("_" "fopen" );
 
-extern int fprintf (FILE *__restrict __stream,
-      const char *__restrict __format, ...);
+int fprintf(FILE * restrict, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3)));
+int fputc(int, FILE *);
+int fputs(const char * restrict, FILE * restrict) __asm("_" "fputs" );
+size_t fread(void * restrict __ptr, size_t __size, size_t __nitems, FILE * restrict __stream);
+FILE *freopen(const char * restrict, const char * restrict,
+                 FILE * restrict) __asm("_" "freopen" );
+int fscanf(FILE * restrict, const char * restrict, ...) __attribute__((__format__ (__scanf__, 2, 3)));
+int fseek(FILE *, long, int);
+int fsetpos(FILE *, const fpos_t *);
+long ftell(FILE *);
+size_t fwrite(const void * restrict __ptr, size_t __size, size_t __nitems, FILE * restrict __stream) __asm("_" "fwrite" );
+int getc(FILE *);
+int getchar(void);
 
 
+__attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of gets(3), it is highly recommended that you use fgets(3) instead.")))
 
+char *gets(char *);
 
-extern int printf (const char *__restrict __format, ...);
+void perror(const char *) __attribute__((__cold__));
+int printf(const char * restrict, ...) __attribute__((__format__ (__printf__, 1, 2)));
+int putc(int, FILE *);
+int putchar(int);
+int puts(const char *);
+int remove(const char *);
+int rename (const char *__old, const char *__new);
+void rewind(FILE *);
+int scanf(const char * restrict, ...) __attribute__((__format__ (__scanf__, 1, 2)));
+void setbuf(FILE * restrict, char * restrict);
+int setvbuf(FILE * restrict, char * restrict, int, size_t);
 
-extern int sprintf (char *__restrict __s,
-      const char *__restrict __format, ...) __attribute__ ((__nothrow__));
+__attribute__((__availability__(swift, unavailable, message="Use snprintf instead.")))
 
+__attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")))
 
+int sprintf(char * restrict, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3)));
 
+int sscanf(const char * restrict, const char * restrict, ...) __attribute__((__format__ (__scanf__, 2, 3)));
+FILE *tmpfile(void);
 
+__attribute__((__availability__(swift, unavailable, message="Use mkstemp(3) instead.")))
 
-extern int vfprintf (FILE *__restrict __s, const char *__restrict __format,
-       __gnuc_va_list __arg);
+__attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of tmpnam(3), it is highly recommended that you use mkstemp(3) instead.")))
 
+char *tmpnam(char *);
 
+int ungetc(int, FILE *);
+int vfprintf(FILE * restrict, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0)));
+int vprintf(const char * restrict, va_list) __attribute__((__format__ (__printf__, 1, 0)));
 
+__attribute__((__availability__(swift, unavailable, message="Use vsnprintf instead.")))
 
-extern int vprintf (const char *__restrict __format, __gnuc_va_list __arg);
+__attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use vsnprintf(3) instead.")))
 
-extern int vsprintf (char *__restrict __s, const char *__restrict __format,
-       __gnuc_va_list __arg) __attribute__ ((__nothrow__));
+int vsprintf(char * restrict, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0)));
+char *ctermid(char *);
 
 
 
-extern int snprintf (char *__restrict __s, size_t __maxlen,
-       const char *__restrict __format, ...)
-     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 4)));
 
-extern int vsnprintf (char *__restrict __s, size_t __maxlen,
-        const char *__restrict __format, __gnuc_va_list __arg)
-     __attribute__ ((__nothrow__)) __attribute__ ((__format__ (__printf__, 3, 0)));
-extern int vdprintf (int __fd, const char *__restrict __fmt,
-       __gnuc_va_list __arg)
-     __attribute__ ((__format__ (__printf__, 2, 0)));
-extern int dprintf (int __fd, const char *__restrict __fmt, ...)
-     __attribute__ ((__format__ (__printf__, 2, 3)));
 
 
+FILE *fdopen(int, const char *) __asm("_" "fdopen" );
 
+int fileno(FILE *);
+int pclose(FILE *) __attribute__((__availability__(swift, unavailable, message="Use posix_spawn APIs or NSTask instead. (On iOS, process spawning is unavailable.)")));
 
 
 
-
-extern int fscanf (FILE *__restrict __stream,
-     const char *__restrict __format, ...) ;
-
-
-
-
-extern int scanf (const char *__restrict __format, ...) ;
-
-extern int sscanf (const char *__restrict __s,
-     const char *__restrict __format, ...) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-
-extern int fscanf (FILE *__restrict __stream, const char *__restrict __format, ...) __asm__ ("" "__isoc99_fscanf")
-
-                               ;
-extern int scanf (const char *__restrict __format, ...) __asm__ ("" "__isoc99_scanf")
-                              ;
-extern int sscanf (const char *__restrict __s, const char *__restrict __format, ...) __asm__ ("" "__isoc99_sscanf") __attribute__ ((__nothrow__ , __leaf__))
-
-                      ;
-extern int vfscanf (FILE *__restrict __s, const char *__restrict __format,
-      __gnuc_va_list __arg)
-     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
-
-
-
-
-
-extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg)
-     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
-
-
-extern int vsscanf (const char *__restrict __s,
-      const char *__restrict __format, __gnuc_va_list __arg)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__format__ (__scanf__, 2, 0)));
-
-
-
-
-
-extern int vfscanf (FILE *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vfscanf")
-
-
-
-     __attribute__ ((__format__ (__scanf__, 2, 0))) ;
-extern int vscanf (const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vscanf")
-
-     __attribute__ ((__format__ (__scanf__, 1, 0))) ;
-extern int vsscanf (const char *__restrict __s, const char *__restrict __format, __gnuc_va_list __arg) __asm__ ("" "__isoc99_vsscanf") __attribute__ ((__nothrow__ , __leaf__))
-
-
-
-     __attribute__ ((__format__ (__scanf__, 2, 0)));
-extern int fgetc (FILE *__stream);
-extern int getc (FILE *__stream);
-
-
-
-
-
-extern int getchar (void);
-
-
-
-
-
-
-extern int getc_unlocked (FILE *__stream);
-extern int getchar_unlocked (void);
-extern int fgetc_unlocked (FILE *__stream);
-extern int fputc (int __c, FILE *__stream);
-extern int putc (int __c, FILE *__stream);
-
-
-
-
-
-extern int putchar (int __c);
-extern int fputc_unlocked (int __c, FILE *__stream);
-
-
-
-
-
-
-
-extern int putc_unlocked (int __c, FILE *__stream);
-extern int putchar_unlocked (int __c);
-
-
-
-
-
-
-extern int getw (FILE *__stream);
-
-
-extern int putw (int __w, FILE *__stream);
-
-
-
-
-
-
-
-extern char *fgets (char *__restrict __s, int __n, FILE *__restrict __stream)
-     __attribute__ ((__access__ (__write_only__, 1, 2)));
-extern __ssize_t __getdelim (char **__restrict __lineptr,
-                             size_t *__restrict __n, int __delimiter,
-                             FILE *__restrict __stream) ;
-extern __ssize_t getdelim (char **__restrict __lineptr,
-                           size_t *__restrict __n, int __delimiter,
-                           FILE *__restrict __stream) ;
-
-
-
-
-
-
-
-extern __ssize_t getline (char **__restrict __lineptr,
-                          size_t *__restrict __n,
-                          FILE *__restrict __stream) ;
-
-
-
-
-
-
-
-extern int fputs (const char *__restrict __s, FILE *__restrict __stream);
-
-
-
-
-
-extern int puts (const char *__s);
-
-
-
-
-
-
-extern int ungetc (int __c, FILE *__stream);
-
-
-
-
-
-
-extern size_t fread (void *__restrict __ptr, size_t __size,
-       size_t __n, FILE *__restrict __stream) ;
-
-
-
-
-extern size_t fwrite (const void *__restrict __ptr, size_t __size,
-        size_t __n, FILE *__restrict __s);
-extern size_t fread_unlocked (void *__restrict __ptr, size_t __size,
-         size_t __n, FILE *__restrict __stream) ;
-extern size_t fwrite_unlocked (const void *__restrict __ptr, size_t __size,
-          size_t __n, FILE *__restrict __stream);
-
-
-
-
-
-
-
-extern int fseek (FILE *__stream, long int __off, int __whence);
-
-
-
-
-extern long int ftell (FILE *__stream) ;
-
-
-
-
-extern void rewind (FILE *__stream);
-extern int fseeko (FILE *__stream, __off_t __off, int __whence);
-
-
-
-
-extern __off_t ftello (FILE *__stream) ;
-extern int fgetpos (FILE *__restrict __stream, fpos_t *__restrict __pos);
-
-
-
-
-extern int fsetpos (FILE *__stream, const fpos_t *__pos);
-extern void clearerr (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
-
-extern int feof (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-extern int ferror (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-extern void clearerr_unlocked (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
-extern int feof_unlocked (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern int ferror_unlocked (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-
-
-
-extern void perror (const char *__s);
-
-
-
-
-extern int fileno (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern int fileno_unlocked (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern int pclose (FILE *__stream);
-
-
-
-
-
-extern FILE *popen (const char *__command, const char *__modes)
-  __attribute__ ((__malloc__)) __attribute__ ((__malloc__ (pclose, 1))) ;
-
-
-
-
-
-
-extern char *ctermid (char *__s) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__access__ (__write_only__, 1)));
-extern void flockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int ftrylockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-extern void funlockfile (FILE *__stream) __attribute__ ((__nothrow__ , __leaf__));
-extern int __uflow (FILE *);
-extern int __overflow (FILE *, int);
-
-
-
-
-
-
-typedef unsigned int wchar_t;
-
-
-
-
-
-
-
-typedef struct
-  {
-    int quot;
-    int rem;
-  } div_t;
-
-
-
-typedef struct
-  {
-    long int quot;
-    long int rem;
-  } ldiv_t;
-
-
-
-
-
-__extension__ typedef struct
-  {
-    long long int quot;
-    long long int rem;
-  } lldiv_t;
-extern size_t __ctype_get_mb_cur_max (void) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-extern double atof (const char *__nptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
-
-extern int atoi (const char *__nptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
-
-extern long int atol (const char *__nptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-__extension__ extern long long int atoll (const char *__nptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-extern double strtod (const char *__restrict __nptr,
-        char **__restrict __endptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-extern float strtof (const char *__restrict __nptr,
-       char **__restrict __endptr) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-extern long double strtold (const char *__restrict __nptr,
-       char **__restrict __endptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-extern long int strtol (const char *__restrict __nptr,
-   char **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-extern unsigned long int strtoul (const char *__restrict __nptr,
-      char **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-__extension__
-extern long long int strtoq (const char *__restrict __nptr,
-        char **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-__extension__
-extern unsigned long long int strtouq (const char *__restrict __nptr,
-           char **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-__extension__
-extern long long int strtoll (const char *__restrict __nptr,
-         char **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-__extension__
-extern unsigned long long int strtoull (const char *__restrict __nptr,
-     char **__restrict __endptr, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-extern char *l64a (long int __n) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-extern long int a64l (const char *__s)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-
-
-
-
-
-
-
-typedef __u_char u_char;
-typedef __u_short u_short;
-typedef __u_int u_int;
-typedef __u_long u_long;
-typedef __quad_t quad_t;
-typedef __u_quad_t u_quad_t;
-typedef __fsid_t fsid_t;
-
-
-typedef __loff_t loff_t;
-
-
-
-
-typedef __ino_t ino_t;
-typedef __dev_t dev_t;
-
-
-
-
-typedef __gid_t gid_t;
-
-
-
-
-typedef __mode_t mode_t;
-
-
-
-
-typedef __nlink_t nlink_t;
-
-
-
-
-typedef __uid_t uid_t;
-typedef __pid_t pid_t;
-
-
-
-
-
-typedef __id_t id_t;
-typedef __daddr_t daddr_t;
-typedef __caddr_t caddr_t;
-
-
-
-
-
-typedef __key_t key_t;
-
-
-
-
-
-
-
-
-
-
-typedef __clock_t clock_t;
-
-
-
-
-
-
-
-typedef __clockid_t clockid_t;
-typedef __time_t time_t;
-
-
-
-
-
-
-typedef __timer_t timer_t;
-
-
-
-typedef unsigned long int ulong;
-typedef unsigned short int ushort;
-typedef unsigned int uint;
-
-
-
-
-typedef __int8_t int8_t;
-typedef __int16_t int16_t;
-typedef __int32_t int32_t;
-typedef __int64_t int64_t;
-
-
-typedef __uint8_t u_int8_t;
-typedef __uint16_t u_int16_t;
-typedef __uint32_t u_int32_t;
-typedef __uint64_t u_int64_t;
-
-
-typedef int register_t __attribute__ ((__mode__ (__word__)));
-static __inline __uint16_t
-__bswap_16 (__uint16_t __bsx)
-{
-
-  return __builtin_bswap16 (__bsx);
-
-
-
+FILE *popen(const char *, const char *) __asm("_" "popen" ) __attribute__((__availability__(swift, unavailable, message="Use posix_spawn APIs or NSTask instead. (On iOS, process spawning is unavailable.)")));
+int __srget(FILE *);
+int __svfscanf(FILE *, const char *, va_list) __attribute__((__format__ (__scanf__, 2, 0)));
+int __swbuf(int, FILE *);
+inline __attribute__ ((__always_inline__)) int __sputc(int _c, FILE *_p) {
+ if (--_p->_w >= 0 || (_p->_w >= _p->_lbfsize && (char)_c != '\n'))
+  return (*_p->_p++ = _c);
+ else
+  return (__swbuf(_c, _p));
 }
+void flockfile(FILE *);
+int ftrylockfile(FILE *);
+void funlockfile(FILE *);
+int getc_unlocked(FILE *);
+int getchar_unlocked(void);
+int putc_unlocked(int, FILE *);
+int putchar_unlocked(int);
+
+
+
+int getw(FILE *);
+int putw(int, FILE *);
+
+
+__attribute__((__availability__(swift, unavailable, message="Use mkstemp(3) instead.")))
+
+__attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of tempnam(3), it is highly recommended that you use mkstemp(3) instead.")))
+
+char *tempnam(const char *__dir, const char *__prefix) __asm("_" "tempnam" );
+typedef __darwin_off_t off_t;
+
+
+int fseeko(FILE * __stream, off_t __offset, int __whence);
+off_t ftello(FILE * __stream);
+
+
+
+
+
+int snprintf(char * restrict __str, size_t __size, const char * restrict __format, ...) __attribute__((__format__ (__printf__, 3, 4)));
+int vfscanf(FILE * restrict __stream, const char * restrict __format, va_list) __attribute__((__format__ (__scanf__, 2, 0)));
+int vscanf(const char * restrict __format, va_list) __attribute__((__format__ (__scanf__, 1, 0)));
+int vsnprintf(char * restrict __str, size_t __size, const char * restrict __format, va_list) __attribute__((__format__ (__printf__, 3, 0)));
+int vsscanf(const char * restrict __str, const char * restrict __format, va_list) __attribute__((__format__ (__scanf__, 2, 0)));
+typedef __darwin_ssize_t ssize_t;
+
+
+int dprintf(int, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3))) __attribute__((availability(macosx,introduced=10.7)));
+int vdprintf(int, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0))) __attribute__((availability(macosx,introduced=10.7)));
+ssize_t getdelim(char ** restrict __linep, size_t * restrict __linecapp, int __delimiter, FILE * restrict __stream) __attribute__((availability(macosx,introduced=10.7)));
+ssize_t getline(char ** restrict __linep, size_t * restrict __linecapp, FILE * restrict __stream) __attribute__((availability(macosx,introduced=10.7)));
+FILE *fmemopen(void * restrict __buf, size_t __size, const char * restrict __mode) __attribute__((availability(macos,introduced=10.13))) __attribute__((availability(ios,introduced=11.0))) __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));
+FILE *open_memstream(char **__bufp, size_t *__sizep) __attribute__((availability(macos,introduced=10.13))) __attribute__((availability(ios,introduced=11.0))) __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));
+extern const int sys_nerr;
+extern const char *const sys_errlist[];
+
+int asprintf(char ** restrict, const char * restrict, ...) __attribute__((__format__ (__printf__, 2, 3)));
+char *ctermid_r(char *);
+char *fgetln(FILE *, size_t *);
+const char *fmtcheck(const char *, const char *) __attribute__((format_arg(2)));
+int fpurge(FILE *);
+void setbuffer(FILE *, char *, int);
+int setlinebuf(FILE *);
+int vasprintf(char ** restrict, const char * restrict, va_list) __attribute__((__format__ (__printf__, 2, 0)));
+
+
+
+
+
+FILE *funopen(const void *,
+                 int (* _Nullable)(void *, char *, int),
+                 int (* _Nullable)(void *, const char *, int),
+                 fpos_t (* _Nullable)(void *, fpos_t, int),
+                 int (* _Nullable)(void *));
+extern int __sprintf_chk (char * restrict, int, size_t,
+     const char * restrict, ...);
+extern int __snprintf_chk (char * restrict, size_t, int, size_t,
+      const char * restrict, ...);
 
 
 
 
 
 
-static __inline __uint32_t
-__bswap_32 (__uint32_t __bsx)
+
+extern int __vsprintf_chk (char * restrict, int, size_t,
+      const char * restrict, va_list);
+
+
+
+
+
+
+
+extern int __vsnprintf_chk (char * restrict, size_t, int, size_t,
+       const char * restrict, va_list);
+typedef enum {
+ P_ALL,
+ P_PID,
+ P_PGID
+} idtype_t;
+
+
+
+
+
+typedef __darwin_pid_t pid_t;
+typedef __darwin_id_t id_t;
+
+
+
+
+
+
+
+
+typedef int sig_atomic_t;
+struct __darwin_arm_exception_state
 {
-
-  return __builtin_bswap32 (__bsx);
-
-
-
-}
-__extension__ static __inline __uint64_t
-__bswap_64 (__uint64_t __bsx)
+ __uint32_t __exception;
+ __uint32_t __fsr;
+ __uint32_t __far;
+};
+struct __darwin_arm_exception_state64
 {
-
-  return __builtin_bswap64 (__bsx);
-
-
-
-}
-static __inline __uint16_t
-__uint16_identity (__uint16_t __x)
+ __uint64_t __far;
+ __uint32_t __esr;
+ __uint32_t __exception;
+};
+struct __darwin_arm_thread_state
 {
-  return __x;
-}
-
-static __inline __uint32_t
-__uint32_identity (__uint32_t __x)
+ __uint32_t __r[13];
+ __uint32_t __sp;
+ __uint32_t __lr;
+ __uint32_t __pc;
+ __uint32_t __cpsr;
+};
+struct __darwin_arm_thread_state64
 {
-  return __x;
-}
-
-static __inline __uint64_t
-__uint64_identity (__uint64_t __x)
+ __uint64_t __x[29];
+ __uint64_t __fp;
+ __uint64_t __lr;
+ __uint64_t __sp;
+ __uint64_t __pc;
+ __uint32_t __cpsr;
+ __uint32_t __pad;
+};
+struct __darwin_arm_vfp_state
 {
-  return __x;
-}
-
-
-
-
-
-
-
-
-
-
-
-typedef struct
+ __uint32_t __r[64];
+ __uint32_t __fpscr;
+};
+struct __darwin_arm_neon_state64
 {
-  unsigned long int __val[(1024 / (8 * sizeof (unsigned long int)))];
-} __sigset_t;
+ __uint128_t __v[32];
+ __uint32_t __fpsr;
+ __uint32_t __fpcr;
+};
+
+struct __darwin_arm_neon_state
+{
+ __uint128_t __v[16];
+ __uint32_t __fpsr;
+ __uint32_t __fpcr;
+};
+struct __arm_pagein_state
+{
+ int __pagein_error;
+};
+struct __arm_legacy_debug_state
+{
+ __uint32_t __bvr[16];
+ __uint32_t __bcr[16];
+ __uint32_t __wvr[16];
+ __uint32_t __wcr[16];
+};
+struct __darwin_arm_debug_state32
+{
+ __uint32_t __bvr[16];
+ __uint32_t __bcr[16];
+ __uint32_t __wvr[16];
+ __uint32_t __wcr[16];
+ __uint64_t __mdscr_el1;
+};
 
 
-typedef __sigset_t sigset_t;
+struct __darwin_arm_debug_state64
+{
+ __uint64_t __bvr[16];
+ __uint64_t __bcr[16];
+ __uint64_t __wvr[16];
+ __uint64_t __wcr[16];
+ __uint64_t __mdscr_el1;
+};
+struct __darwin_arm_cpmu_state64
+{
+ __uint64_t __ctrs[16];
+};
 
 
 
+
+struct __darwin_mcontext32
+{
+ struct __darwin_arm_exception_state __es;
+ struct __darwin_arm_thread_state __ss;
+ struct __darwin_arm_vfp_state __fs;
+};
+struct __darwin_mcontext64
+{
+ struct __darwin_arm_exception_state64 __es;
+ struct __darwin_arm_thread_state64 __ss;
+ struct __darwin_arm_neon_state64 __ns;
+};
+typedef struct __darwin_mcontext64 *mcontext_t;
+
+typedef __darwin_pthread_attr_t pthread_attr_t;
+
+struct __darwin_sigaltstack
+{
+ void *ss_sp;
+ __darwin_size_t ss_size;
+ int ss_flags;
+};
+typedef struct __darwin_sigaltstack stack_t;
+struct __darwin_ucontext
+{
+ int uc_onstack;
+ __darwin_sigset_t uc_sigmask;
+ struct __darwin_sigaltstack uc_stack;
+ struct __darwin_ucontext *uc_link;
+ __darwin_size_t uc_mcsize;
+ struct __darwin_mcontext64 *uc_mcontext;
+
+
+
+};
+
+
+typedef struct __darwin_ucontext ucontext_t;
+
+
+typedef __darwin_sigset_t sigset_t;
+
+typedef __darwin_uid_t uid_t;
+
+union sigval {
+
+ int sival_int;
+ void *sival_ptr;
+};
+
+
+
+
+
+struct sigevent {
+ int sigev_notify;
+ int sigev_signo;
+ union sigval sigev_value;
+ void (*sigev_notify_function)(union sigval);
+ pthread_attr_t *sigev_notify_attributes;
+};
+
+
+typedef struct __siginfo {
+ int si_signo;
+ int si_errno;
+ int si_code;
+ pid_t si_pid;
+ uid_t si_uid;
+ int si_status;
+ void *si_addr;
+ union sigval si_value;
+ long si_band;
+ unsigned long __pad[7];
+} siginfo_t;
+union __sigaction_u {
+ void (*__sa_handler)(int);
+ void (*__sa_sigaction)(int, struct __siginfo *,
+     void *);
+};
+
+
+struct __sigaction {
+ union __sigaction_u __sigaction_u;
+ void (*sa_tramp)(void *, int, int, siginfo_t *, void *);
+ sigset_t sa_mask;
+ int sa_flags;
+};
+
+
+
+
+struct sigaction {
+ union __sigaction_u __sigaction_u;
+ sigset_t sa_mask;
+ int sa_flags;
+};
+typedef void (*sig_t)(int);
+struct sigvec {
+ void (*sv_handler)(int);
+ int sv_mask;
+ int sv_flags;
+};
+struct sigstack {
+ char *ss_sp;
+ int ss_onstack;
+};
+void(*signal(int, void (*)(int)))(int);
+typedef unsigned char uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long long uint64_t;
+
+
+typedef int8_t int_least8_t;
+typedef int16_t int_least16_t;
+typedef int32_t int_least32_t;
+typedef int64_t int_least64_t;
+typedef uint8_t uint_least8_t;
+typedef uint16_t uint_least16_t;
+typedef uint32_t uint_least32_t;
+typedef uint64_t uint_least64_t;
+
+
+
+typedef int8_t int_fast8_t;
+typedef int16_t int_fast16_t;
+typedef int32_t int_fast32_t;
+typedef int64_t int_fast64_t;
+typedef uint8_t uint_fast8_t;
+typedef uint16_t uint_fast16_t;
+typedef uint32_t uint_fast32_t;
+typedef uint64_t uint_fast64_t;
+typedef long int intmax_t;
+typedef long unsigned int uintmax_t;
 
 
 
@@ -922,3245 +673,1961 @@ typedef __sigset_t sigset_t;
 
 struct timeval
 {
-
-
-
-
-  __time_t tv_sec;
-  __suseconds_t tv_usec;
-
+ __darwin_time_t tv_sec;
+ __darwin_suseconds_t tv_usec;
 };
 
+
+
+
+
+
+
+
+typedef __uint64_t rlim_t;
+struct rusage {
+ struct timeval ru_utime;
+ struct timeval ru_stime;
+ long ru_maxrss;
+
+ long ru_ixrss;
+ long ru_idrss;
+ long ru_isrss;
+ long ru_minflt;
+ long ru_majflt;
+ long ru_nswap;
+ long ru_inblock;
+ long ru_oublock;
+ long ru_msgsnd;
+ long ru_msgrcv;
+ long ru_nsignals;
+ long ru_nvcsw;
+ long ru_nivcsw;
+
+
+};
+typedef void *rusage_info_t;
+
+struct rusage_info_v0 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+};
+
+struct rusage_info_v1 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+ uint64_t ri_child_user_time;
+ uint64_t ri_child_system_time;
+ uint64_t ri_child_pkg_idle_wkups;
+ uint64_t ri_child_interrupt_wkups;
+ uint64_t ri_child_pageins;
+ uint64_t ri_child_elapsed_abstime;
+};
+
+struct rusage_info_v2 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+ uint64_t ri_child_user_time;
+ uint64_t ri_child_system_time;
+ uint64_t ri_child_pkg_idle_wkups;
+ uint64_t ri_child_interrupt_wkups;
+ uint64_t ri_child_pageins;
+ uint64_t ri_child_elapsed_abstime;
+ uint64_t ri_diskio_bytesread;
+ uint64_t ri_diskio_byteswritten;
+};
+
+struct rusage_info_v3 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+ uint64_t ri_child_user_time;
+ uint64_t ri_child_system_time;
+ uint64_t ri_child_pkg_idle_wkups;
+ uint64_t ri_child_interrupt_wkups;
+ uint64_t ri_child_pageins;
+ uint64_t ri_child_elapsed_abstime;
+ uint64_t ri_diskio_bytesread;
+ uint64_t ri_diskio_byteswritten;
+ uint64_t ri_cpu_time_qos_default;
+ uint64_t ri_cpu_time_qos_maintenance;
+ uint64_t ri_cpu_time_qos_background;
+ uint64_t ri_cpu_time_qos_utility;
+ uint64_t ri_cpu_time_qos_legacy;
+ uint64_t ri_cpu_time_qos_user_initiated;
+ uint64_t ri_cpu_time_qos_user_interactive;
+ uint64_t ri_billed_system_time;
+ uint64_t ri_serviced_system_time;
+};
+
+struct rusage_info_v4 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+ uint64_t ri_child_user_time;
+ uint64_t ri_child_system_time;
+ uint64_t ri_child_pkg_idle_wkups;
+ uint64_t ri_child_interrupt_wkups;
+ uint64_t ri_child_pageins;
+ uint64_t ri_child_elapsed_abstime;
+ uint64_t ri_diskio_bytesread;
+ uint64_t ri_diskio_byteswritten;
+ uint64_t ri_cpu_time_qos_default;
+ uint64_t ri_cpu_time_qos_maintenance;
+ uint64_t ri_cpu_time_qos_background;
+ uint64_t ri_cpu_time_qos_utility;
+ uint64_t ri_cpu_time_qos_legacy;
+ uint64_t ri_cpu_time_qos_user_initiated;
+ uint64_t ri_cpu_time_qos_user_interactive;
+ uint64_t ri_billed_system_time;
+ uint64_t ri_serviced_system_time;
+ uint64_t ri_logical_writes;
+ uint64_t ri_lifetime_max_phys_footprint;
+ uint64_t ri_instructions;
+ uint64_t ri_cycles;
+ uint64_t ri_billed_energy;
+ uint64_t ri_serviced_energy;
+ uint64_t ri_interval_max_phys_footprint;
+ uint64_t ri_runnable_time;
+};
+
+struct rusage_info_v5 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+ uint64_t ri_child_user_time;
+ uint64_t ri_child_system_time;
+ uint64_t ri_child_pkg_idle_wkups;
+ uint64_t ri_child_interrupt_wkups;
+ uint64_t ri_child_pageins;
+ uint64_t ri_child_elapsed_abstime;
+ uint64_t ri_diskio_bytesread;
+ uint64_t ri_diskio_byteswritten;
+ uint64_t ri_cpu_time_qos_default;
+ uint64_t ri_cpu_time_qos_maintenance;
+ uint64_t ri_cpu_time_qos_background;
+ uint64_t ri_cpu_time_qos_utility;
+ uint64_t ri_cpu_time_qos_legacy;
+ uint64_t ri_cpu_time_qos_user_initiated;
+ uint64_t ri_cpu_time_qos_user_interactive;
+ uint64_t ri_billed_system_time;
+ uint64_t ri_serviced_system_time;
+ uint64_t ri_logical_writes;
+ uint64_t ri_lifetime_max_phys_footprint;
+ uint64_t ri_instructions;
+ uint64_t ri_cycles;
+ uint64_t ri_billed_energy;
+ uint64_t ri_serviced_energy;
+ uint64_t ri_interval_max_phys_footprint;
+ uint64_t ri_runnable_time;
+ uint64_t ri_flags;
+};
+
+struct rusage_info_v6 {
+ uint8_t ri_uuid[16];
+ uint64_t ri_user_time;
+ uint64_t ri_system_time;
+ uint64_t ri_pkg_idle_wkups;
+ uint64_t ri_interrupt_wkups;
+ uint64_t ri_pageins;
+ uint64_t ri_wired_size;
+ uint64_t ri_resident_size;
+ uint64_t ri_phys_footprint;
+ uint64_t ri_proc_start_abstime;
+ uint64_t ri_proc_exit_abstime;
+ uint64_t ri_child_user_time;
+ uint64_t ri_child_system_time;
+ uint64_t ri_child_pkg_idle_wkups;
+ uint64_t ri_child_interrupt_wkups;
+ uint64_t ri_child_pageins;
+ uint64_t ri_child_elapsed_abstime;
+ uint64_t ri_diskio_bytesread;
+ uint64_t ri_diskio_byteswritten;
+ uint64_t ri_cpu_time_qos_default;
+ uint64_t ri_cpu_time_qos_maintenance;
+ uint64_t ri_cpu_time_qos_background;
+ uint64_t ri_cpu_time_qos_utility;
+ uint64_t ri_cpu_time_qos_legacy;
+ uint64_t ri_cpu_time_qos_user_initiated;
+ uint64_t ri_cpu_time_qos_user_interactive;
+ uint64_t ri_billed_system_time;
+ uint64_t ri_serviced_system_time;
+ uint64_t ri_logical_writes;
+ uint64_t ri_lifetime_max_phys_footprint;
+ uint64_t ri_instructions;
+ uint64_t ri_cycles;
+ uint64_t ri_billed_energy;
+ uint64_t ri_serviced_energy;
+ uint64_t ri_interval_max_phys_footprint;
+ uint64_t ri_runnable_time;
+ uint64_t ri_flags;
+ uint64_t ri_user_ptime;
+ uint64_t ri_system_ptime;
+ uint64_t ri_pinstructions;
+ uint64_t ri_pcycles;
+ uint64_t ri_energy_nj;
+ uint64_t ri_penergy_nj;
+ uint64_t ri_reserved[14];
+};
+
+typedef struct rusage_info_v6 rusage_info_current;
+struct rlimit {
+ rlim_t rlim_cur;
+ rlim_t rlim_max;
+};
+struct proc_rlimit_control_wakeupmon {
+ uint32_t wm_flags;
+ int32_t wm_rate;
+};
+int getpriority(int, id_t);
+
+int getiopolicy_np(int, int) __attribute__((availability(macosx,introduced=10.5)));
+
+int getrlimit(int, struct rlimit *) __asm("_" "getrlimit" );
+int getrusage(int, struct rusage *);
+int setpriority(int, id_t, int);
+
+int setiopolicy_np(int, int, int) __attribute__((availability(macosx,introduced=10.5)));
+
+int setrlimit(int, const struct rlimit *) __asm("_" "setrlimit" );
+
+
+
+
+
+
+
+
+
+
+
+static inline
+uint16_t
+_OSSwapInt16(
+ uint16_t _data
+ )
+{
+
+ return (uint16_t)(_data << 8 | _data >> 8);
+}
+
+static inline
+uint32_t
+_OSSwapInt32(
+ uint32_t _data
+ )
+{
+
+ _data = __builtin_bswap32(_data);
+
+
+
+
+
+ return _data;
+}
+
+static inline
+uint64_t
+_OSSwapInt64(
+ uint64_t _data
+ )
+{
+
+ return __builtin_bswap64(_data);
+}
+
+
+
+struct _OSUnalignedU16 {
+ volatile uint16_t __val;
+} __attribute__((__packed__));
+
+struct _OSUnalignedU32 {
+ volatile uint32_t __val;
+} __attribute__((__packed__));
+
+struct _OSUnalignedU64 {
+ volatile uint64_t __val;
+} __attribute__((__packed__));
+static inline
+uint16_t
+OSReadSwapInt16(
+ const volatile void * _base,
+ uintptr_t _offset
+ )
+{
+ return _OSSwapInt16(((struct _OSUnalignedU16 *)((uintptr_t)_base + _offset))->__val);
+}
+static inline
+uint32_t
+OSReadSwapInt32(
+ const volatile void * _base,
+ uintptr_t _offset
+ )
+{
+ return _OSSwapInt32(((struct _OSUnalignedU32 *)((uintptr_t)_base + _offset))->__val);
+}
+static inline
+uint64_t
+OSReadSwapInt64(
+ const volatile void * _base,
+ uintptr_t _offset
+ )
+{
+ return _OSSwapInt64(((struct _OSUnalignedU64 *)((uintptr_t)_base + _offset))->__val);
+}
+static inline
+void
+OSWriteSwapInt16(
+ volatile void * _base,
+ uintptr_t _offset,
+ uint16_t _data
+ )
+{
+ ((struct _OSUnalignedU16 *)((uintptr_t)_base + _offset))->__val = _OSSwapInt16(_data);
+}
+static inline
+void
+OSWriteSwapInt32(
+ volatile void * _base,
+ uintptr_t _offset,
+ uint32_t _data
+ )
+{
+ ((struct _OSUnalignedU32 *)((uintptr_t)_base + _offset))->__val = _OSSwapInt32(_data);
+}
+static inline
+void
+OSWriteSwapInt64(
+ volatile void * _base,
+ uintptr_t _offset,
+ uint64_t _data
+ )
+{
+ ((struct _OSUnalignedU64 *)((uintptr_t)_base + _offset))->__val = _OSSwapInt64(_data);
+}
+
+
+
+
+
+
+
+union wait {
+ int w_status;
+
+
+
+ struct {
+
+  unsigned int w_Termsig:7,
+      w_Coredump:1,
+      w_Retcode:8,
+      w_Filler:16;
+
+
+
+
+
+
+
+ } w_T;
+
+
+
+
+
+ struct {
+
+  unsigned int w_Stopval:8,
+      w_Stopsig:8,
+      w_Filler:16;
+
+
+
+
+
+
+ } w_S;
+};
+pid_t wait(int *) __asm("_" "wait" );
+pid_t waitpid(pid_t, int *, int) __asm("_" "waitpid" );
+
+int waitid(idtype_t, id_t, siginfo_t *, int) __asm("_" "waitid" );
+
+
+pid_t wait3(int *, int, struct rusage *);
+pid_t wait4(pid_t, int *, int, struct rusage *);
+
+void *alloca(size_t);
+
+
+
+
+
+
+
+
+typedef __darwin_ct_rune_t ct_rune_t;
+typedef __darwin_rune_t rune_t;
+
+
+typedef __darwin_wchar_t wchar_t;
+
+typedef struct {
+ int quot;
+ int rem;
+} div_t;
+
+typedef struct {
+ long quot;
+ long rem;
+} ldiv_t;
+
+
+typedef struct {
+ long long quot;
+ long long rem;
+} lldiv_t;
+extern int __mb_cur_max;
+typedef unsigned long long malloc_type_id_t;
+
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_malloc(size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_calloc(size_t count, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1,2)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void malloc_type_free(void *ptr, malloc_type_id_t type_id);
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_realloc(void *ptr, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_valloc(size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_aligned_alloc(size_t alignment, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) int malloc_type_posix_memalign(void **memptr, size_t alignment, size_t size, malloc_type_id_t type_id) ;
+
+
+
+
+typedef struct _malloc_zone_t malloc_zone_t;
+
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_malloc(malloc_zone_t *zone, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_calloc(malloc_zone_t *zone, size_t count, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2,3)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void malloc_type_zone_free(malloc_zone_t *zone, void *ptr, malloc_type_id_t type_id);
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_realloc(malloc_zone_t *zone, void *ptr, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(3)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_valloc(malloc_zone_t *zone, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2)));
+__attribute__((availability(macos,unavailable))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(visionos,unavailable))) void *malloc_type_zone_memalign(malloc_zone_t *zone, size_t alignment, size_t size, malloc_type_id_t type_id) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(3)));
+
+
+
+
+
+
+void *malloc(size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1))) ;
+void *calloc(size_t __count, size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(1,2))) ;
+void free(void *);
+void *realloc(void *__ptr, size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2))) ;
+
+void *valloc(size_t) __attribute__((alloc_size(1))) ;
+
+
+
+
+void *aligned_alloc(size_t __alignment, size_t __size) __attribute__((__warn_unused_result__)) __attribute__((alloc_size(2))) __attribute__((availability(macosx,introduced=10.15))) __attribute__((availability(ios,introduced=13.0))) __attribute__((availability(tvos,introduced=13.0))) __attribute__((availability(watchos,introduced=6.0)));
+
+int posix_memalign(void **__memptr, size_t __alignment, size_t __size) __attribute__((availability(macosx,introduced=10.6)));
+
+
+void abort(void) __attribute__((__cold__)) __attribute__((__noreturn__));
+int abs(int) __attribute__((__const__));
+int atexit(void (* _Nonnull)(void));
+double atof(const char *);
+int atoi(const char *);
+long atol(const char *);
+
+long long
+  atoll(const char *);
+
+void *bsearch(const void *__key, const void *__base, size_t __nel,
+     size_t __width, int (* _Nonnull __compar)(const void *, const void *));
+
+div_t div(int, int) __attribute__((__const__));
+void exit(int) __attribute__((__noreturn__));
+
+char *getenv(const char *);
+long labs(long) __attribute__((__const__));
+ldiv_t ldiv(long, long) __attribute__((__const__));
+
+long long
+  llabs(long long);
+lldiv_t lldiv(long long, long long);
+
+
+int mblen(const char *__s, size_t __n);
+size_t mbstowcs(wchar_t * restrict , const char * restrict, size_t);
+int mbtowc(wchar_t * restrict, const char * restrict, size_t);
+
+void qsort(void *__base, size_t __nel, size_t __width,
+     int (* _Nonnull __compar)(const void *, const void *));
+int rand(void) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+
+void srand(unsigned) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+double strtod(const char *, char **) __asm("_" "strtod" );
+float strtof(const char *, char **) __asm("_" "strtof" );
+long strtol(const char *__str, char **__endptr, int __base);
+long double
+  strtold(const char *, char **);
+
+long long
+  strtoll(const char *__str, char **__endptr, int __base);
+
+unsigned long
+  strtoul(const char *__str, char **__endptr, int __base);
+
+unsigned long long
+  strtoull(const char *__str, char **__endptr, int __base);
+
+
+__attribute__((__availability__(swift, unavailable, message="Use posix_spawn APIs or NSTask instead. (On iOS, process spawning is unavailable.)")))
+__attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,unavailable)))
+__attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)))
+int system(const char *) __asm("_" "system" );
+
+
+size_t wcstombs(char * restrict, const wchar_t * restrict, size_t);
+int wctomb(char *, wchar_t);
+
+
+void _Exit(int) __attribute__((__noreturn__));
+long a64l(const char *);
+double drand48(void);
+char *ecvt(double, int, int *restrict, int *restrict);
+double erand48(unsigned short[3]);
+char *fcvt(double, int, int *restrict, int *restrict);
+char *gcvt(double, int, char *);
+int getsubopt(char **, char * const *, char **);
+int grantpt(int);
+
+char *initstate(unsigned, char *, size_t);
+
+
+
+long jrand48(unsigned short[3]) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+char *l64a(long);
+void lcong48(unsigned short[7]);
+long lrand48(void) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+
+__attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of mktemp(3), it is highly recommended that you use mkstemp(3) instead.")))
+
+char *mktemp(char *);
+int mkstemp(char *);
+long mrand48(void) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+long nrand48(unsigned short[3]) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+int posix_openpt(int);
+char *ptsname(int);
+
+
+int ptsname_r(int fildes, char *buffer, size_t buflen) __attribute__((availability(macos,introduced=10.13.4))) __attribute__((availability(ios,introduced=11.3))) __attribute__((availability(tvos,introduced=11.3))) __attribute__((availability(watchos,introduced=4.3)));
+
+
+int putenv(char *) __asm("_" "putenv" );
+long random(void) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+int rand_r(unsigned *) __attribute__((__availability__(swift, unavailable, message="Use arc4random instead.")));
+
+char *realpath(const char * restrict, char * restrict) __asm("_" "realpath" "$DARWIN_EXTSN");
+
+
+
+unsigned short
+ *seed48(unsigned short[3]);
+int setenv(const char * __name, const char * __value, int __overwrite) __asm("_" "setenv" );
+
+void setkey(const char *) __asm("_" "setkey" );
+
+
+
+char *setstate(const char *);
+void srand48(long);
+
+void srandom(unsigned);
+
+
+
+int unlockpt(int);
+
+int unsetenv(const char *) __asm("_" "unsetenv" );
+typedef __darwin_dev_t dev_t;
+typedef __darwin_mode_t mode_t;
+
+
+
+uint32_t arc4random(void);
+void arc4random_addrandom(unsigned char * , int )
+    __attribute__((availability(macosx,introduced=10.0))) __attribute__((availability(macosx,deprecated=10.12,message="use arc4random_stir")))
+    __attribute__((availability(ios,introduced=2.0))) __attribute__((availability(ios,deprecated=10.0,message="use arc4random_stir")))
+    __attribute__((availability(tvos,introduced=2.0))) __attribute__((availability(tvos,deprecated=10.0,message="use arc4random_stir")))
+    __attribute__((availability(watchos,introduced=1.0))) __attribute__((availability(watchos,deprecated=3.0,message="use arc4random_stir")));
+void arc4random_buf(void * __buf, size_t __nbytes) __attribute__((availability(macosx,introduced=10.7)));
+void arc4random_stir(void);
+uint32_t
+  arc4random_uniform(uint32_t __upper_bound) __attribute__((availability(macosx,introduced=10.7)));
+
+int atexit_b(void (^ _Nonnull)(void)) __attribute__((availability(macosx,introduced=10.6)));
+void *bsearch_b(const void *__key, const void *__base, size_t __nel,
+     size_t __width, int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+
+
+char *cgetcap(char *, const char *, int);
+int cgetclose(void);
+int cgetent(char **, char **, const char *);
+int cgetfirst(char **, char **);
+int cgetmatch(const char *, const char *);
+int cgetnext(char **, char **);
+int cgetnum(char *, const char *, long *);
+int cgetset(const char *);
+int cgetstr(char *, const char *, char **);
+int cgetustr(char *, const char *, char **);
+
+int daemon(int, int) __asm("_" "daemon" ) __attribute__((availability(macosx,introduced=10.0,deprecated=10.5,message="Use posix_spawn APIs instead."))) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+char *devname(dev_t, mode_t);
+char *devname_r(dev_t, mode_t, char *buf, int len);
+char *getbsize(int *, long *);
+int getloadavg(double [], int);
+const char
+ *getprogname(void);
+void setprogname(const char *);
+int heapsort(void *__base, size_t __nel, size_t __width,
+     int (* _Nonnull __compar)(const void *, const void *));
+
+int heapsort_b(void *__base, size_t __nel, size_t __width,
+     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+int mergesort(void *__base, size_t __nel, size_t __width,
+     int (* _Nonnull __compar)(const void *, const void *));
+
+int mergesort_b(void *__base, size_t __nel, size_t __width,
+     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+void psort(void *__base, size_t __nel, size_t __width,
+     int (* _Nonnull __compar)(const void *, const void *))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+void psort_b(void *__base, size_t __nel, size_t __width,
+     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+void psort_r(void *__base, size_t __nel, size_t __width, void *,
+     int (* _Nonnull __compar)(void *, const void *, const void *))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+void qsort_b(void *__base, size_t __nel, size_t __width,
+     int (^ _Nonnull __compar)(const void *, const void *) __attribute__((__noescape__)))
+     __attribute__((availability(macosx,introduced=10.6)));
+
+void qsort_r(void *__base, size_t __nel, size_t __width, void *,
+     int (* _Nonnull __compar)(void *, const void *, const void *));
+int radixsort(const unsigned char **__base, int __nel, const unsigned char *__table,
+     unsigned __endbyte);
+int rpmatch(const char *)
+ __attribute__((availability(macos,introduced=10.15))) __attribute__((availability(ios,introduced=13.0))) __attribute__((availability(tvos,introduced=13.0))) __attribute__((availability(watchos,introduced=6.0)));
+int sradixsort(const unsigned char **__base, int __nel, const unsigned char *__table,
+     unsigned __endbyte);
+void sranddev(void);
+void srandomdev(void);
+void *reallocf(void *__ptr, size_t __size) __attribute__((alloc_size(2)));
+long long
+ strtonum(const char *__numstr, long long __minval, long long __maxval, const char **__errstrp)
+ __attribute__((availability(macos,introduced=11.0))) __attribute__((availability(ios,introduced=14.0))) __attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)));
+
+long long
+  strtoq(const char *__str, char **__endptr, int __base);
+unsigned long long
+  strtouq(const char *__str, char **__endptr, int __base);
+
+extern char *suboptarg;
+typedef __darwin_wint_t wint_t;
+typedef struct {
+ __darwin_rune_t __min;
+ __darwin_rune_t __max;
+ __darwin_rune_t __map;
+ __uint32_t *__types;
+} _RuneEntry;
+
+typedef struct {
+ int __nranges;
+ _RuneEntry *__ranges;
+} _RuneRange;
+
+typedef struct {
+ char __name[14];
+ __uint32_t __mask;
+} _RuneCharClass;
+
+typedef struct {
+ char __magic[8];
+ char __encoding[32];
+
+ __darwin_rune_t (*__sgetrune)(const char *, __darwin_size_t, char const **);
+ int (*__sputrune)(__darwin_rune_t, char *, __darwin_size_t, char **);
+ __darwin_rune_t __invalid_rune;
+
+ __uint32_t __runetype[(1 <<8 )];
+ __darwin_rune_t __maplower[(1 <<8 )];
+ __darwin_rune_t __mapupper[(1 <<8 )];
+
+
+
+
+
+
+ _RuneRange __runetype_ext;
+ _RuneRange __maplower_ext;
+ _RuneRange __mapupper_ext;
+
+ void *__variable;
+ int __variable_len;
+
+
+
+
+ int __ncharclasses;
+ _RuneCharClass *__charclasses;
+} _RuneLocale;
+
+
+
+
+extern _RuneLocale _DefaultRuneLocale;
+extern _RuneLocale *_CurrentRuneLocale;
+unsigned long ___runetype(__darwin_ct_rune_t);
+__darwin_ct_rune_t ___tolower(__darwin_ct_rune_t);
+__darwin_ct_rune_t ___toupper(__darwin_ct_rune_t);
+
+
+inline int
+isascii(int _c)
+{
+ return ((_c & ~0x7F) == 0);
+}
+int __maskrune(__darwin_ct_rune_t, unsigned long);
+
+
+
+inline int
+__istype(__darwin_ct_rune_t _c, unsigned long _f)
+{
+
+
+
+ return (isascii(_c) ? !!(_DefaultRuneLocale.__runetype[_c] & _f)
+  : !!__maskrune(_c, _f));
+
+}
+
+inline __darwin_ct_rune_t
+__isctype(__darwin_ct_rune_t _c, unsigned long _f)
+{
+
+
+
+ return (_c < 0 || _c >= (1 <<8 )) ? 0 :
+  !!(_DefaultRuneLocale.__runetype[_c] & _f);
+
+}
+__darwin_ct_rune_t __toupper(__darwin_ct_rune_t);
+__darwin_ct_rune_t __tolower(__darwin_ct_rune_t);
+
+
+
+inline int
+__wcwidth(__darwin_ct_rune_t _c)
+{
+ unsigned int _x;
+
+ if (_c == 0)
+  return (0);
+ _x = (unsigned int)__maskrune(_c, 0xe0000000L|0x00040000L);
+ if ((_x & 0xe0000000L) != 0)
+  return ((_x & 0xe0000000L) >> 30);
+ return ((_x & 0x00040000L) != 0 ? 1 : -1);
+}
+
+
+
+
+
+
+inline int
+isalnum(int _c)
+{
+ return (__istype(_c, 0x00000100L|0x00000400L));
+}
+
+inline int
+isalpha(int _c)
+{
+ return (__istype(_c, 0x00000100L));
+}
+
+inline int
+isblank(int _c)
+{
+ return (__istype(_c, 0x00020000L));
+}
+
+inline int
+iscntrl(int _c)
+{
+ return (__istype(_c, 0x00000200L));
+}
+
+
+inline int
+isdigit(int _c)
+{
+ return (__isctype(_c, 0x00000400L));
+}
+
+inline int
+isgraph(int _c)
+{
+ return (__istype(_c, 0x00000800L));
+}
+
+inline int
+islower(int _c)
+{
+ return (__istype(_c, 0x00001000L));
+}
+
+inline int
+isprint(int _c)
+{
+ return (__istype(_c, 0x00040000L));
+}
+
+inline int
+ispunct(int _c)
+{
+ return (__istype(_c, 0x00002000L));
+}
+
+inline int
+isspace(int _c)
+{
+ return (__istype(_c, 0x00004000L));
+}
+
+inline int
+isupper(int _c)
+{
+ return (__istype(_c, 0x00008000L));
+}
+
+
+inline int
+isxdigit(int _c)
+{
+ return (__isctype(_c, 0x00010000L));
+}
+
+inline int
+toascii(int _c)
+{
+ return (_c & 0x7F);
+}
+
+inline int
+tolower(int _c)
+{
+        return (__tolower(_c));
+}
+
+inline int
+toupper(int _c)
+{
+        return (__toupper(_c));
+}
+
+
+inline int
+digittoint(int _c)
+{
+ return (__maskrune(_c, 0x0F));
+}
+
+inline int
+ishexnumber(int _c)
+{
+ return (__istype(_c, 0x00010000L));
+}
+
+inline int
+isideogram(int _c)
+{
+ return (__istype(_c, 0x00080000L));
+}
+
+inline int
+isnumber(int _c)
+{
+ return (__istype(_c, 0x00000400L));
+}
+
+inline int
+isphonogram(int _c)
+{
+ return (__istype(_c, 0x00200000L));
+}
+
+inline int
+isrune(int _c)
+{
+ return (__istype(_c, 0xFFFFFFF0L));
+}
+
+inline int
+isspecial(int _c)
+{
+ return (__istype(_c, 0x00100000L));
+}
+
+void __assert_rtn(const char *, const char *, int, const char *) __attribute__((__noreturn__)) __attribute__((__cold__)) __attribute__((__disable_tail_calls__));
+    typedef float float_t;
+    typedef double double_t;
+extern int __math_errhandling(void);
+extern int __fpclassifyf(float);
+extern int __fpclassifyd(double);
+extern int __fpclassifyl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float);
+inline __attribute__ ((__always_inline__)) int __inline_isfinited(double);
+inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isinff(float);
+inline __attribute__ ((__always_inline__)) int __inline_isinfd(double);
+inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isnanf(float);
+inline __attribute__ ((__always_inline__)) int __inline_isnand(double);
+inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double);
+inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float);
+inline __attribute__ ((__always_inline__)) int __inline_isnormald(double);
+inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double);
+inline __attribute__ ((__always_inline__)) int __inline_signbitf(float);
+inline __attribute__ ((__always_inline__)) int __inline_signbitd(double);
+inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double);
+
+inline __attribute__ ((__always_inline__)) int __inline_isfinitef(float __x) {
+    return __x == __x && __builtin_fabsf(__x) != __builtin_inff();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isfinited(double __x) {
+    return __x == __x && __builtin_fabs(__x) != __builtin_inf();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isfinitel(long double __x) {
+    return __x == __x && __builtin_fabsl(__x) != __builtin_infl();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinff(float __x) {
+    return __builtin_fabsf(__x) == __builtin_inff();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinfd(double __x) {
+    return __builtin_fabs(__x) == __builtin_inf();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isinfl(long double __x) {
+    return __builtin_fabsl(__x) == __builtin_infl();
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnanf(float __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnand(double __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnanl(long double __x) {
+    return __x != __x;
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitf(float __x) {
+    union { float __f; unsigned int __u; } __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 31);
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitd(double __x) {
+    union { double __f; unsigned long long __u; } __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 63);
+}
+inline __attribute__ ((__always_inline__)) int __inline_signbitl(long double __x) {
+    union { long double __f; unsigned long long __u;} __u;
+    __u.__f = __x;
+    return (int)(__u.__u >> 63);
+}
+
+inline __attribute__ ((__always_inline__)) int __inline_isnormalf(float __x) {
+    return __inline_isfinitef(__x) && __builtin_fabsf(__x) >= 1.17549435e-38F;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnormald(double __x) {
+    return __inline_isfinited(__x) && __builtin_fabs(__x) >= 2.2250738585072014e-308;
+}
+inline __attribute__ ((__always_inline__)) int __inline_isnormall(long double __x) {
+    return __inline_isfinitel(__x) && __builtin_fabsl(__x) >= 2.2250738585072014e-308L;
+}
+extern float acosf(float);
+extern double acos(double);
+extern long double acosl(long double);
+
+extern float asinf(float);
+extern double asin(double);
+extern long double asinl(long double);
+
+extern float atanf(float);
+extern double atan(double);
+extern long double atanl(long double);
+
+extern float atan2f(float, float);
+extern double atan2(double, double);
+extern long double atan2l(long double, long double);
+
+extern float cosf(float);
+extern double cos(double);
+extern long double cosl(long double);
+
+extern float sinf(float);
+extern double sin(double);
+extern long double sinl(long double);
+
+extern float tanf(float);
+extern double tan(double);
+extern long double tanl(long double);
+
+extern float acoshf(float);
+extern double acosh(double);
+extern long double acoshl(long double);
+
+extern float asinhf(float);
+extern double asinh(double);
+extern long double asinhl(long double);
+
+extern float atanhf(float);
+extern double atanh(double);
+extern long double atanhl(long double);
+
+extern float coshf(float);
+extern double cosh(double);
+extern long double coshl(long double);
+
+extern float sinhf(float);
+extern double sinh(double);
+extern long double sinhl(long double);
+
+extern float tanhf(float);
+extern double tanh(double);
+extern long double tanhl(long double);
+
+extern float expf(float);
+extern double exp(double);
+extern long double expl(long double);
+
+extern float exp2f(float);
+extern double exp2(double);
+extern long double exp2l(long double);
+
+extern float expm1f(float);
+extern double expm1(double);
+extern long double expm1l(long double);
+
+extern float logf(float);
+extern double log(double);
+extern long double logl(long double);
+
+extern float log10f(float);
+extern double log10(double);
+extern long double log10l(long double);
+
+extern float log2f(float);
+extern double log2(double);
+extern long double log2l(long double);
+
+extern float log1pf(float);
+extern double log1p(double);
+extern long double log1pl(long double);
+
+extern float logbf(float);
+extern double logb(double);
+extern long double logbl(long double);
+
+extern float modff(float, float *);
+extern double modf(double, double *);
+extern long double modfl(long double, long double *);
+
+extern float ldexpf(float, int);
+extern double ldexp(double, int);
+extern long double ldexpl(long double, int);
+
+extern float frexpf(float, int *);
+extern double frexp(double, int *);
+extern long double frexpl(long double, int *);
+
+extern int ilogbf(float);
+extern int ilogb(double);
+extern int ilogbl(long double);
+
+extern float scalbnf(float, int);
+extern double scalbn(double, int);
+extern long double scalbnl(long double, int);
+
+extern float scalblnf(float, long int);
+extern double scalbln(double, long int);
+extern long double scalblnl(long double, long int);
+
+extern float fabsf(float);
+extern double fabs(double);
+extern long double fabsl(long double);
+
+extern float cbrtf(float);
+extern double cbrt(double);
+extern long double cbrtl(long double);
+
+extern float hypotf(float, float);
+extern double hypot(double, double);
+extern long double hypotl(long double, long double);
+
+extern float powf(float, float);
+extern double pow(double, double);
+extern long double powl(long double, long double);
+
+extern float sqrtf(float);
+extern double sqrt(double);
+extern long double sqrtl(long double);
+
+extern float erff(float);
+extern double erf(double);
+extern long double erfl(long double);
+
+extern float erfcf(float);
+extern double erfc(double);
+extern long double erfcl(long double);
+
+
+
+
+extern float lgammaf(float);
+extern double lgamma(double);
+extern long double lgammal(long double);
+
+extern float tgammaf(float);
+extern double tgamma(double);
+extern long double tgammal(long double);
+
+extern float ceilf(float);
+extern double ceil(double);
+extern long double ceill(long double);
+
+extern float floorf(float);
+extern double floor(double);
+extern long double floorl(long double);
+
+extern float nearbyintf(float);
+extern double nearbyint(double);
+extern long double nearbyintl(long double);
+
+extern float rintf(float);
+extern double rint(double);
+extern long double rintl(long double);
+
+extern long int lrintf(float);
+extern long int lrint(double);
+extern long int lrintl(long double);
+
+extern float roundf(float);
+extern double round(double);
+extern long double roundl(long double);
+
+extern long int lroundf(float);
+extern long int lround(double);
+extern long int lroundl(long double);
+
+
+
+
+extern long long int llrintf(float);
+extern long long int llrint(double);
+extern long long int llrintl(long double);
+
+extern long long int llroundf(float);
+extern long long int llround(double);
+extern long long int llroundl(long double);
+
+
+extern float truncf(float);
+extern double trunc(double);
+extern long double truncl(long double);
+
+extern float fmodf(float, float);
+extern double fmod(double, double);
+extern long double fmodl(long double, long double);
+
+extern float remainderf(float, float);
+extern double remainder(double, double);
+extern long double remainderl(long double, long double);
+
+extern float remquof(float, float, int *);
+extern double remquo(double, double, int *);
+extern long double remquol(long double, long double, int *);
+
+extern float copysignf(float, float);
+extern double copysign(double, double);
+extern long double copysignl(long double, long double);
+
+extern float nanf(const char *);
+extern double nan(const char *);
+extern long double nanl(const char *);
+
+extern float nextafterf(float, float);
+extern double nextafter(double, double);
+extern long double nextafterl(long double, long double);
+
+extern double nexttoward(double, long double);
+extern float nexttowardf(float, long double);
+extern long double nexttowardl(long double, long double);
+
+extern float fdimf(float, float);
+extern double fdim(double, double);
+extern long double fdiml(long double, long double);
+
+extern float fmaxf(float, float);
+extern double fmax(double, double);
+extern long double fmaxl(long double, long double);
+
+extern float fminf(float, float);
+extern double fmin(double, double);
+extern long double fminl(long double, long double);
+
+extern float fmaf(float, float, float);
+extern double fma(double, double, double);
+extern long double fmal(long double, long double, long double);
+extern float __exp10f(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __exp10(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+
+
+
+
+
+inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp);
+inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp);
+extern float __cospif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __cospi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern float __sinpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __sinpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern float __tanpif(float) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+extern double __tanpi(double) __attribute__((availability(macos,introduced=10.9))) __attribute__((availability(ios,introduced=7.0)));
+inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp);
+inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp);
+
+
+
+
+
+
+struct __float2 { float __sinval; float __cosval; };
+struct __double2 { double __sinval; double __cosval; };
+
+extern struct __float2 __sincosf_stret(float);
+extern struct __double2 __sincos_stret(double);
+extern struct __float2 __sincospif_stret(float);
+extern struct __double2 __sincospi_stret(double);
+
+inline __attribute__ ((__always_inline__)) void __sincosf(float __x, float *__sinp, float *__cosp) {
+    const struct __float2 __stret = __sincosf_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincos(double __x, double *__sinp, double *__cosp) {
+    const struct __double2 __stret = __sincos_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincospif(float __x, float *__sinp, float *__cosp) {
+    const struct __float2 __stret = __sincospif_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+inline __attribute__ ((__always_inline__)) void __sincospi(double __x, double *__sinp, double *__cosp) {
+    const struct __double2 __stret = __sincospi_stret(__x);
+    *__sinp = __stret.__sinval; *__cosp = __stret.__cosval;
+}
+
+
+
+
+
+
+
+extern double j0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double j1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double jn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double y0(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double y1(double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double yn(int, double) __attribute__((availability(macos,introduced=10.0))) __attribute__((availability(ios,introduced=3.2)));
+extern double scalb(double, double);
+extern int signgam;
+struct exception {
+    int type;
+    char *name;
+    double arg1;
+    double arg2;
+    double retval;
+};
+typedef __darwin_clock_t clock_t;
+
+
+typedef __darwin_time_t time_t;
 struct timespec
 {
-
-
-
-  __time_t tv_sec;
-
-
-
-
-  __syscall_slong_t tv_nsec;
+ __darwin_time_t tv_sec;
+ long tv_nsec;
 };
 
-
-
-typedef __suseconds_t suseconds_t;
-
-
-
-
-
-typedef long int __fd_mask;
-typedef struct
-  {
-
-
-
-
-
-
-    __fd_mask __fds_bits[1024 / (8 * (int) sizeof (__fd_mask))];
-
-
-  } fd_set;
-
-
-
-
-
-
-typedef __fd_mask fd_mask;
-
-extern int select (int __nfds, fd_set *__restrict __readfds,
-     fd_set *__restrict __writefds,
-     fd_set *__restrict __exceptfds,
-     struct timeval *__restrict __timeout);
-extern int pselect (int __nfds, fd_set *__restrict __readfds,
-      fd_set *__restrict __writefds,
-      fd_set *__restrict __exceptfds,
-      const struct timespec *__restrict __timeout,
-      const __sigset_t *__restrict __sigmask);
-
-
-
-
-
-
-typedef __blksize_t blksize_t;
-
-
-
-
-
-
-typedef __blkcnt_t blkcnt_t;
-
-
-
-typedef __fsblkcnt_t fsblkcnt_t;
-
-
-
-typedef __fsfilcnt_t fsfilcnt_t;
-
-typedef union
-{
-  __extension__ unsigned long long int __value64;
-  struct
-  {
-    unsigned int __low;
-    unsigned int __high;
-  } __value32;
-} __atomic_wide_counter;
-
-
-
-
-typedef struct __pthread_internal_list
-{
-  struct __pthread_internal_list *__prev;
-  struct __pthread_internal_list *__next;
-} __pthread_list_t;
-
-typedef struct __pthread_internal_slist
-{
-  struct __pthread_internal_slist *__next;
-} __pthread_slist_t;
-struct __pthread_mutex_s
-{
-  int __lock ;
-  unsigned int __count;
-  int __owner;
-
-  unsigned int __nusers;
-  int __kind;
-
-
-
-
-  int __spins;
-  __pthread_list_t __list;
+struct tm {
+ int tm_sec;
+ int tm_min;
+ int tm_hour;
+ int tm_mday;
+ int tm_mon;
+ int tm_year;
+ int tm_wday;
+ int tm_yday;
+ int tm_isdst;
+ long tm_gmtoff;
+ char *tm_zone;
 };
-struct __pthread_rwlock_arch_t
-{
-  unsigned int __readers;
-  unsigned int __writers;
-  unsigned int __wrphase_futex;
-  unsigned int __writers_futex;
-  unsigned int __pad3;
-  unsigned int __pad4;
-  int __cur_writer;
-  int __shared;
-  unsigned long int __pad1;
-  unsigned long int __pad2;
-  unsigned int __flags;
-};
+extern char *tzname[];
 
 
+extern int getdate_err;
 
-
-struct __pthread_cond_s
-{
-  __atomic_wide_counter __wseq;
-  __atomic_wide_counter __g1_start;
-  unsigned int __g_refs[2] ;
-  unsigned int __g_size[2];
-  unsigned int __g1_orig_size;
-  unsigned int __wrefs;
-  unsigned int __g_signals[2];
-};
-
-typedef unsigned int __tss_t;
-typedef unsigned long int __thrd_t;
-
-typedef struct
-{
-  int __data ;
-} __once_flag;
-
-
-
-typedef unsigned long int pthread_t;
-
-
-
-
-typedef union
-{
-  char __size[8];
-  int __align;
-} pthread_mutexattr_t;
-
-
-
-
-typedef union
-{
-  char __size[8];
-  int __align;
-} pthread_condattr_t;
-
-
-
-typedef unsigned int pthread_key_t;
-
-
-
-typedef int pthread_once_t;
-
-
-union pthread_attr_t
-{
-  char __size[64];
-  long int __align;
-};
-
-typedef union pthread_attr_t pthread_attr_t;
-
-
-
-
-typedef union
-{
-  struct __pthread_mutex_s __data;
-  char __size[48];
-  long int __align;
-} pthread_mutex_t;
-
-
-typedef union
-{
-  struct __pthread_cond_s __data;
-  char __size[48];
-  __extension__ long long int __align;
-} pthread_cond_t;
-
-
-
-
-
-typedef union
-{
-  struct __pthread_rwlock_arch_t __data;
-  char __size[56];
-  long int __align;
-} pthread_rwlock_t;
-
-typedef union
-{
-  char __size[8];
-  long int __align;
-} pthread_rwlockattr_t;
-
-
-
-
-
-typedef volatile int pthread_spinlock_t;
-
-
-
-
-typedef union
-{
-  char __size[32];
-  long int __align;
-} pthread_barrier_t;
-
-typedef union
-{
-  char __size[8];
-  int __align;
-} pthread_barrierattr_t;
-
-
-
-
-
-
-
-
-
-extern long int random (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern void srandom (unsigned int __seed) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-extern char *initstate (unsigned int __seed, char *__statebuf,
-   size_t __statelen) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-
-
-
-extern char *setstate (char *__statebuf) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-
-struct random_data
-  {
-    int32_t *fptr;
-    int32_t *rptr;
-    int32_t *state;
-    int rand_type;
-    int rand_deg;
-    int rand_sep;
-    int32_t *end_ptr;
-  };
-
-extern int random_r (struct random_data *__restrict __buf,
-       int32_t *__restrict __result) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-extern int srandom_r (unsigned int __seed, struct random_data *__buf)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-
-extern int initstate_r (unsigned int __seed, char *__restrict __statebuf,
-   size_t __statelen,
-   struct random_data *__restrict __buf)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 4)));
-
-extern int setstate_r (char *__restrict __statebuf,
-         struct random_data *__restrict __buf)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-
-
-extern int rand (void) __attribute__ ((__nothrow__ , __leaf__));
-
-extern void srand (unsigned int __seed) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int rand_r (unsigned int *__seed) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-extern double drand48 (void) __attribute__ ((__nothrow__ , __leaf__));
-extern double erand48 (unsigned short int __xsubi[3]) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-extern long int lrand48 (void) __attribute__ ((__nothrow__ , __leaf__));
-extern long int nrand48 (unsigned short int __xsubi[3])
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-extern long int mrand48 (void) __attribute__ ((__nothrow__ , __leaf__));
-extern long int jrand48 (unsigned short int __xsubi[3])
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-extern void srand48 (long int __seedval) __attribute__ ((__nothrow__ , __leaf__));
-extern unsigned short int *seed48 (unsigned short int __seed16v[3])
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-extern void lcong48 (unsigned short int __param[7]) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-struct drand48_data
-  {
-    unsigned short int __x[3];
-    unsigned short int __old_x[3];
-    unsigned short int __c;
-    unsigned short int __init;
-    __extension__ unsigned long long int __a;
-
-  };
-
-
-extern int drand48_r (struct drand48_data *__restrict __buffer,
-        double *__restrict __result) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-extern int erand48_r (unsigned short int __xsubi[3],
-        struct drand48_data *__restrict __buffer,
-        double *__restrict __result) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern int lrand48_r (struct drand48_data *__restrict __buffer,
-        long int *__restrict __result)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-extern int nrand48_r (unsigned short int __xsubi[3],
-        struct drand48_data *__restrict __buffer,
-        long int *__restrict __result)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern int mrand48_r (struct drand48_data *__restrict __buffer,
-        long int *__restrict __result)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-extern int jrand48_r (unsigned short int __xsubi[3],
-        struct drand48_data *__restrict __buffer,
-        long int *__restrict __result)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern int srand48_r (long int __seedval, struct drand48_data *__buffer)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-
-extern int seed48_r (unsigned short int __seed16v[3],
-       struct drand48_data *__buffer) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-extern int lcong48_r (unsigned short int __param[7],
-        struct drand48_data *__buffer)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern __uint32_t arc4random (void)
-     __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-extern void arc4random_buf (void *__buf, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-extern __uint32_t arc4random_uniform (__uint32_t __upper_bound)
-     __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern void *malloc (size_t __size) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__))
-     __attribute__ ((__alloc_size__ (1))) ;
-
-extern void *calloc (size_t __nmemb, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__alloc_size__ (1, 2))) ;
-
-
-
-
-
-
-extern void *realloc (void *__ptr, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__warn_unused_result__)) __attribute__ ((__alloc_size__ (2)));
-
-
-extern void free (void *__ptr) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-extern void *reallocarray (void *__ptr, size_t __nmemb, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__warn_unused_result__))
-     __attribute__ ((__alloc_size__ (2, 3)))
-    __attribute__ ((__malloc__ (__builtin_free, 1)));
-
-
-extern void *reallocarray (void *__ptr, size_t __nmemb, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__ (reallocarray, 1)));
-
-
-
-
-
-
-
-
-
-
-extern void *alloca (size_t __size) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-
-
-
-
-extern void *valloc (size_t __size) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__))
-     __attribute__ ((__alloc_size__ (1))) ;
-
-
-
-
-extern int posix_memalign (void **__memptr, size_t __alignment, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-
-extern void *aligned_alloc (size_t __alignment, size_t __size)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__alloc_align__ (1)))
-     __attribute__ ((__alloc_size__ (2))) ;
-
-
-
-extern void abort (void) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-
-extern int atexit (void (*__func) (void)) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-
-extern int at_quick_exit (void (*__func) (void)) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-extern int on_exit (void (*__func) (int __status, void *__arg), void *__arg)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-extern void exit (int __status) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-
-
-
-extern void quick_exit (int __status) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-
-
-
-extern void _Exit (int __status) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-
-
-extern char *getenv (const char *__name) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-extern int putenv (char *__string) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-extern int setenv (const char *__name, const char *__value, int __replace)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-
-
-extern int unsetenv (const char *__name) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-extern int clearenv (void) __attribute__ ((__nothrow__ , __leaf__));
-extern char *mktemp (char *__template) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-extern int mkstemp (char *__template) __attribute__ ((__nonnull__ (1))) ;
-extern int mkstemps (char *__template, int __suffixlen) __attribute__ ((__nonnull__ (1))) ;
-extern char *mkdtemp (char *__template) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-extern int system (const char *__command) ;
-extern char *realpath (const char *__restrict __name,
-         char *__restrict __resolved) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-
-
-typedef int (*__compar_fn_t) (const void *, const void *);
-extern void *bsearch (const void *__key, const void *__base,
-        size_t __nmemb, size_t __size, __compar_fn_t __compar)
-     __attribute__ ((__nonnull__ (1, 2, 5))) ;
-
-
-
-
-
-
-
-extern void qsort (void *__base, size_t __nmemb, size_t __size,
-     __compar_fn_t __compar) __attribute__ ((__nonnull__ (1, 4)));
-extern int abs (int __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)) ;
-extern long int labs (long int __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)) ;
-
-
-__extension__ extern long long int llabs (long long int __x)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)) ;
-
-
-
-
-
-
-extern div_t div (int __numer, int __denom)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)) ;
-extern ldiv_t ldiv (long int __numer, long int __denom)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)) ;
-
-
-__extension__ extern lldiv_t lldiv (long long int __numer,
-        long long int __denom)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)) ;
-extern char *ecvt (double __value, int __ndigit, int *__restrict __decpt,
-     int *__restrict __sign) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4))) ;
-
-
-
-
-extern char *fcvt (double __value, int __ndigit, int *__restrict __decpt,
-     int *__restrict __sign) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4))) ;
-
-
-
-
-extern char *gcvt (double __value, int __ndigit, char *__buf)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3))) ;
-
-
-
-
-extern char *qecvt (long double __value, int __ndigit,
-      int *__restrict __decpt, int *__restrict __sign)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4))) ;
-extern char *qfcvt (long double __value, int __ndigit,
-      int *__restrict __decpt, int *__restrict __sign)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4))) ;
-extern char *qgcvt (long double __value, int __ndigit, char *__buf)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3))) ;
-
-
-
-
-extern int ecvt_r (double __value, int __ndigit, int *__restrict __decpt,
-     int *__restrict __sign, char *__restrict __buf,
-     size_t __len) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4, 5)));
-extern int fcvt_r (double __value, int __ndigit, int *__restrict __decpt,
-     int *__restrict __sign, char *__restrict __buf,
-     size_t __len) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4, 5)));
-
-extern int qecvt_r (long double __value, int __ndigit,
-      int *__restrict __decpt, int *__restrict __sign,
-      char *__restrict __buf, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4, 5)));
-extern int qfcvt_r (long double __value, int __ndigit,
-      int *__restrict __decpt, int *__restrict __sign,
-      char *__restrict __buf, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (3, 4, 5)));
-
-
-
-
-
-extern int mblen (const char *__s, size_t __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int mbtowc (wchar_t *__restrict __pwc,
-     const char *__restrict __s, size_t __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int wctomb (char *__s, wchar_t __wchar) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern size_t mbstowcs (wchar_t *__restrict __pwcs,
-   const char *__restrict __s, size_t __n) __attribute__ ((__nothrow__ , __leaf__))
-    __attribute__ ((__access__ (__read_only__, 2)));
-
-extern size_t wcstombs (char *__restrict __s,
-   const wchar_t *__restrict __pwcs, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__access__ (__write_only__, 1, 3)))
-  __attribute__ ((__access__ (__read_only__, 2)));
-
-
-
-
-
-
-extern int rpmatch (const char *__response) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-extern int getsubopt (char **__restrict __optionp,
-        char *const *__restrict __tokens,
-        char **__restrict __valuep)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2, 3))) ;
-extern int getloadavg (double __loadavg[], int __nelem)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-enum
-{
-  _ISupper = ((0) < 8 ? ((1 << (0)) << 8) : ((1 << (0)) >> 8)),
-  _ISlower = ((1) < 8 ? ((1 << (1)) << 8) : ((1 << (1)) >> 8)),
-  _ISalpha = ((2) < 8 ? ((1 << (2)) << 8) : ((1 << (2)) >> 8)),
-  _ISdigit = ((3) < 8 ? ((1 << (3)) << 8) : ((1 << (3)) >> 8)),
-  _ISxdigit = ((4) < 8 ? ((1 << (4)) << 8) : ((1 << (4)) >> 8)),
-  _ISspace = ((5) < 8 ? ((1 << (5)) << 8) : ((1 << (5)) >> 8)),
-  _ISprint = ((6) < 8 ? ((1 << (6)) << 8) : ((1 << (6)) >> 8)),
-  _ISgraph = ((7) < 8 ? ((1 << (7)) << 8) : ((1 << (7)) >> 8)),
-  _ISblank = ((8) < 8 ? ((1 << (8)) << 8) : ((1 << (8)) >> 8)),
-  _IScntrl = ((9) < 8 ? ((1 << (9)) << 8) : ((1 << (9)) >> 8)),
-  _ISpunct = ((10) < 8 ? ((1 << (10)) << 8) : ((1 << (10)) >> 8)),
-  _ISalnum = ((11) < 8 ? ((1 << (11)) << 8) : ((1 << (11)) >> 8))
-};
-extern const unsigned short int **__ctype_b_loc (void)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-extern const __int32_t **__ctype_tolower_loc (void)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-extern const __int32_t **__ctype_toupper_loc (void)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-extern int isalnum (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isalpha (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int iscntrl (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isdigit (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int islower (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isgraph (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isprint (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int ispunct (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isspace (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isupper (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isxdigit (int) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int tolower (int __c) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int toupper (int __c) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern int isblank (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int isascii (int __c) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int toascii (int __c) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int _toupper (int) __attribute__ ((__nothrow__ , __leaf__));
-extern int _tolower (int) __attribute__ ((__nothrow__ , __leaf__));
-struct __locale_struct
-{
-
-  struct __locale_data *__locales[13];
-
-
-  const unsigned short int *__ctype_b;
-  const int *__ctype_tolower;
-  const int *__ctype_toupper;
-
-
-  const char *__names[13];
-};
-
-typedef struct __locale_struct *__locale_t;
-
-typedef __locale_t locale_t;
-extern int isalnum_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isalpha_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int iscntrl_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isdigit_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int islower_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isgraph_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isprint_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int ispunct_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isspace_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isupper_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-extern int isxdigit_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-
-extern int isblank_l (int, locale_t) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int __tolower_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
-extern int tolower_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int __toupper_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
-extern int toupper_l (int __c, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-
-
-typedef __uint8_t uint8_t;
-typedef __uint16_t uint16_t;
-typedef __uint32_t uint32_t;
-typedef __uint64_t uint64_t;
-
-
-
-
-
-typedef __int_least8_t int_least8_t;
-typedef __int_least16_t int_least16_t;
-typedef __int_least32_t int_least32_t;
-typedef __int_least64_t int_least64_t;
-
-
-typedef __uint_least8_t uint_least8_t;
-typedef __uint_least16_t uint_least16_t;
-typedef __uint_least32_t uint_least32_t;
-typedef __uint_least64_t uint_least64_t;
-
-
-
-
-
-typedef signed char int_fast8_t;
-
-typedef long int int_fast16_t;
-typedef long int int_fast32_t;
-typedef long int int_fast64_t;
-typedef unsigned char uint_fast8_t;
-
-typedef unsigned long int uint_fast16_t;
-typedef unsigned long int uint_fast32_t;
-typedef unsigned long int uint_fast64_t;
-typedef long int intptr_t;
-
-
-typedef unsigned long int uintptr_t;
-typedef __intmax_t intmax_t;
-typedef __uintmax_t uintmax_t;
-
-
-
-extern void __assert_fail (const char *__assertion, const char *__file,
-      unsigned int __line, const char *__function)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-extern void __assert_perror_fail (int __errnum, const char *__file,
-      unsigned int __line, const char *__function)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-
-
-extern void __assert (const char *__assertion, const char *__file, int __line)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__noreturn__));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-typedef float float_t;
-typedef double double_t;
-extern int __fpclassify (double __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
-
-
-extern int __signbit (double __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
-
-
-
-extern int __isinf (double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __finite (double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __isnan (double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __iseqsig (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int __issignaling (double __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
- extern double acos (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __acos (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double asin (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __asin (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double atan (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __atan (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double atan2 (double __y, double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __atan2 (double __y, double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern double cos (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __cos (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double sin (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __sin (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double tan (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __tan (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern double cosh (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __cosh (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double sinh (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __sinh (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double tanh (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __tanh (double __x) __attribute__ ((__nothrow__ , __leaf__));
- extern double acosh (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __acosh (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double asinh (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __asinh (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern double atanh (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __atanh (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
- extern double exp (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __exp (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ , __leaf__)); extern double __frexp (double __x, int *__exponent) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ , __leaf__)); extern double __ldexp (double __x, int __exponent) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern double log (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __log (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern double log10 (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __log10 (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double modf (double __x, double *__iptr) __attribute__ ((__nothrow__ , __leaf__)); extern double __modf (double __x, double *__iptr) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
- extern double expm1 (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __expm1 (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern double log1p (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __log1p (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double logb (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __logb (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern double exp2 (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __exp2 (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern double log2 (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __log2 (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
- extern double pow (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __pow (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double sqrt (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __sqrt (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
- extern double hypot (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __hypot (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern double cbrt (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __cbrt (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern double ceil (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __ceil (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern double fabs (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __fabs (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern double floor (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __floor (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern double fmod (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __fmod (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-extern int isinf (double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-
-
-extern int finite (double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern double drem (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __drem (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern double significand (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __significand (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern double copysign (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __copysign (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-extern double nan (const char *__tagb) __attribute__ ((__nothrow__ , __leaf__)); extern double __nan (const char *__tagb) __attribute__ ((__nothrow__ , __leaf__));
-extern int isnan (double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-
-
-
-extern double j0 (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __j0 (double) __attribute__ ((__nothrow__ , __leaf__));
-extern double j1 (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __j1 (double) __attribute__ ((__nothrow__ , __leaf__));
-extern double jn (int, double) __attribute__ ((__nothrow__ , __leaf__)); extern double __jn (int, double) __attribute__ ((__nothrow__ , __leaf__));
-extern double y0 (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __y0 (double) __attribute__ ((__nothrow__ , __leaf__));
-extern double y1 (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __y1 (double) __attribute__ ((__nothrow__ , __leaf__));
-extern double yn (int, double) __attribute__ ((__nothrow__ , __leaf__)); extern double __yn (int, double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
- extern double erf (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __erf (double) __attribute__ ((__nothrow__ , __leaf__));
- extern double erfc (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __erfc (double) __attribute__ ((__nothrow__ , __leaf__));
-extern double lgamma (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __lgamma (double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern double tgamma (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __tgamma (double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-extern double gamma (double) __attribute__ ((__nothrow__ , __leaf__)); extern double __gamma (double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-extern double lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ , __leaf__)); extern double __lgamma_r (double, int *__signgamp) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern double rint (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __rint (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double nextafter (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __nextafter (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-extern double nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __nexttoward (double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-extern double remainder (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __remainder (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern double scalbn (double __x, int __n) __attribute__ ((__nothrow__ , __leaf__)); extern double __scalbn (double __x, int __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int ilogb (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern int __ilogb (double __x) __attribute__ ((__nothrow__ , __leaf__));
-extern double scalbln (double __x, long int __n) __attribute__ ((__nothrow__ , __leaf__)); extern double __scalbln (double __x, long int __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern double nearbyint (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern double __nearbyint (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern double round (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __round (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern double trunc (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __trunc (double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-extern double remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ , __leaf__)); extern double __remquo (double __x, double __y, int *__quo) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern long int lrint (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long int __lrint (double __x) __attribute__ ((__nothrow__ , __leaf__));
-__extension__
-extern long long int llrint (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long long int __llrint (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long int lround (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long int __lround (double __x) __attribute__ ((__nothrow__ , __leaf__));
-__extension__
-extern long long int llround (double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long long int __llround (double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern double fdim (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)); extern double __fdim (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern double fmax (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __fmax (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern double fmin (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern double __fmin (double __x, double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern double fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ , __leaf__)); extern double __fma (double __x, double __y, double __z) __attribute__ ((__nothrow__ , __leaf__));
-extern double scalb (double __x, double __n) __attribute__ ((__nothrow__ , __leaf__)); extern double __scalb (double __x, double __n) __attribute__ ((__nothrow__ , __leaf__));
-extern int __fpclassifyf (float __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
-
-
-extern int __signbitf (float __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
-
-
-
-extern int __isinff (float __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __finitef (float __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __isnanf (float __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __iseqsigf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int __issignalingf (float __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
- extern float acosf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __acosf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float asinf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __asinf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float atanf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __atanf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float atan2f (float __y, float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __atan2f (float __y, float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern float cosf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __cosf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float sinf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __sinf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float tanf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __tanf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern float coshf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __coshf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float sinhf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __sinhf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float tanhf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __tanhf (float __x) __attribute__ ((__nothrow__ , __leaf__));
- extern float acoshf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __acoshf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float asinhf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __asinhf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern float atanhf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __atanhf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
- extern float expf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __expf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern float frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ , __leaf__)); extern float __frexpf (float __x, int *__exponent) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern float ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ , __leaf__)); extern float __ldexpf (float __x, int __exponent) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern float logf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __logf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern float log10f (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __log10f (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern float modff (float __x, float *__iptr) __attribute__ ((__nothrow__ , __leaf__)); extern float __modff (float __x, float *__iptr) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
- extern float expm1f (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __expm1f (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern float log1pf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __log1pf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern float logbf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __logbf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern float exp2f (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __exp2f (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern float log2f (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __log2f (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
- extern float powf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __powf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern float sqrtf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __sqrtf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
- extern float hypotf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __hypotf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern float cbrtf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __cbrtf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern float ceilf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __ceilf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern float fabsf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __fabsf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern float floorf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __floorf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern float fmodf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __fmodf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-extern int isinff (float __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-
-
-extern int finitef (float __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern float dremf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __dremf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern float significandf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __significandf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern float copysignf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __copysignf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-extern float nanf (const char *__tagb) __attribute__ ((__nothrow__ , __leaf__)); extern float __nanf (const char *__tagb) __attribute__ ((__nothrow__ , __leaf__));
-extern int isnanf (float __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-
-
-
-extern float j0f (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __j0f (float) __attribute__ ((__nothrow__ , __leaf__));
-extern float j1f (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __j1f (float) __attribute__ ((__nothrow__ , __leaf__));
-extern float jnf (int, float) __attribute__ ((__nothrow__ , __leaf__)); extern float __jnf (int, float) __attribute__ ((__nothrow__ , __leaf__));
-extern float y0f (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __y0f (float) __attribute__ ((__nothrow__ , __leaf__));
-extern float y1f (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __y1f (float) __attribute__ ((__nothrow__ , __leaf__));
-extern float ynf (int, float) __attribute__ ((__nothrow__ , __leaf__)); extern float __ynf (int, float) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
- extern float erff (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __erff (float) __attribute__ ((__nothrow__ , __leaf__));
- extern float erfcf (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __erfcf (float) __attribute__ ((__nothrow__ , __leaf__));
-extern float lgammaf (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __lgammaf (float) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern float tgammaf (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __tgammaf (float) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-extern float gammaf (float) __attribute__ ((__nothrow__ , __leaf__)); extern float __gammaf (float) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-extern float lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ , __leaf__)); extern float __lgammaf_r (float, int *__signgamp) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern float rintf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __rintf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern float nextafterf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __nextafterf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-extern float nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __nexttowardf (float __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-extern float remainderf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __remainderf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern float scalbnf (float __x, int __n) __attribute__ ((__nothrow__ , __leaf__)); extern float __scalbnf (float __x, int __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int ilogbf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern int __ilogbf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-extern float scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ , __leaf__)); extern float __scalblnf (float __x, long int __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern float nearbyintf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern float __nearbyintf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern float roundf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __roundf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern float truncf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __truncf (float __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-extern float remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ , __leaf__)); extern float __remquof (float __x, float __y, int *__quo) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern long int lrintf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern long int __lrintf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-__extension__
-extern long long int llrintf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern long long int __llrintf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long int lroundf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern long int __lroundf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-__extension__
-extern long long int llroundf (float __x) __attribute__ ((__nothrow__ , __leaf__)); extern long long int __llroundf (float __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern float fdimf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)); extern float __fdimf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern float fmaxf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __fmaxf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern float fminf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern float __fminf (float __x, float __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern float fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ , __leaf__)); extern float __fmaf (float __x, float __y, float __z) __attribute__ ((__nothrow__ , __leaf__));
-extern float scalbf (float __x, float __n) __attribute__ ((__nothrow__ , __leaf__)); extern float __scalbf (float __x, float __n) __attribute__ ((__nothrow__ , __leaf__));
-extern int __fpclassifyl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
-
-
-extern int __signbitl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
-
-
-
-extern int __isinfl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __finitel (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __isnanl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern int __iseqsigl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int __issignalingl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-     __attribute__ ((__const__));
- extern long double acosl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __acosl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double asinl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __asinl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double atanl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __atanl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __atan2l (long double __y, long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern long double cosl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __cosl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double sinl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __sinl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double tanl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __tanl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern long double coshl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __coshl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double sinhl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __sinhl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double tanhl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __tanhl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
- extern long double acoshl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __acoshl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double asinhl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __asinhl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
- extern long double atanhl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __atanhl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
- extern long double expl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __expl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long double frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ , __leaf__)); extern long double __frexpl (long double __x, int *__exponent) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long double ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ , __leaf__)); extern long double __ldexpl (long double __x, int __exponent) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern long double logl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __logl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern long double log10l (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __log10l (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long double modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ , __leaf__)); extern long double __modfl (long double __x, long double *__iptr) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
- extern long double expm1l (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __expm1l (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern long double log1pl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __log1pl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long double logbl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __logbl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern long double exp2l (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __exp2l (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
- extern long double log2l (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __log2l (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
- extern long double powl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __powl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long double sqrtl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __sqrtl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
- extern long double hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __hypotl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
- extern long double cbrtl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __cbrtl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern long double ceill (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __ceill (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern long double fabsl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __fabsl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern long double floorl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __floorl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern long double fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __fmodl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-extern int isinfl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-
-
-extern int finitel (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-extern long double dreml (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __dreml (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long double significandl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __significandl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern long double copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __copysignl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-extern long double nanl (const char *__tagb) __attribute__ ((__nothrow__ , __leaf__)); extern long double __nanl (const char *__tagb) __attribute__ ((__nothrow__ , __leaf__));
-extern int isnanl (long double __value) __attribute__ ((__nothrow__ , __leaf__))
-  __attribute__ ((__const__));
-
-
-
-
-
-extern long double j0l (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __j0l (long double) __attribute__ ((__nothrow__ , __leaf__));
-extern long double j1l (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __j1l (long double) __attribute__ ((__nothrow__ , __leaf__));
-extern long double jnl (int, long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __jnl (int, long double) __attribute__ ((__nothrow__ , __leaf__));
-extern long double y0l (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __y0l (long double) __attribute__ ((__nothrow__ , __leaf__));
-extern long double y1l (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __y1l (long double) __attribute__ ((__nothrow__ , __leaf__));
-extern long double ynl (int, long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __ynl (int, long double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
- extern long double erfl (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __erfl (long double) __attribute__ ((__nothrow__ , __leaf__));
- extern long double erfcl (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __erfcl (long double) __attribute__ ((__nothrow__ , __leaf__));
-extern long double lgammal (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __lgammal (long double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern long double tgammal (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __tgammal (long double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-extern long double gammal (long double) __attribute__ ((__nothrow__ , __leaf__)); extern long double __gammal (long double) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-extern long double lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ , __leaf__)); extern long double __lgammal_r (long double, int *__signgamp) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern long double rintl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __rintl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long double nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __nextafterl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-extern long double nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __nexttowardl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-extern long double remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __remainderl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long double scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ , __leaf__)); extern long double __scalbnl (long double __x, int __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int ilogbl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern int __ilogbl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-extern long double scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ , __leaf__)); extern long double __scalblnl (long double __x, long int __n) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long double nearbyintl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long double __nearbyintl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long double roundl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __roundl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern long double truncl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __truncl (long double __x) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-extern long double remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ , __leaf__)); extern long double __remquol (long double __x, long double __y, int *__quo) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern long int lrintl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long int __lrintl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-__extension__
-extern long long int llrintl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long long int __llrintl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long int lroundl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long int __lroundl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-__extension__
-extern long long int llroundl (long double __x) __attribute__ ((__nothrow__ , __leaf__)); extern long long int __llroundl (long double __x) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long double fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)); extern long double __fdiml (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern long double fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __fmaxl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern long double fminl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__)); extern long double __fminl (long double __x, long double __y) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern long double fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ , __leaf__)); extern long double __fmal (long double __x, long double __y, long double __z) __attribute__ ((__nothrow__ , __leaf__));
-extern long double scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ , __leaf__)); extern long double __scalbl (long double __x, long double __n) __attribute__ ((__nothrow__ , __leaf__));
-extern int signgam;
-enum
-  {
-    FP_NAN =
-
-      0,
-    FP_INFINITE =
-
-      1,
-    FP_ZERO =
-
-      2,
-    FP_SUBNORMAL =
-
-      3,
-    FP_NORMAL =
-
-      4
-  };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-struct tm
-{
-  int tm_sec;
-  int tm_min;
-  int tm_hour;
-  int tm_mday;
-  int tm_mon;
-  int tm_year;
-  int tm_wday;
-  int tm_yday;
-  int tm_isdst;
-
-
-  long int tm_gmtoff;
-  const char *tm_zone;
-
-
-
-
-};
-
-
-
-
-
-
-
-struct itimerspec
-  {
-    struct timespec it_interval;
-    struct timespec it_value;
-  };
-struct sigevent;
-
-
-
-
-extern clock_t clock (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern time_t time (time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern double difftime (time_t __time1, time_t __time0)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-extern time_t mktime (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
-extern size_t strftime (char *__restrict __s, size_t __maxsize,
-   const char *__restrict __format,
-   const struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
-extern size_t strftime_l (char *__restrict __s, size_t __maxsize,
-     const char *__restrict __format,
-     const struct tm *__restrict __tp,
-     locale_t __loc) __attribute__ ((__nothrow__ , __leaf__));
-extern struct tm *gmtime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern struct tm *localtime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
-extern struct tm *gmtime_r (const time_t *__restrict __timer,
-       struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern struct tm *localtime_r (const time_t *__restrict __timer,
-          struct tm *__restrict __tp) __attribute__ ((__nothrow__ , __leaf__));
-extern char *asctime (const struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern char *ctime (const time_t *__timer) __attribute__ ((__nothrow__ , __leaf__));
-extern char *asctime_r (const struct tm *__restrict __tp,
-   char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern char *ctime_r (const time_t *__restrict __timer,
-        char *__restrict __buf) __attribute__ ((__nothrow__ , __leaf__));
-extern char *__tzname[2];
-extern int __daylight;
-extern long int __timezone;
-
-
-
-
-extern char *tzname[2];
-
-
-
-extern void tzset (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
+extern long timezone __asm("_" "timezone" );
 
 extern int daylight;
-extern long int timezone;
-extern time_t timegm (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
-extern time_t timelocal (struct tm *__tp) __attribute__ ((__nothrow__ , __leaf__));
 
 
+char *asctime(const struct tm *);
+clock_t clock(void) __asm("_" "clock" );
+char *ctime(const time_t *);
+double difftime(time_t, time_t);
+struct tm *getdate(const char *);
+struct tm *gmtime(const time_t *);
+struct tm *localtime(const time_t *);
+time_t mktime(struct tm *) __asm("_" "mktime" );
+size_t strftime(char * restrict, size_t, const char * restrict, const struct tm * restrict) __asm("_" "strftime" );
+char *strptime(const char * restrict, const char * restrict, struct tm * restrict) __asm("_" "strptime" );
+time_t time(time_t *);
 
 
+void tzset(void);
 
 
 
-extern int dysize (int __year) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-extern int nanosleep (const struct timespec *__requested_time,
-        struct timespec *__remaining);
+char *asctime_r(const struct tm * restrict, char * restrict);
+char *ctime_r(const time_t *, char *);
+struct tm *gmtime_r(const time_t * restrict, struct tm * restrict);
+struct tm *localtime_r(const time_t * restrict, struct tm * restrict);
 
 
-extern int clock_getres (clockid_t __clock_id, struct timespec *__res) __attribute__ ((__nothrow__ , __leaf__));
+time_t posix2time(time_t);
 
 
-extern int clock_gettime (clockid_t __clock_id, struct timespec *__tp)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
 
+void tzsetwall(void);
+time_t time2posix(time_t);
+time_t timelocal(struct tm * const);
+time_t timegm(struct tm * const);
 
-extern int clock_settime (clockid_t __clock_id, const struct timespec *__tp)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-extern int clock_nanosleep (clockid_t __clock_id, int __flags,
-       const struct timespec *__req,
-       struct timespec *__rem);
-extern int clock_getcpuclockid (pid_t __pid, clockid_t *__clock_id) __attribute__ ((__nothrow__ , __leaf__));
 
 
+int nanosleep(const struct timespec *__rqtp, struct timespec *__rmtp) __asm("_" "nanosleep" );
+typedef enum {
+_CLOCK_REALTIME __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 0,
 
+_CLOCK_MONOTONIC __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 6,
 
-extern int timer_create (clockid_t __clock_id,
-    struct sigevent *__restrict __evp,
-    timer_t *__restrict __timerid) __attribute__ ((__nothrow__ , __leaf__));
 
+_CLOCK_MONOTONIC_RAW __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 4,
 
-extern int timer_delete (timer_t __timerid) __attribute__ ((__nothrow__ , __leaf__));
+_CLOCK_MONOTONIC_RAW_APPROX __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 5,
 
+_CLOCK_UPTIME_RAW __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 8,
 
+_CLOCK_UPTIME_RAW_APPROX __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 9,
 
-extern int timer_settime (timer_t __timerid, int __flags,
-     const struct itimerspec *__restrict __value,
-     struct itimerspec *__restrict __ovalue) __attribute__ ((__nothrow__ , __leaf__));
 
+_CLOCK_PROCESS_CPUTIME_ID __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 12,
 
-extern int timer_gettime (timer_t __timerid, struct itimerspec *__value)
-     __attribute__ ((__nothrow__ , __leaf__));
-extern int timer_getoverrun (timer_t __timerid) __attribute__ ((__nothrow__ , __leaf__));
+_CLOCK_THREAD_CPUTIME_ID __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0))) = 16
 
+} clockid_t;
 
+__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)))
+int clock_getres(clockid_t __clock_id, struct timespec *__res);
 
+__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)))
+int clock_gettime(clockid_t __clock_id, struct timespec *__tp);
 
 
+__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0))) __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)))
+__uint64_t clock_gettime_nsec_np(clockid_t __clock_id);
 
-extern int timespec_get (struct timespec *__ts, int __base)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
 
+__attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,unavailable)))
+__attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable)))
+int clock_settime(clockid_t __clock_id, const struct timespec *__tp);
+__attribute__((availability(macos,introduced=10.15))) __attribute__((availability(ios,introduced=13.0))) __attribute__((availability(tvos,introduced=13.0))) __attribute__((availability(watchos,introduced=6.0)))
+int timespec_get(struct timespec *ts, int base);
+void *memchr(const void *__s, int __c, size_t __n);
+int memcmp(const void *__s1, const void *__s2, size_t __n);
+void *memcpy(void *__dst, const void *__src, size_t __n);
+void *memmove(void *__dst, const void *__src, size_t __len);
+void *memset(void *__b, int __c, size_t __len);
+char *strcat(char *__s1, const char *__s2);
+char *strchr(const char *__s, int __c);
+int strcmp(const char *__s1, const char *__s2);
+int strcoll(const char *__s1, const char *__s2);
+char *strcpy(char *__dst, const char *__src);
+size_t strcspn(const char *__s, const char *__charset);
+char *strerror(int __errnum) __asm("_" "strerror" );
+size_t strlen(const char *__s);
+char *strncat(char *__s1, const char *__s2, size_t __n);
+int strncmp(const char *__s1, const char *__s2, size_t __n);
+char *strncpy(char *__dst, const char *__src, size_t __n);
+char *strpbrk(const char *__s, const char *__charset);
+char *strrchr(const char *__s, int __c);
+size_t strspn(const char *__s, const char *__charset);
+char *strstr(const char *__big, const char *__little);
+char *strtok(char *__str, const char *__sep);
+size_t strxfrm(char *__s1, const char *__s2, size_t __n);
+char *strtok_r(char *__str, const char *__sep, char **__lasts);
+int strerror_r(int __errnum, char *__strerrbuf, size_t __buflen);
+char *strdup(const char *__s1);
+void *memccpy(void *__dst, const void *__src, int __c, size_t __n);
+char *stpcpy(char *__dst, const char *__src);
+char *stpncpy(char *__dst, const char *__src, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
+char *strndup(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
+size_t strnlen(const char *__s1, size_t __n) __attribute__((availability(macosx,introduced=10.7)));
+char *strsignal(int __sig);
 
 
 
 
 
 
-extern void *memcpy (void *__restrict __dest, const void *__restrict __src,
-       size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+typedef __darwin_size_t rsize_t;
+typedef int errno_t;
 
 
-extern void *memmove (void *__dest, const void *__src, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+errno_t memset_s(void *__s, rsize_t __smax, int __c, rsize_t __n) __attribute__((availability(macosx,introduced=10.9)));
+void *memmem(const void *__big, size_t __big_len, const void *__little, size_t __little_len) __attribute__((availability(macosx,introduced=10.7)));
+void memset_pattern4(void *__b, const void *__pattern4, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
+void memset_pattern8(void *__b, const void *__pattern8, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
+void memset_pattern16(void *__b, const void *__pattern16, size_t __len) __attribute__((availability(macosx,introduced=10.5)));
 
+char *strcasestr(const char *__big, const char *__little);
+char *strnstr(const char *__big, const char *__little, size_t __len);
+size_t strlcat(char *__dst, const char *__source, size_t __size);
+size_t strlcpy(char *__dst, const char *__source, size_t __size);
+void strmode(int __mode, char *__bp);
+char *strsep(char **__stringp, const char *__delim);
 
 
+void swab(const void * restrict, void * restrict, ssize_t);
 
+__attribute__((availability(macosx,introduced=10.12.1))) __attribute__((availability(ios,introduced=10.1)))
+__attribute__((availability(tvos,introduced=10.0.1))) __attribute__((availability(watchos,introduced=3.1)))
+int timingsafe_bcmp(const void *__b1, const void *__b2, size_t __len);
 
-extern void *memccpy (void *__restrict __dest, const void *__restrict __src,
-        int __c, size_t __n)
-    __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2))) __attribute__ ((__access__ (__write_only__, 1, 4)));
+__attribute__((availability(macosx,introduced=11.0))) __attribute__((availability(ios,introduced=14.0)))
+__attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)))
+int strsignal_r(int __sig, char *__strsignalbuf, size_t __buflen);
 
 
 
 
-extern void *memset (void *__s, int __c, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
 
 
-extern int memcmp (const void *__s1, const void *__s2, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-extern int __memcmpeq (const void *__s1, const void *__s2, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-extern void *memchr (const void *__s, int __c, size_t __n)
-      __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-extern char *strcpy (char *__restrict __dest, const char *__restrict __src)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
 
-extern char *strncpy (char *__restrict __dest,
-        const char *__restrict __src, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+int bcmp(const void *, const void *, size_t) ;
+void bcopy(const void *, void *, size_t) ;
+void bzero(void *, size_t) ;
+char *index(const char *, int) ;
+char *rindex(const char *, int) ;
 
 
-extern char *strcat (char *__restrict __dest, const char *__restrict __src)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
+int ffs(int);
+int strcasecmp(const char *, const char *);
+int strncasecmp(const char *, const char *, size_t);
 
-extern char *strncat (char *__restrict __dest, const char *__restrict __src,
-        size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
 
 
-extern int strcmp (const char *__s1, const char *__s2)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
-extern int strncmp (const char *__s1, const char *__s2, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
+int ffsl(long) __attribute__((availability(macosx,introduced=10.5)));
+int ffsll(long long) __attribute__((availability(macosx,introduced=10.9)));
+int fls(int) __attribute__((availability(macosx,introduced=10.5)));
+int flsl(long) __attribute__((availability(macosx,introduced=10.5)));
+int flsll(long long) __attribute__((availability(macosx,introduced=10.9)));
 
-extern int strcoll (const char *__s1, const char *__s2)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
-extern size_t strxfrm (char *__restrict __dest,
-         const char *__restrict __src, size_t __n)
-    __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2))) __attribute__ ((__access__ (__write_only__, 1, 3)));
 
 
 
 
+struct accessx_descriptor {
+ unsigned int ad_name_offset;
+ int ad_flags;
+ int ad_pad[2];
+};
+int getattrlistbulk(int, void *, void *, size_t, uint64_t) __attribute__((availability(macosx,introduced=10.10)));
+int getattrlistat(int, const char *, void *, void *, size_t, unsigned long) __attribute__((availability(macosx,introduced=10.10)));
+int setattrlistat(int, const char *, void *, void *, size_t, uint32_t) __attribute__((availability(macosx,introduced=10.13))) __attribute__((availability(ios,introduced=11.0))) __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));
+ssize_t freadlink(int, char * restrict, size_t) __attribute__((availability(macos,introduced=13.0))) __attribute__((availability(ios,introduced=16.0))) __attribute__((availability(tvos,introduced=16.0))) __attribute__((availability(watchos,introduced=9.0)));
+typedef __darwin_gid_t gid_t;
 
 
-extern int strcoll_l (const char *__s1, const char *__s2, locale_t __l)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
 
 
-extern size_t strxfrm_l (char *__dest, const char *__src, size_t __n,
-    locale_t __l) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 4)))
-     __attribute__ ((__access__ (__write_only__, 1, 3)));
+int faccessat(int, const char *, int, int) __attribute__((availability(macosx,introduced=10.10)));
+int fchownat(int, const char *, uid_t, gid_t, int) __attribute__((availability(macosx,introduced=10.10)));
+int linkat(int, const char *, int, const char *, int) __attribute__((availability(macosx,introduced=10.10)));
+ssize_t readlinkat(int, const char *, char *, size_t) __attribute__((availability(macosx,introduced=10.10)));
+int symlinkat(const char *, int, const char *) __attribute__((availability(macosx,introduced=10.10)));
+int unlinkat(int, const char *, int) __attribute__((availability(macosx,introduced=10.10)));
+typedef __darwin_useconds_t useconds_t;
+void _exit(int) __attribute__((__noreturn__));
+int access(const char *, int);
+unsigned int
+  alarm(unsigned int);
+int chdir(const char *);
+int chown(const char *, uid_t, gid_t);
 
+int close(int) __asm("_" "close" );
 
+int dup(int);
+int dup2(int, int);
+int execl(const char * __path, const char * __arg0, ...) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int execle(const char * __path, const char * __arg0, ...) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int execlp(const char * __file, const char * __arg0, ...) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int execv(const char * __path, char * const * __argv) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int execve(const char * __file, char * const * __argv, char * const * __envp) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int execvp(const char * __file, char * const * __argv) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+pid_t fork(void) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+long fpathconf(int, int);
+char *getcwd(char *, size_t);
+gid_t getegid(void);
+uid_t geteuid(void);
+gid_t getgid(void);
 
 
 
-extern char *strdup (const char *__s)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
+int getgroups(int, gid_t []);
 
+char *getlogin(void);
+pid_t getpgrp(void);
+pid_t getpid(void);
+pid_t getppid(void);
+uid_t getuid(void);
+int isatty(int);
+int link(const char *, const char *);
+off_t lseek(int, off_t, int);
+long pathconf(const char *, int);
 
+int pause(void) __asm("_" "pause" );
 
+int pipe(int [2]);
 
+ssize_t read(int, void *, size_t) __asm("_" "read" );
 
+int rmdir(const char *);
+int setgid(gid_t);
+int setpgid(pid_t, pid_t);
+pid_t setsid(void);
+int setuid(uid_t);
 
-extern char *strndup (const char *__string, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__malloc__)) __attribute__ ((__nonnull__ (1)));
-extern char *strchr (const char *__s, int __c)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-extern char *strrchr (const char *__s, int __c)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-extern size_t strcspn (const char *__s, const char *__reject)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
+unsigned int
+  sleep(unsigned int) __asm("_" "sleep" );
 
+long sysconf(int);
+pid_t tcgetpgrp(int);
+int tcsetpgrp(int, pid_t);
+char *ttyname(int);
 
-extern size_t strspn (const char *__s, const char *__accept)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-extern char *strpbrk (const char *__s, const char *__accept)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-extern char *strstr (const char *__haystack, const char *__needle)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
 
+int ttyname_r(int, char *, size_t) __asm("_" "ttyname_r" );
 
 
 
-extern char *strtok (char *__restrict __s, const char *__restrict __delim)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
 
+int unlink(const char *);
 
+ssize_t write(int __fd, const void * __buf, size_t __nbyte) __asm("_" "write" );
+size_t confstr(int, char *, size_t) __asm("_" "confstr" );
 
-extern char *__strtok_r (char *__restrict __s,
-    const char *__restrict __delim,
-    char **__restrict __save_ptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 3)));
-
-extern char *strtok_r (char *__restrict __s, const char *__restrict __delim,
-         char **__restrict __save_ptr)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 3)));
-extern size_t strlen (const char *__s)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-extern size_t strnlen (const char *__string, size_t __maxlen)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-extern char *strerror (int __errnum) __attribute__ ((__nothrow__ , __leaf__));
-extern int strerror_r (int __errnum, char *__buf, size_t __buflen) __asm__ ("" "__xpg_strerror_r") __attribute__ ((__nothrow__ , __leaf__))
-
-                        __attribute__ ((__nonnull__ (2)))
-    __attribute__ ((__access__ (__write_only__, 2, 3)));
-extern char *strerror_l (int __errnum, locale_t __l) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-
-
-
-
-
-
-extern int bcmp (const void *__s1, const void *__s2, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern void bcopy (const void *__src, void *__dest, size_t __n)
-  __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern void bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-extern char *index (const char *__s, int __c)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-extern char *rindex (const char *__s, int __c)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-extern int ffs (int __i) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-
-
-extern int ffsl (long int __l) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-__extension__ extern int ffsll (long long int __ll)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
-
-
-
-extern int strcasecmp (const char *__s1, const char *__s2)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-extern int strncasecmp (const char *__s1, const char *__s2, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-
-
-
-extern int strcasecmp_l (const char *__s1, const char *__s2, locale_t __loc)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 3)));
-
-
-
-extern int strncasecmp_l (const char *__s1, const char *__s2,
-     size_t __n, locale_t __loc)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__pure__)) __attribute__ ((__nonnull__ (1, 2, 4)));
-
-
-
-
-
-
-extern void explicit_bzero (void *__s, size_t __n) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)))
-    __attribute__ ((__access__ (__write_only__, 1, 2)));
-
-
-
-extern char *strsep (char **__restrict __stringp,
-       const char *__restrict __delim)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-
-extern char *strsignal (int __sig) __attribute__ ((__nothrow__ , __leaf__));
-extern char *__stpcpy (char *__restrict __dest, const char *__restrict __src)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-extern char *stpcpy (char *__restrict __dest, const char *__restrict __src)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-extern char *__stpncpy (char *__restrict __dest,
-   const char *__restrict __src, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-extern char *stpncpy (char *__restrict __dest,
-        const char *__restrict __src, size_t __n)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-
-
-typedef __useconds_t useconds_t;
-typedef __socklen_t socklen_t;
-extern int access (const char *__name, int __type) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-extern int faccessat (int __fd, const char *__file, int __type, int __flag)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2))) ;
-extern __off_t lseek (int __fd, __off_t __offset, int __whence) __attribute__ ((__nothrow__ , __leaf__));
-extern int close (int __fd);
-
-
-
-
-extern void closefrom (int __lowfd) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-
-extern ssize_t read (int __fd, void *__buf, size_t __nbytes)
-    __attribute__ ((__access__ (__write_only__, 2, 3)));
-
-
-
-
-
-extern ssize_t write (int __fd, const void *__buf, size_t __n)
-    __attribute__ ((__access__ (__read_only__, 2, 3)));
-extern ssize_t pread (int __fd, void *__buf, size_t __nbytes,
-        __off_t __offset)
-    __attribute__ ((__access__ (__write_only__, 2, 3)));
-
-
-
-
-
-
-extern ssize_t pwrite (int __fd, const void *__buf, size_t __n,
-         __off_t __offset)
-    __attribute__ ((__access__ (__read_only__, 2, 3)));
-extern int pipe (int __pipedes[2]) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern unsigned int alarm (unsigned int __seconds) __attribute__ ((__nothrow__ , __leaf__));
-extern unsigned int sleep (unsigned int __seconds);
-
-
-
-
-
-
-
-extern __useconds_t ualarm (__useconds_t __value, __useconds_t __interval)
-     __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern int usleep (__useconds_t __useconds);
-extern int pause (void);
-
-
-
-extern int chown (const char *__file, __uid_t __owner, __gid_t __group)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-extern int fchown (int __fd, __uid_t __owner, __gid_t __group) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern int lchown (const char *__file, __uid_t __owner, __gid_t __group)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-
-
-
-extern int fchownat (int __fd, const char *__file, __uid_t __owner,
-       __gid_t __group, int __flag)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2))) ;
-
-
-
-extern int chdir (const char *__path) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-
-
-
-extern int fchdir (int __fd) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern char *getcwd (char *__buf, size_t __size) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern char *getwd (char *__buf)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) __attribute__ ((__deprecated__))
-    __attribute__ ((__access__ (__write_only__, 1)));
-
-
-
-
-extern int dup (int __fd) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-extern int dup2 (int __fd, int __fd2) __attribute__ ((__nothrow__ , __leaf__));
-extern char **__environ;
-
-
-
-
-
-
-
-extern int execve (const char *__path, char *const __argv[],
-     char *const __envp[]) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-
-extern int fexecve (int __fd, char *const __argv[], char *const __envp[])
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-
-
-
-
-extern int execv (const char *__path, char *const __argv[])
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-extern int execle (const char *__path, const char *__arg, ...)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-extern int execl (const char *__path, const char *__arg, ...)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-extern int execvp (const char *__file, char *const __argv[])
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-
-
-
-
-extern int execlp (const char *__file, const char *__arg, ...)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-extern int nice (int __inc) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern void _exit (int __status) __attribute__ ((__noreturn__));
-
-
-
-
-
-enum
-  {
-    _PC_LINK_MAX,
-
-    _PC_MAX_CANON,
-
-    _PC_MAX_INPUT,
-
-    _PC_NAME_MAX,
-
-    _PC_PATH_MAX,
-
-    _PC_PIPE_BUF,
-
-    _PC_CHOWN_RESTRICTED,
-
-    _PC_NO_TRUNC,
-
-    _PC_VDISABLE,
-
-    _PC_SYNC_IO,
-
-    _PC_ASYNC_IO,
-
-    _PC_PRIO_IO,
-
-    _PC_SOCK_MAXBUF,
-
-    _PC_FILESIZEBITS,
-
-    _PC_REC_INCR_XFER_SIZE,
-
-    _PC_REC_MAX_XFER_SIZE,
-
-    _PC_REC_MIN_XFER_SIZE,
-
-    _PC_REC_XFER_ALIGN,
-
-    _PC_ALLOC_SIZE_MIN,
-
-    _PC_SYMLINK_MAX,
-
-    _PC_2_SYMLINKS
-
-  };
-
-
-enum
-  {
-    _SC_ARG_MAX,
-
-    _SC_CHILD_MAX,
-
-    _SC_CLK_TCK,
-
-    _SC_NGROUPS_MAX,
-
-    _SC_OPEN_MAX,
-
-    _SC_STREAM_MAX,
-
-    _SC_TZNAME_MAX,
-
-    _SC_JOB_CONTROL,
-
-    _SC_SAVED_IDS,
-
-    _SC_REALTIME_SIGNALS,
-
-    _SC_PRIORITY_SCHEDULING,
-
-    _SC_TIMERS,
-
-    _SC_ASYNCHRONOUS_IO,
-
-    _SC_PRIORITIZED_IO,
-
-    _SC_SYNCHRONIZED_IO,
-
-    _SC_FSYNC,
-
-    _SC_MAPPED_FILES,
-
-    _SC_MEMLOCK,
-
-    _SC_MEMLOCK_RANGE,
-
-    _SC_MEMORY_PROTECTION,
-
-    _SC_MESSAGE_PASSING,
-
-    _SC_SEMAPHORES,
-
-    _SC_SHARED_MEMORY_OBJECTS,
-
-    _SC_AIO_LISTIO_MAX,
-
-    _SC_AIO_MAX,
-
-    _SC_AIO_PRIO_DELTA_MAX,
-
-    _SC_DELAYTIMER_MAX,
-
-    _SC_MQ_OPEN_MAX,
-
-    _SC_MQ_PRIO_MAX,
-
-    _SC_VERSION,
-
-    _SC_PAGESIZE,
-
-
-    _SC_RTSIG_MAX,
-
-    _SC_SEM_NSEMS_MAX,
-
-    _SC_SEM_VALUE_MAX,
-
-    _SC_SIGQUEUE_MAX,
-
-    _SC_TIMER_MAX,
-
-
-
-
-    _SC_BC_BASE_MAX,
-
-    _SC_BC_DIM_MAX,
-
-    _SC_BC_SCALE_MAX,
-
-    _SC_BC_STRING_MAX,
-
-    _SC_COLL_WEIGHTS_MAX,
-
-    _SC_EQUIV_CLASS_MAX,
-
-    _SC_EXPR_NEST_MAX,
-
-    _SC_LINE_MAX,
-
-    _SC_RE_DUP_MAX,
-
-    _SC_CHARCLASS_NAME_MAX,
-
-
-    _SC_2_VERSION,
-
-    _SC_2_C_BIND,
-
-    _SC_2_C_DEV,
-
-    _SC_2_FORT_DEV,
-
-    _SC_2_FORT_RUN,
-
-    _SC_2_SW_DEV,
-
-    _SC_2_LOCALEDEF,
-
-
-    _SC_PII,
-
-    _SC_PII_XTI,
-
-    _SC_PII_SOCKET,
-
-    _SC_PII_INTERNET,
-
-    _SC_PII_OSI,
-
-    _SC_POLL,
-
-    _SC_SELECT,
-
-    _SC_UIO_MAXIOV,
-
-    _SC_IOV_MAX = _SC_UIO_MAXIOV,
-
-    _SC_PII_INTERNET_STREAM,
-
-    _SC_PII_INTERNET_DGRAM,
-
-    _SC_PII_OSI_COTS,
-
-    _SC_PII_OSI_CLTS,
-
-    _SC_PII_OSI_M,
-
-    _SC_T_IOV_MAX,
-
-
-
-    _SC_THREADS,
-
-    _SC_THREAD_SAFE_FUNCTIONS,
-
-    _SC_GETGR_R_SIZE_MAX,
-
-    _SC_GETPW_R_SIZE_MAX,
-
-    _SC_LOGIN_NAME_MAX,
-
-    _SC_TTY_NAME_MAX,
-
-    _SC_THREAD_DESTRUCTOR_ITERATIONS,
-
-    _SC_THREAD_KEYS_MAX,
-
-    _SC_THREAD_STACK_MIN,
-
-    _SC_THREAD_THREADS_MAX,
-
-    _SC_THREAD_ATTR_STACKADDR,
-
-    _SC_THREAD_ATTR_STACKSIZE,
-
-    _SC_THREAD_PRIORITY_SCHEDULING,
-
-    _SC_THREAD_PRIO_INHERIT,
-
-    _SC_THREAD_PRIO_PROTECT,
-
-    _SC_THREAD_PROCESS_SHARED,
-
-
-    _SC_NPROCESSORS_CONF,
-
-    _SC_NPROCESSORS_ONLN,
-
-    _SC_PHYS_PAGES,
-
-    _SC_AVPHYS_PAGES,
-
-    _SC_ATEXIT_MAX,
-
-    _SC_PASS_MAX,
-
-
-    _SC_XOPEN_VERSION,
-
-    _SC_XOPEN_XCU_VERSION,
-
-    _SC_XOPEN_UNIX,
-
-    _SC_XOPEN_CRYPT,
-
-    _SC_XOPEN_ENH_I18N,
-
-    _SC_XOPEN_SHM,
-
-
-    _SC_2_CHAR_TERM,
-
-    _SC_2_C_VERSION,
-
-    _SC_2_UPE,
-
-
-    _SC_XOPEN_XPG2,
-
-    _SC_XOPEN_XPG3,
-
-    _SC_XOPEN_XPG4,
-
-
-    _SC_CHAR_BIT,
-
-    _SC_CHAR_MAX,
-
-    _SC_CHAR_MIN,
-
-    _SC_INT_MAX,
-
-    _SC_INT_MIN,
-
-    _SC_LONG_BIT,
-
-    _SC_WORD_BIT,
-
-    _SC_MB_LEN_MAX,
-
-    _SC_NZERO,
-
-    _SC_SSIZE_MAX,
-
-    _SC_SCHAR_MAX,
-
-    _SC_SCHAR_MIN,
-
-    _SC_SHRT_MAX,
-
-    _SC_SHRT_MIN,
-
-    _SC_UCHAR_MAX,
-
-    _SC_UINT_MAX,
-
-    _SC_ULONG_MAX,
-
-    _SC_USHRT_MAX,
-
-
-    _SC_NL_ARGMAX,
-
-    _SC_NL_LANGMAX,
-
-    _SC_NL_MSGMAX,
-
-    _SC_NL_NMAX,
-
-    _SC_NL_SETMAX,
-
-    _SC_NL_TEXTMAX,
-
-
-    _SC_XBS5_ILP32_OFF32,
-
-    _SC_XBS5_ILP32_OFFBIG,
-
-    _SC_XBS5_LP64_OFF64,
-
-    _SC_XBS5_LPBIG_OFFBIG,
-
-
-    _SC_XOPEN_LEGACY,
-
-    _SC_XOPEN_REALTIME,
-
-    _SC_XOPEN_REALTIME_THREADS,
-
-
-    _SC_ADVISORY_INFO,
-
-    _SC_BARRIERS,
-
-    _SC_BASE,
-
-    _SC_C_LANG_SUPPORT,
-
-    _SC_C_LANG_SUPPORT_R,
-
-    _SC_CLOCK_SELECTION,
-
-    _SC_CPUTIME,
-
-    _SC_THREAD_CPUTIME,
-
-    _SC_DEVICE_IO,
-
-    _SC_DEVICE_SPECIFIC,
-
-    _SC_DEVICE_SPECIFIC_R,
-
-    _SC_FD_MGMT,
-
-    _SC_FIFO,
-
-    _SC_PIPE,
-
-    _SC_FILE_ATTRIBUTES,
-
-    _SC_FILE_LOCKING,
-
-    _SC_FILE_SYSTEM,
-
-    _SC_MONOTONIC_CLOCK,
-
-    _SC_MULTI_PROCESS,
-
-    _SC_SINGLE_PROCESS,
-
-    _SC_NETWORKING,
-
-    _SC_READER_WRITER_LOCKS,
-
-    _SC_SPIN_LOCKS,
-
-    _SC_REGEXP,
-
-    _SC_REGEX_VERSION,
-
-    _SC_SHELL,
-
-    _SC_SIGNALS,
-
-    _SC_SPAWN,
-
-    _SC_SPORADIC_SERVER,
-
-    _SC_THREAD_SPORADIC_SERVER,
-
-    _SC_SYSTEM_DATABASE,
-
-    _SC_SYSTEM_DATABASE_R,
-
-    _SC_TIMEOUTS,
-
-    _SC_TYPED_MEMORY_OBJECTS,
-
-    _SC_USER_GROUPS,
-
-    _SC_USER_GROUPS_R,
-
-    _SC_2_PBS,
-
-    _SC_2_PBS_ACCOUNTING,
-
-    _SC_2_PBS_LOCATE,
-
-    _SC_2_PBS_MESSAGE,
-
-    _SC_2_PBS_TRACK,
-
-    _SC_SYMLOOP_MAX,
-
-    _SC_STREAMS,
-
-    _SC_2_PBS_CHECKPOINT,
-
-
-    _SC_V6_ILP32_OFF32,
-
-    _SC_V6_ILP32_OFFBIG,
-
-    _SC_V6_LP64_OFF64,
-
-    _SC_V6_LPBIG_OFFBIG,
-
-
-    _SC_HOST_NAME_MAX,
-
-    _SC_TRACE,
-
-    _SC_TRACE_EVENT_FILTER,
-
-    _SC_TRACE_INHERIT,
-
-    _SC_TRACE_LOG,
-
-
-    _SC_LEVEL1_ICACHE_SIZE,
-
-    _SC_LEVEL1_ICACHE_ASSOC,
-
-    _SC_LEVEL1_ICACHE_LINESIZE,
-
-    _SC_LEVEL1_DCACHE_SIZE,
-
-    _SC_LEVEL1_DCACHE_ASSOC,
-
-    _SC_LEVEL1_DCACHE_LINESIZE,
-
-    _SC_LEVEL2_CACHE_SIZE,
-
-    _SC_LEVEL2_CACHE_ASSOC,
-
-    _SC_LEVEL2_CACHE_LINESIZE,
-
-    _SC_LEVEL3_CACHE_SIZE,
-
-    _SC_LEVEL3_CACHE_ASSOC,
-
-    _SC_LEVEL3_CACHE_LINESIZE,
-
-    _SC_LEVEL4_CACHE_SIZE,
-
-    _SC_LEVEL4_CACHE_ASSOC,
-
-    _SC_LEVEL4_CACHE_LINESIZE,
-
-
-
-    _SC_IPV6 = _SC_LEVEL1_ICACHE_SIZE + 50,
-
-    _SC_RAW_SOCKETS,
-
-
-    _SC_V7_ILP32_OFF32,
-
-    _SC_V7_ILP32_OFFBIG,
-
-    _SC_V7_LP64_OFF64,
-
-    _SC_V7_LPBIG_OFFBIG,
-
-
-    _SC_SS_REPL_MAX,
-
-
-    _SC_TRACE_EVENT_NAME_MAX,
-
-    _SC_TRACE_NAME_MAX,
-
-    _SC_TRACE_SYS_MAX,
-
-    _SC_TRACE_USER_EVENT_MAX,
-
-
-    _SC_XOPEN_STREAMS,
-
-
-    _SC_THREAD_ROBUST_PRIO_INHERIT,
-
-    _SC_THREAD_ROBUST_PRIO_PROTECT,
-
-
-    _SC_MINSIGSTKSZ,
-
-
-    _SC_SIGSTKSZ
-
-  };
-
-
-enum
-  {
-    _CS_PATH,
-
-
-    _CS_V6_WIDTH_RESTRICTED_ENVS,
-
-
-
-    _CS_GNU_LIBC_VERSION,
-
-    _CS_GNU_LIBPTHREAD_VERSION,
-
-
-    _CS_V5_WIDTH_RESTRICTED_ENVS,
-
-
-
-    _CS_V7_WIDTH_RESTRICTED_ENVS,
-
-
-
-    _CS_LFS_CFLAGS = 1000,
-
-    _CS_LFS_LDFLAGS,
-
-    _CS_LFS_LIBS,
-
-    _CS_LFS_LINTFLAGS,
-
-    _CS_LFS64_CFLAGS,
-
-    _CS_LFS64_LDFLAGS,
-
-    _CS_LFS64_LIBS,
-
-    _CS_LFS64_LINTFLAGS,
-
-
-    _CS_XBS5_ILP32_OFF32_CFLAGS = 1100,
-
-    _CS_XBS5_ILP32_OFF32_LDFLAGS,
-
-    _CS_XBS5_ILP32_OFF32_LIBS,
-
-    _CS_XBS5_ILP32_OFF32_LINTFLAGS,
-
-    _CS_XBS5_ILP32_OFFBIG_CFLAGS,
-
-    _CS_XBS5_ILP32_OFFBIG_LDFLAGS,
-
-    _CS_XBS5_ILP32_OFFBIG_LIBS,
-
-    _CS_XBS5_ILP32_OFFBIG_LINTFLAGS,
-
-    _CS_XBS5_LP64_OFF64_CFLAGS,
-
-    _CS_XBS5_LP64_OFF64_LDFLAGS,
-
-    _CS_XBS5_LP64_OFF64_LIBS,
-
-    _CS_XBS5_LP64_OFF64_LINTFLAGS,
-
-    _CS_XBS5_LPBIG_OFFBIG_CFLAGS,
-
-    _CS_XBS5_LPBIG_OFFBIG_LDFLAGS,
-
-    _CS_XBS5_LPBIG_OFFBIG_LIBS,
-
-    _CS_XBS5_LPBIG_OFFBIG_LINTFLAGS,
-
-
-    _CS_POSIX_V6_ILP32_OFF32_CFLAGS,
-
-    _CS_POSIX_V6_ILP32_OFF32_LDFLAGS,
-
-    _CS_POSIX_V6_ILP32_OFF32_LIBS,
-
-    _CS_POSIX_V6_ILP32_OFF32_LINTFLAGS,
-
-    _CS_POSIX_V6_ILP32_OFFBIG_CFLAGS,
-
-    _CS_POSIX_V6_ILP32_OFFBIG_LDFLAGS,
-
-    _CS_POSIX_V6_ILP32_OFFBIG_LIBS,
-
-    _CS_POSIX_V6_ILP32_OFFBIG_LINTFLAGS,
-
-    _CS_POSIX_V6_LP64_OFF64_CFLAGS,
-
-    _CS_POSIX_V6_LP64_OFF64_LDFLAGS,
-
-    _CS_POSIX_V6_LP64_OFF64_LIBS,
-
-    _CS_POSIX_V6_LP64_OFF64_LINTFLAGS,
-
-    _CS_POSIX_V6_LPBIG_OFFBIG_CFLAGS,
-
-    _CS_POSIX_V6_LPBIG_OFFBIG_LDFLAGS,
-
-    _CS_POSIX_V6_LPBIG_OFFBIG_LIBS,
-
-    _CS_POSIX_V6_LPBIG_OFFBIG_LINTFLAGS,
-
-
-    _CS_POSIX_V7_ILP32_OFF32_CFLAGS,
-
-    _CS_POSIX_V7_ILP32_OFF32_LDFLAGS,
-
-    _CS_POSIX_V7_ILP32_OFF32_LIBS,
-
-    _CS_POSIX_V7_ILP32_OFF32_LINTFLAGS,
-
-    _CS_POSIX_V7_ILP32_OFFBIG_CFLAGS,
-
-    _CS_POSIX_V7_ILP32_OFFBIG_LDFLAGS,
-
-    _CS_POSIX_V7_ILP32_OFFBIG_LIBS,
-
-    _CS_POSIX_V7_ILP32_OFFBIG_LINTFLAGS,
-
-    _CS_POSIX_V7_LP64_OFF64_CFLAGS,
-
-    _CS_POSIX_V7_LP64_OFF64_LDFLAGS,
-
-    _CS_POSIX_V7_LP64_OFF64_LIBS,
-
-    _CS_POSIX_V7_LP64_OFF64_LINTFLAGS,
-
-    _CS_POSIX_V7_LPBIG_OFFBIG_CFLAGS,
-
-    _CS_POSIX_V7_LPBIG_OFFBIG_LDFLAGS,
-
-    _CS_POSIX_V7_LPBIG_OFFBIG_LIBS,
-
-    _CS_POSIX_V7_LPBIG_OFFBIG_LINTFLAGS,
-
-
-    _CS_V6_ENV,
-
-    _CS_V7_ENV
-
-  };
-
-
-extern long int pathconf (const char *__path, int __name)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-extern long int fpathconf (int __fd, int __name) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern long int sysconf (int __name) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern size_t confstr (int __name, char *__buf, size_t __len) __attribute__ ((__nothrow__ , __leaf__))
-    __attribute__ ((__access__ (__write_only__, 2, 3)));
-
-
-
-
-extern __pid_t getpid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern __pid_t getppid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern __pid_t getpgrp (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern __pid_t __getpgid (__pid_t __pid) __attribute__ ((__nothrow__ , __leaf__));
-
-extern __pid_t getpgid (__pid_t __pid) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern int setpgid (__pid_t __pid, __pid_t __pgid) __attribute__ ((__nothrow__ , __leaf__));
-extern int setpgrp (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern __pid_t setsid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern __pid_t getsid (__pid_t __pid) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern __uid_t getuid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern __uid_t geteuid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern __gid_t getgid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern __gid_t getegid (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern int getgroups (int __size, __gid_t __list[]) __attribute__ ((__nothrow__ , __leaf__))
-    __attribute__ ((__access__ (__write_only__, 2, 1)));
-extern int setuid (__uid_t __uid) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern int setreuid (__uid_t __ruid, __uid_t __euid) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern int seteuid (__uid_t __uid) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-
-
-extern int setgid (__gid_t __gid) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern int setregid (__gid_t __rgid, __gid_t __egid) __attribute__ ((__nothrow__ , __leaf__)) ;
-
-
-
-
-extern int setegid (__gid_t __gid) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern __pid_t fork (void) __attribute__ ((__nothrow__));
-
-
-
-
-
-
-
-extern __pid_t vfork (void) __attribute__ ((__nothrow__ , __leaf__));
-extern char *ttyname (int __fd) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-extern int ttyname_r (int __fd, char *__buf, size_t __buflen)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)))
-     __attribute__ ((__access__ (__write_only__, 2, 3)));
-
-
-
-extern int isatty (int __fd) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern int ttyslot (void) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-extern int link (const char *__from, const char *__to)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2))) ;
-
-
-
-
-extern int linkat (int __fromfd, const char *__from, int __tofd,
-     const char *__to, int __flags)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 4))) ;
-
-
-
-
-extern int symlink (const char *__from, const char *__to)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2))) ;
-
-
-
-
-extern ssize_t readlink (const char *__restrict __path,
-    char *__restrict __buf, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)))
-     __attribute__ ((__access__ (__write_only__, 2, 3)));
-
-
-
-
-
-extern int symlinkat (const char *__from, int __tofd,
-        const char *__to) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 3))) ;
-
-
-extern ssize_t readlinkat (int __fd, const char *__restrict __path,
-      char *__restrict __buf, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 3)))
-     __attribute__ ((__access__ (__write_only__, 3, 4)));
-
-
-
-extern int unlink (const char *__name) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-extern int unlinkat (int __fd, const char *__name, int __flag)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2)));
-
-
-
-extern int rmdir (const char *__path) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-extern __pid_t tcgetpgrp (int __fd) __attribute__ ((__nothrow__ , __leaf__));
-
-
-extern int tcsetpgrp (int __fd, __pid_t __pgrp_id) __attribute__ ((__nothrow__ , __leaf__));
-
-
-
-
-
-
-extern char *getlogin (void);
-
-
-
-
-
-
-
-extern int getlogin_r (char *__name, size_t __name_len) __attribute__ ((__nonnull__ (1)))
-    __attribute__ ((__access__ (__write_only__, 1, 2)));
-
-
-
-
-extern int setlogin (const char *__name) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+int getopt(int, char * const [], const char *) __asm("_" "getopt" );
 
 extern char *optarg;
-extern int optind;
+extern int optind, opterr, optopt;
+__attribute__((__deprecated__)) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)))
 
+void *brk(const void *);
+int chroot(const char *) ;
 
 
+char *crypt(const char *, const char *);
 
-extern int opterr;
+void encrypt(char *, int) __asm("_" "encrypt" );
 
 
 
-extern int optopt;
-extern int getopt (int ___argc, char *const *___argv, const char *__shortopts)
-       __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (2, 3)));
+int fchdir(int);
+long gethostid(void);
+pid_t getpgid(pid_t);
+pid_t getsid(pid_t);
 
 
 
+int getdtablesize(void) ;
+int getpagesize(void) __attribute__((__const__)) ;
+char *getpass(const char *) ;
 
 
 
 
+char *getwd(char *) ;
 
 
+int lchown(const char *, uid_t, gid_t) __asm("_" "lchown" );
 
+int lockf(int, int, off_t) __asm("_" "lockf" );
 
+int nice(int) __asm("_" "nice" );
 
-extern int gethostname (char *__name, size_t __len) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)))
-    __attribute__ ((__access__ (__write_only__, 1, 2)));
+ssize_t pread(int __fd, void * __buf, size_t __nbyte, off_t __offset) __asm("_" "pread" );
 
+ssize_t pwrite(int __fd, const void * __buf, size_t __nbyte, off_t __offset) __asm("_" "pwrite" );
 
 
 
 
 
-extern int sethostname (const char *__name, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) __attribute__ ((__access__ (__read_only__, 1, 2)));
 
+__attribute__((__deprecated__)) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)))
 
+void *sbrk(int);
 
-extern int sethostid (long int __id) __attribute__ ((__nothrow__ , __leaf__)) ;
 
 
+pid_t setpgrp(void) __asm("_" "setpgrp" );
 
 
 
-extern int getdomainname (char *__name, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)))
-     __attribute__ ((__access__ (__write_only__, 1, 2)));
-extern int setdomainname (const char *__name, size_t __len)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) __attribute__ ((__access__ (__read_only__, 1, 2)));
 
+int setregid(gid_t, gid_t) __asm("_" "setregid" );
 
+int setreuid(uid_t, uid_t) __asm("_" "setreuid" );
 
+void swab(const void * restrict, void * restrict, ssize_t);
+void sync(void);
+int truncate(const char *, off_t);
+useconds_t ualarm(useconds_t, useconds_t);
+int usleep(useconds_t) __asm("_" "usleep" );
 
-extern int vhangup (void) __attribute__ ((__nothrow__ , __leaf__));
 
+__attribute__((__deprecated__("Use posix_spawn or fork")))
 
-extern int revoke (const char *__file) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
+pid_t vfork(void) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
 
 
+int fsync(int) __asm("_" "fsync" );
 
+int ftruncate(int, off_t);
+int getlogin_r(char *, size_t);
+int fchown(int, uid_t, gid_t);
+int gethostname(char *, size_t);
+ssize_t readlink(const char * restrict, char * restrict, size_t);
+int setegid(gid_t);
+int seteuid(uid_t);
+int symlink(const char *, const char *);
+typedef struct fd_set {
+ __int32_t fds_bits[((((1024) % ((sizeof(__int32_t) * 8))) == 0) ? ((1024) / ((sizeof(__int32_t) * 8))) : (((1024) / ((sizeof(__int32_t) * 8))) + 1))];
+} fd_set;
 
+int __darwin_check_fd_set_overflow(int, const void *, int) __attribute__((availability(macos,introduced=11.0))) __attribute__((availability(ios,introduced=14.0))) __attribute__((availability(tvos,introduced=14.0))) __attribute__((availability(watchos,introduced=7.0)));
 
 
+inline __attribute__ ((__always_inline__)) int
+__darwin_check_fd_set(int _a, const void *_b)
+{
 
-extern int profil (unsigned short int *__sample_buffer, size_t __size,
-     size_t __offset, unsigned int __scale)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1)));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunguarded-availability-new"
 
+ if ((uintptr_t)&__darwin_check_fd_set_overflow != (uintptr_t) 0) {
 
 
 
+  return __darwin_check_fd_set_overflow(_a, _b, 0);
 
-extern int acct (const char *__name) __attribute__ ((__nothrow__ , __leaf__));
+ } else {
+  return 1;
+ }
 
+#pragma clang diagnostic pop
 
+}
 
-extern char *getusershell (void) __attribute__ ((__nothrow__ , __leaf__));
-extern void endusershell (void) __attribute__ ((__nothrow__ , __leaf__));
-extern void setusershell (void) __attribute__ ((__nothrow__ , __leaf__));
 
+inline __attribute__ ((__always_inline__)) int
+__darwin_fd_isset(int _fd, const struct fd_set *_p)
+{
+ if (__darwin_check_fd_set(_fd, (const void *) _p)) {
+  return _p->fds_bits[(unsigned long)_fd / (sizeof(__int32_t) * 8)] & ((__int32_t)(((unsigned long)1) << ((unsigned long)_fd % (sizeof(__int32_t) * 8))));
+ }
 
+ return 0;
+}
 
+inline __attribute__ ((__always_inline__)) void
+__darwin_fd_set(int _fd, struct fd_set *const _p)
+{
+ if (__darwin_check_fd_set(_fd, (const void *) _p)) {
+  (_p->fds_bits[(unsigned long)_fd / (sizeof(__int32_t) * 8)] |= ((__int32_t)(((unsigned long)1) << ((unsigned long)_fd % (sizeof(__int32_t) * 8)))));
+ }
+}
 
+inline __attribute__ ((__always_inline__)) void
+__darwin_fd_clr(int _fd, struct fd_set *const _p)
+{
+ if (__darwin_check_fd_set(_fd, (const void *) _p)) {
+  (_p->fds_bits[(unsigned long)_fd / (sizeof(__int32_t) * 8)] &= ~((__int32_t)(((unsigned long)1) << ((unsigned long)_fd % (sizeof(__int32_t) * 8)))));
+ }
+}
+typedef __darwin_suseconds_t suseconds_t;
 
-extern int daemon (int __nochdir, int __noclose) __attribute__ ((__nothrow__ , __leaf__)) ;
 
 
 
 
 
 
-extern int chroot (const char *__path) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
 
+int pselect(int, fd_set * restrict, fd_set * restrict,
+    fd_set * restrict, const struct timespec * restrict,
+    const sigset_t * restrict)
 
 
-extern char *getpass (const char *__prompt) __attribute__ ((__nonnull__ (1)));
 
 
+__asm("_" "pselect" )
 
 
 
 
+;
 
-extern int fsync (int __fd);
-extern long int gethostid (void);
 
 
-extern void sync (void) __attribute__ ((__nothrow__ , __leaf__));
 
+int select(int, fd_set * restrict, fd_set * restrict,
+    fd_set * restrict, struct timeval * restrict)
 
 
 
 
-extern int getpagesize (void) __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__const__));
 
+__asm("_" "select" )
 
 
 
-extern int getdtablesize (void) __attribute__ ((__nothrow__ , __leaf__));
-extern int truncate (const char *__file, __off_t __length)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1))) ;
-extern int ftruncate (int __fd, __off_t __length) __attribute__ ((__nothrow__ , __leaf__)) ;
-extern int brk (void *__addr) __attribute__ ((__nothrow__ , __leaf__)) ;
 
+;
 
 
 
+typedef __darwin_uuid_t uuid_t;
 
-extern void *sbrk (intptr_t __delta) __attribute__ ((__nothrow__ , __leaf__));
-extern long int syscall (long int __sysno, ...) __attribute__ ((__nothrow__ , __leaf__));
-extern int lockf (int __fd, int __cmd, __off_t __len) ;
-extern int fdatasync (int __fildes);
-extern char *crypt (const char *__key, const char *__salt)
-     __attribute__ ((__nothrow__ , __leaf__)) __attribute__ ((__nonnull__ (1, 2)));
-int getentropy (void *__buffer, size_t __length)
-    __attribute__ ((__access__ (__write_only__, 1, 2)));
 
+void _Exit(int) __attribute__((__noreturn__));
+int accessx_np(const struct accessx_descriptor *, size_t, int *, uid_t);
+int acct(const char *);
+int add_profil(char *, size_t, unsigned long, unsigned int) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+void endusershell(void);
+int execvP(const char * __file, const char * __searchpath, char * const * __argv) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+char *fflagstostr(unsigned long);
+int getdomainname(char *, int);
+int getgrouplist(const char *, int, int *, int *);
 
 
+
+
+
+int gethostuuid(uuid_t, const struct timespec *) __attribute__((availability(macos,introduced=10.5))) __attribute__((availability(ios,unavailable))) __attribute__((availability(tvos,unavailable))) __attribute__((availability(watchos,unavailable)));
+
+
+
+
+
+mode_t getmode(const void *, mode_t);
+int getpeereid(int, uid_t *, gid_t *);
+int getsgroups_np(int *, uuid_t);
+char *getusershell(void);
+int getwgroups_np(int *, uuid_t);
+int initgroups(const char *, int);
+int issetugid(void);
+char *mkdtemp(char *);
+int mknod(const char *, mode_t, dev_t);
+int mkpath_np(const char *path, mode_t omode) __attribute__((availability(macosx,introduced=10.8)));
+int mkpathat_np(int dfd, const char *path, mode_t omode)
+  __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0)))
+  __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));
+int mkstemp(char *);
+int mkstemps(char *, int);
+char *mktemp(char *);
+int mkostemp(char *path, int oflags)
+  __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0)))
+  __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));
+int mkostemps(char *path, int slen, int oflags)
+  __attribute__((availability(macosx,introduced=10.12))) __attribute__((availability(ios,introduced=10.0)))
+  __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));
+
+int mkstemp_dprotected_np(char *path, int dpclass, int dpflags)
+  __attribute__((availability(macosx,unavailable))) __attribute__((availability(ios,introduced=10.0)))
+  __attribute__((availability(tvos,introduced=10.0))) __attribute__((availability(watchos,introduced=3.0)));
+char *mkdtempat_np(int dfd, char *path)
+  __attribute__((availability(macosx,introduced=10.13))) __attribute__((availability(ios,introduced=11.0)))
+  __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));
+int mkstempsat_np(int dfd, char *path, int slen)
+  __attribute__((availability(macosx,introduced=10.13))) __attribute__((availability(ios,introduced=11.0)))
+  __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));
+int mkostempsat_np(int dfd, char *path, int slen, int oflags)
+  __attribute__((availability(macosx,introduced=10.13))) __attribute__((availability(ios,introduced=11.0)))
+  __attribute__((availability(tvos,introduced=11.0))) __attribute__((availability(watchos,introduced=4.0)));
+int nfssvc(int, void *);
+int profil(char *, size_t, unsigned long, unsigned int);
+
+__attribute__((__deprecated__("Use of per-thread security contexts is error-prone and discouraged.")))
+int pthread_setugid_np(uid_t, gid_t);
+int pthread_getugid_np( uid_t *, gid_t *);
+
+int reboot(int);
+int revoke(const char *);
+
+__attribute__((__deprecated__)) int rcmd(char **, int, const char *, const char *, const char *, int *);
+__attribute__((__deprecated__)) int rcmd_af(char **, int, const char *, const char *, const char *, int *,
+  int);
+__attribute__((__deprecated__)) int rresvport(int *);
+__attribute__((__deprecated__)) int rresvport_af(int *, int);
+__attribute__((__deprecated__)) int iruserok(unsigned long, int, const char *, const char *);
+__attribute__((__deprecated__)) int iruserok_sa(const void *, int, int, const char *, const char *);
+__attribute__((__deprecated__)) int ruserok(const char *, int, const char *, const char *);
+
+int setdomainname(const char *, int);
+int setgroups(int, const gid_t *);
+void sethostid(long);
+int sethostname(const char *, int);
+
+void setkey(const char *) __asm("_" "setkey" );
+
+
+
+int setlogin(const char *);
+void *setmode(const char *) __asm("_" "setmode" );
+int setrgid(gid_t);
+int setruid(uid_t);
+int setsgroups_np(int, const uuid_t);
+void setusershell(void);
+int setwgroups_np(int, const uuid_t);
+int strtofflags(char **, unsigned long *, unsigned long *);
+int swapon(const char *);
+int ttyslot(void);
+int undelete(const char *);
+int unwhiteout(const char *);
+void *valloc(size_t);
+
+__attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)))
+__attribute__((availability(ios,deprecated=10.0,message="syscall(2) is unsupported; " "please switch to a supported interface. For SYS_kdebug_trace use kdebug_signpost().")))
+
+__attribute__((availability(macosx,deprecated=10.12,message="syscall(2) is unsupported; " "please switch to a supported interface. For SYS_kdebug_trace use kdebug_signpost().")))
+
+int syscall(int, ...);
+
+extern char *suboptarg;
+int getsubopt(char **, char * const *, char **);
+
+
+
+int fgetattrlist(int,void*,void*,size_t,unsigned int) __attribute__((availability(macosx,introduced=10.6)));
+int fsetattrlist(int,void*,void*,size_t,unsigned int) __attribute__((availability(macosx,introduced=10.6)));
+int getattrlist(const char*,void*,void*,size_t,unsigned int) __asm("_" "getattrlist" );
+int setattrlist(const char*,void*,void*,size_t,unsigned int) __asm("_" "setattrlist" );
+int exchangedata(const char*,const char*,unsigned int) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int getdirentriesattr(int,void*,void*,size_t,unsigned int*,unsigned int*,unsigned int*,unsigned int) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+struct fssearchblock;
+struct searchstate;
+
+int searchfs(const char *, struct fssearchblock *, unsigned long *, unsigned int, unsigned int, struct searchstate *) __attribute__((availability(watchos,unavailable))) __attribute__((availability(tvos,unavailable)));
+int fsctl(const char *,unsigned long,void*,unsigned int);
+int ffsctl(int,unsigned long,void*,unsigned int) __attribute__((availability(macosx,introduced=10.6)));
+
+
+
+
+int fsync_volume_np(int, int) __attribute__((availability(macosx,introduced=10.8)));
+int sync_volume_np(const char *, int) __attribute__((availability(macosx,introduced=10.8)));
+
+extern int optreset;
 
 
 
@@ -4168,33 +2635,15 @@ int getentropy (void *__buffer, size_t __length)
 
 FILE *fopen_check(const char *path, const char *mode, const char *file, int line) {
     FILE *fp = fopen(path, mode);
-    if (fp == 
-             ((void *)0)
-                 ) {
-        fprintf(
-               stderr
-                     , "Error: Failed to open file '%s' at %s:%d\n", path, file, line);
-        fprintf(
-               stderr
-                     , "Error details:\n");
-        fprintf(
-               stderr
-                     , "  File: %s\n", file);
-        fprintf(
-               stderr
-                     , "  Line: %d\n", line);
-        fprintf(
-               stderr
-                     , "  Path: %s\n", path);
-        fprintf(
-               stderr
-                     , "  Mode: %s\n", mode);
-        fprintf(
-               stderr
-                     , "---> HINT: try to re-run `python train_gpt2.py`\n");
-        exit(
-            1
-                        );
+    if (fp == ((void *)0)) {
+        fprintf(__stderrp, "Error: Failed to open file '%s' at %s:%d\n", path, file, line);
+        fprintf(__stderrp, "Error details:\n");
+        fprintf(__stderrp, "  File: %s\n", file);
+        fprintf(__stderrp, "  Line: %d\n", line);
+        fprintf(__stderrp, "  Path: %s\n", path);
+        fprintf(__stderrp, "  Mode: %s\n", mode);
+        fprintf(__stderrp, "---> HINT: try to re-run `python train_gpt2.py`\n");
+        exit(1);
     }
     return fp;
 }
@@ -4205,37 +2654,19 @@ void fread_check(void *ptr, size_t size, size_t nmemb, FILE *stream, const char 
     size_t result = fread(ptr, size, nmemb, stream);
     if (result != nmemb) {
         if (feof(stream)) {
-            fprintf(
-                   stderr
-                         , "Error: Unexpected end of file at %s:%d\n", file, line);
+            fprintf(__stderrp, "Error: Unexpected end of file at %s:%d\n", file, line);
         } else if (ferror(stream)) {
-            fprintf(
-                   stderr
-                         , "Error: File read error at %s:%d\n", file, line);
+            fprintf(__stderrp, "Error: File read error at %s:%d\n", file, line);
         } else {
-            fprintf(
-                   stderr
-                         , "Error: Partial read at %s:%d. Expected %zu elements, read %zu\n",
+            fprintf(__stderrp, "Error: Partial read at %s:%d. Expected %zu elements, read %zu\n",
                     file, line, nmemb, result);
         }
-        fprintf(
-               stderr
-                     , "Error details:\n");
-        fprintf(
-               stderr
-                     , "  File: %s\n", file);
-        fprintf(
-               stderr
-                     , "  Line: %d\n", line);
-        fprintf(
-               stderr
-                     , "  Expected elements: %zu\n", nmemb);
-        fprintf(
-               stderr
-                     , "  Read elements: %zu\n", result);
-        exit(
-            1
-                        );
+        fprintf(__stderrp, "Error details:\n");
+        fprintf(__stderrp, "  File: %s\n", file);
+        fprintf(__stderrp, "  Line: %d\n", line);
+        fprintf(__stderrp, "  Expected elements: %zu\n", nmemb);
+        fprintf(__stderrp, "  Read elements: %zu\n", result);
+        exit(1);
     }
 }
 
@@ -4243,21 +2674,11 @@ void fread_check(void *ptr, size_t size, size_t nmemb, FILE *stream, const char 
 
 void fclose_check(FILE *fp, const char *file, int line) {
     if (fclose(fp) != 0) {
-        fprintf(
-               stderr
-                     , "Error: Failed to close file at %s:%d\n", file, line);
-        fprintf(
-               stderr
-                     , "Error details:\n");
-        fprintf(
-               stderr
-                     , "  File: %s\n", file);
-        fprintf(
-               stderr
-                     , "  Line: %d\n", line);
-        exit(
-            1
-                        );
+        fprintf(__stderrp, "Error: Failed to close file at %s:%d\n", file, line);
+        fprintf(__stderrp, "Error details:\n");
+        fprintf(__stderrp, "  File: %s\n", file);
+        fprintf(__stderrp, "  Line: %d\n", line);
+        exit(1);
     }
 }
 
@@ -4265,27 +2686,13 @@ void fclose_check(FILE *fp, const char *file, int line) {
 
 void fseek_check(FILE *fp, long off, int whence, const char *file, int line) {
     if (fseek(fp, off, whence) != 0) {
-        fprintf(
-               stderr
-                     , "Error: Failed to seek in file at %s:%d\n", file, line);
-        fprintf(
-               stderr
-                     , "Error details:\n");
-        fprintf(
-               stderr
-                     , "  Offset: %ld\n", off);
-        fprintf(
-               stderr
-                     , "  Whence: %d\n", whence);
-        fprintf(
-               stderr
-                     , "  File:   %s\n", file);
-        fprintf(
-               stderr
-                     , "  Line:   %d\n", line);
-        exit(
-            1
-                        );
+        fprintf(__stderrp, "Error: Failed to seek in file at %s:%d\n", file, line);
+        fprintf(__stderrp, "Error details:\n");
+        fprintf(__stderrp, "  Offset: %ld\n", off);
+        fprintf(__stderrp, "  Whence: %d\n", whence);
+        fprintf(__stderrp, "  File:   %s\n", file);
+        fprintf(__stderrp, "  Line:   %d\n", line);
+        exit(1);
     }
 }
 
@@ -4296,31 +2703,18 @@ void fseek_check(FILE *fp, long off, int whence, const char *file, int line) {
 
 void *malloc_check(size_t size, const char *file, int line) {
     void *ptr = malloc(size);
-    if (ptr == 
-              ((void *)0)
-                  ) {
-        fprintf(
-               stderr
-                     , "Error: Memory allocation failed at %s:%d\n", file, line);
-        fprintf(
-               stderr
-                     , "Error details:\n");
-        fprintf(
-               stderr
-                     , "  File: %s\n", file);
-        fprintf(
-               stderr
-                     , "  Line: %d\n", line);
-        fprintf(
-               stderr
-                     , "  Size: %zu bytes\n", size);
-        exit(
-            1
-                        );
+    if (ptr == ((void *)0)) {
+        fprintf(__stderrp, "Error: Memory allocation failed at %s:%d\n", file, line);
+        fprintf(__stderrp, "Error details:\n");
+        fprintf(__stderrp, "  File: %s\n", file);
+        fprintf(__stderrp, "  Line: %d\n", line);
+        fprintf(__stderrp, "  Size: %zu bytes\n", size);
+        exit(1);
     }
     return ptr;
 }
 
+void __assert_rtn(const char *, const char *, int, const char *) __attribute__((__noreturn__)) __attribute__((__cold__)) __attribute__((__disable_tail_calls__));
 
 
 
@@ -4337,23 +2731,13 @@ typedef struct {
 void safe_printf(const char *piece) {
 
 
-    if (piece == 
-                ((void *)0)
-                    ) { return; }
+    if (piece == ((void *)0)) { return; }
     if (piece[0] == '\0') { return; }
 
 
     if (piece[1] == '\0') {
         unsigned char byte_val = piece[0];
-        if (!(
-             ((*__ctype_b_loc ())[(int) ((
-             byte_val
-             ))] & (unsigned short int) _ISprint) 
-                               || 
-                                  ((*__ctype_b_loc ())[(int) ((
-                                  byte_val
-                                  ))] & (unsigned short int) _ISspace)
-                                                   )) {
+        if (!(isprint(byte_val) || isspace(byte_val))) {
             return;
         }
     }
@@ -4362,9 +2746,7 @@ void safe_printf(const char *piece) {
 
 void tokenizer_init(Tokenizer *tokenizer, const char *filename) {
     FILE *file = fopen(filename, "rb");
-    if (file == 
-               ((void *)0)
-                   ) {
+    if (file == ((void *)0)) {
 
         printf("---\n");
         printf("WARNING: Failed to open the tokenizer file %s\n", filename);
@@ -4376,78 +2758,46 @@ void tokenizer_init(Tokenizer *tokenizer, const char *filename) {
     }
 
     uint32_t header[256];
-    fread_check(header, sizeof(uint32_t), 256, file, "/root/llm.c/tokenizer.h", 55);
-    
-   ((void) sizeof ((
-   header[0] == 20240328
-   ) ? 1 : 0), __extension__ ({ if (
-   header[0] == 20240328
-   ) ; else __assert_fail (
-   "header[0] == 20240328"
-   , "/root/llm.c/tokenizer.h", 56, __extension__ __PRETTY_FUNCTION__); }))
-                                ;
+    fread_check(header, sizeof(uint32_t), 256, file, "./tokenizer.h", 55);
+    (__builtin_expect(!(header[0] == 20240328), 0) ? __assert_rtn(__func__, "tokenizer.h", 56, "header[0] == 20240328") : (void)0);
     int version = header[1];
     tokenizer->vocab_size = header[2];
     if (version == 1) {
 
 
-        
-       ((void) sizeof ((
-       tokenizer->vocab_size == 50257
-       ) ? 1 : 0), __extension__ ({ if (
-       tokenizer->vocab_size == 50257
-       ) ; else __assert_fail (
-       "tokenizer->vocab_size == 50257"
-       , "/root/llm.c/tokenizer.h", 62, __extension__ __PRETTY_FUNCTION__); }))
-                                             ;
+        (__builtin_expect(!(tokenizer->vocab_size == 50257), 0) ? __assert_rtn(__func__, "tokenizer.h", 62, "tokenizer->vocab_size == 50257") : (void)0);
         tokenizer->eot_token = 50256;
     } else if (version == 2) {
         tokenizer->eot_token = header[3];
     } else {
-        fprintf(
-               stderr
-                     , "Tokenizer model file %s has bad version: %d\n", filename, version);
-        exit(
-            1
-                        );
+        fprintf(__stderrp, "Tokenizer model file %s has bad version: %d\n", filename, version);
+        exit(1);
     }
 
     unsigned char length;
-    tokenizer->token_table = (char **)malloc_check(tokenizer->vocab_size * sizeof(char *), "/root/llm.c/tokenizer.h", 72);
+    tokenizer->token_table = (char **)malloc_check(tokenizer->vocab_size * sizeof(char *), "./tokenizer.h", 72);
     for (uint32_t i = 0; i < tokenizer->vocab_size; i++) {
-        fread_check(&length, sizeof(unsigned char), 1, file, "/root/llm.c/tokenizer.h", 74);
-        
-       ((void) sizeof ((
-       length > 0
-       ) ? 1 : 0), __extension__ ({ if (
-       length > 0
-       ) ; else __assert_fail (
-       "length > 0"
-       , "/root/llm.c/tokenizer.h", 75, __extension__ __PRETTY_FUNCTION__); }))
-                         ;
-        char *token_bytes = (char *)malloc_check(length + 1, "/root/llm.c/tokenizer.h", 76);
-        fread_check(token_bytes, sizeof(char), length, file, "/root/llm.c/tokenizer.h", 77);
+        fread_check(&length, sizeof(unsigned char), 1, file, "./tokenizer.h", 74);
+        (__builtin_expect(!(length > 0), 0) ? __assert_rtn(__func__, "tokenizer.h", 75, "length > 0") : (void)0);
+        char *token_bytes = (char *)malloc_check(length + 1, "./tokenizer.h", 76);
+        fread_check(token_bytes, sizeof(char), length, file, "./tokenizer.h", 77);
         token_bytes[length] = '\0';
         tokenizer->token_table[i] = token_bytes;
     }
 
-    fclose_check(file, "/root/llm.c/tokenizer.h", 82);
+    fclose_check(file, "./tokenizer.h", 82);
     tokenizer->init_ok = 1;
 }
 
 const char *tokenizer_decode(Tokenizer *tokenizer, uint32_t token_id) {
     if (tokenizer->init_ok == 0) {
-        return 
-              ((void *)0)
-                  ;
+        return ((void *)0);
     }
     if (token_id < tokenizer->vocab_size) {
         return tokenizer->token_table[token_id];
     } else {
         printf("invalid token id %d!\n", token_id);
-        return 
-              ((void *)0)
-                  ;
+        return ((void *)0);
     }
 }
 
@@ -4605,9 +2955,7 @@ void matmul_forward(float* out,
             float* out_bt = out + b * T * OC + t * OC;
             float* inp_bt = inp + b * T * C + t * C;
             for (int o = 0; o < OC; o++) {
-                float val = (bias != 
-                                    ((void *)0)
-                                        ) ? bias[o] : 0.0f;
+                float val = (bias != ((void *)0)) ? bias[o] : 0.0f;
                 float* wrow = weight + o*C;
                 for (int i = 0; i < C; i++) {
                     val += inp_bt[i] * wrow[i];
@@ -4649,9 +2997,7 @@ void matmul_backward(float* dinp, float* dweight, float* dbias,
                 float* inp_bt = inp + b * T * C + t * C;
                 float* dwrow = dweight + o*C;
                 float d = dout_bt[o];
-                if (dbias != 
-                            ((void *)0)
-                                ) { dbias[o] += d; }
+                if (dbias != ((void *)0)) { dbias[o] += d; }
                 for (int i = 0; i < C; i++) {
                     dwrow[i] += inp_bt[i] * d;
                 }
@@ -4802,30 +3148,24 @@ void gelu_forward(float* out, float* inp, int N) {
     for (int i = 0; i < N; i++) {
         float x = inp[i];
         float cube = 0.044715f * x * x * x;
-        out[i] = 0.5f * x * (1.0f + tanhf(sqrtf(2.0f / 
-                                         3.14159265358979323846
-                                         ) * (x + cube)));
+        out[i] = 0.5f * x * (1.0f + tanhf(sqrtf(2.0f / 3.14159265358979323846264338327950288) * (x + cube)));
     }
 }
 
 
 #pragma float_control(precise, on, push)
 
-__attribute__((optimize("no-finite-math-only")))
+
 
 void gelu_backward(float* dinp, float* inp, float* dout, int N) {
     for (int i = 0; i < N; i++) {
         float x = inp[i];
         float cube = 0.044715f * x * x * x;
-        float tanh_arg = sqrtf(2.0f / 
-                        3.14159265358979323846
-                        ) * (x + cube);
+        float tanh_arg = sqrtf(2.0f / 3.14159265358979323846264338327950288) * (x + cube);
         float tanh_out = tanhf(tanh_arg);
         float coshf_out = coshf(tanh_arg);
         float sech_out = 1.0f / (coshf_out * coshf_out);
-        float local_grad = 0.5f * (1.0f + tanh_out) + x * 0.5f * sech_out * sqrtf(2.0f / 
-                                                                           3.14159265358979323846
-                                                                           ) * (1.0f + 3.0f * 0.044715f * x * x);
+        float local_grad = 0.5f * (1.0f + tanh_out) + x * 0.5f * sech_out * sqrtf(2.0f / 3.14159265358979323846264338327950288) * (1.0f + 3.0f * 0.044715f * x * x);
         dinp[i] += local_grad * dout[i];
     }
 }
@@ -4981,7 +3321,7 @@ float* malloc_and_point_parameters(ParameterTensors* params, size_t* param_sizes
         num_parameters += param_sizes[i];
     }
 
-    float* params_memory = (float*)malloc_check(num_parameters * sizeof(float), "/root/llm.c/train_gpt2.c", 540);
+    float* params_memory = (float*)malloc_check(num_parameters * sizeof(float), "train_gpt2.c", 540);
 
     float** ptrs[] = {
         &params->wte, &params->wpe, &params->ln1w, &params->ln1b, &params->qkvw, &params->qkvb,
@@ -5028,7 +3368,7 @@ float* malloc_and_point_activations(ActivationTensors* acts, size_t* act_sizes) 
     for (size_t i = 0; i < 23; i++) {
         num_activations += act_sizes[i];
     }
-    float* acts_memory = (float*)malloc_check(num_activations * sizeof(float), "/root/llm.c/train_gpt2.c", 587);
+    float* acts_memory = (float*)malloc_check(num_activations * sizeof(float), "train_gpt2.c", 587);
     float** ptrs[] = {
         &acts->encoded, &acts->ln1, &acts->ln1_mean, &acts->ln1_rstd, &acts->qkv, &acts->atty,
         &acts->preatt, &acts->att, &acts->attproj, &acts->residual2, &acts->ln2, &acts->ln2_mean,
@@ -5075,12 +3415,10 @@ typedef struct {
 void gpt2_build_from_checkpoint(GPT2 *model, const char* checkpoint_path) {
 
 
-    FILE *model_file = fopen_check(checkpoint_path, "rb", "/root/llm.c/train_gpt2.c", 634);
-    if (model_file == 
-                     ((void *)0)
-                         ) { printf("Error opening model file\n"); exit(1); }
+    FILE *model_file = fopen_check(checkpoint_path, "rb", "train_gpt2.c", 634);
+    if (model_file == ((void *)0)) { printf("Error opening model file\n"); exit(1); }
     int model_header[256];
-    fread_check(model_header, sizeof(int), 256, model_file, "/root/llm.c/train_gpt2.c", 637);
+    fread_check(model_header, sizeof(int), 256, model_file, "train_gpt2.c", 637);
     if (model_header[0] != 20240326) { printf("Bad magic model file\n"); exit(1); }
     if (model_header[1] != 3) {
         printf("Bad version in model file\n");
@@ -5117,31 +3455,17 @@ void gpt2_build_from_checkpoint(GPT2 *model, const char* checkpoint_path) {
 
 
     model->params_memory = malloc_and_point_parameters(&model->params, model->param_sizes);
-    fread_check(model->params_memory, sizeof(float), num_parameters, model_file, "/root/llm.c/train_gpt2.c", 674);
-    fclose_check(model_file, "/root/llm.c/train_gpt2.c", 675);
+    fread_check(model->params_memory, sizeof(float), num_parameters, model_file, "train_gpt2.c", 674);
+    fclose_check(model_file, "train_gpt2.c", 675);
 
 
-    model->acts_memory = 
-                        ((void *)0)
-                            ;
-    model->grads_memory = 
-                         ((void *)0)
-                             ;
-    model->m_memory = 
-                     ((void *)0)
-                         ;
-    model->v_memory = 
-                     ((void *)0)
-                         ;
-    model->grads_acts_memory = 
-                              ((void *)0)
-                                  ;
-    model->inputs = 
-                   ((void *)0)
-                       ;
-    model->targets = 
-                    ((void *)0)
-                        ;
+    model->acts_memory = ((void *)0);
+    model->grads_memory = ((void *)0);
+    model->m_memory = ((void *)0);
+    model->v_memory = ((void *)0);
+    model->grads_acts_memory = ((void *)0);
+    model->inputs = ((void *)0);
+    model->targets = ((void *)0);
     model->batch_size = 0;
     model->seq_len = 0;
     model->mean_loss = -1.0f;
@@ -5151,9 +3475,7 @@ void gpt2_forward(GPT2 *model, int* inputs, int* targets, size_t B, size_t T) {
 
 
 
-    if (model->params_memory == 
-                               ((void *)0)
-                                   ) {
+    if (model->params_memory == ((void *)0)) {
         printf("Error: model was not initialized properly.\n");
         exit(1);
     }
@@ -5167,34 +3489,14 @@ void gpt2_forward(GPT2 *model, int* inputs, int* targets, size_t B, size_t T) {
 
 
     for(int i = 0; i < B * T; i++) {
-        
-       ((void) sizeof ((
-       0 <= inputs[i] && inputs[i] < V
-       ) ? 1 : 0), __extension__ ({ if (
-       0 <= inputs[i] && inputs[i] < V
-       ) ; else __assert_fail (
-       "0 <= inputs[i] && inputs[i] < V"
-       , "/root/llm.c/train_gpt2.c", 708, __extension__ __PRETTY_FUNCTION__); }))
-                                              ;
-        if (targets != 
-                      ((void *)0)
-                          ) {
-            
-           ((void) sizeof ((
-           0 <= targets[i] && targets[i] < V
-           ) ? 1 : 0), __extension__ ({ if (
-           0 <= targets[i] && targets[i] < V
-           ) ; else __assert_fail (
-           "0 <= targets[i] && targets[i] < V"
-           , "/root/llm.c/train_gpt2.c", 710, __extension__ __PRETTY_FUNCTION__); }))
-                                                    ;
+        (__builtin_expect(!(0 <= inputs[i] && inputs[i] < V), 0) ? __assert_rtn(__func__, "train_gpt2.c", 708, "0 <= inputs[i] && inputs[i] < V") : (void)0);
+        if (targets != ((void *)0)) {
+            (__builtin_expect(!(0 <= targets[i] && targets[i] < V), 0) ? __assert_rtn(__func__, "train_gpt2.c", 710, "0 <= targets[i] && targets[i] < V") : (void)0);
         }
     }
 
 
-    if(model->acts_memory == 
-                            ((void *)0)
-                                ) {
+    if(model->acts_memory == ((void *)0)) {
 
         model->batch_size = B;
         model->seq_len = T;
@@ -5230,25 +3532,21 @@ void gpt2_forward(GPT2 *model, int* inputs, int* targets, size_t B, size_t T) {
         model->num_activations = num_activations;
         model->acts_memory = malloc_and_point_activations(&model->acts, model->act_sizes);
 
-        model->inputs = (int*)malloc_check(B * T * sizeof(int), "/root/llm.c/train_gpt2.c", 751);
-        model->targets = (int*)malloc_check(B * T * sizeof(int), "/root/llm.c/train_gpt2.c", 752);
+        model->inputs = (int*)malloc_check(B * T * sizeof(int), "train_gpt2.c", 751);
+        model->targets = (int*)malloc_check(B * T * sizeof(int), "train_gpt2.c", 752);
     } else {
 
 
         if (B != model->batch_size || T != model->seq_len) {
             printf("Model: B=%d T=%d, Desired: B=%d T=%d\n", model->batch_size, model->seq_len, (int)B, (int)T);
-            exit(
-                1
-                            );
+            exit(1);
         }
     }
 
 
-    memcpy(model->inputs, inputs, B * T * sizeof(int));
-    if (targets != 
-                  ((void *)0)
-                      ) {
-        memcpy(model->targets, targets, B * T * sizeof(int));
+    __builtin___memcpy_chk (model->inputs, inputs, B * T * sizeof(int), __builtin_object_size (model->inputs, 0));
+    if (targets != ((void *)0)) {
+        __builtin___memcpy_chk (model->targets, targets, B * T * sizeof(int), __builtin_object_size (model->targets, 0));
     }
 
 
@@ -5306,15 +3604,11 @@ void gpt2_forward(GPT2 *model, int* inputs, int* targets, size_t B, size_t T) {
     }
     residual = acts.residual3 + (L-1) * B * T * C;
     layernorm_forward(acts.lnf, acts.lnf_mean, acts.lnf_rstd, residual, params.lnfw, params.lnfb, B, T, C);
-    matmul_forward(acts.logits, acts.lnf, params.wte, 
-                                                     ((void *)0)
-                                                         , B, T, C, Vp);
+    matmul_forward(acts.logits, acts.lnf, params.wte, ((void *)0), B, T, C, Vp);
     softmax_forward(acts.probs, acts.logits, B, T, V, Vp);
 
 
-    if (targets != 
-                  ((void *)0)
-                      ) {
+    if (targets != ((void *)0)) {
         crossentropy_forward(model->acts.losses, model->acts.probs, targets, B, T, Vp);
 
         float mean_loss = 0.0f;
@@ -5328,12 +3622,8 @@ void gpt2_forward(GPT2 *model, int* inputs, int* targets, size_t B, size_t T) {
 }
 
 void gpt2_zero_grad(GPT2 *model) {
-    if(model->grads_memory != 
-                             ((void *)0)
-                                 ) { memset(model->grads_memory, 0, model->num_parameters * sizeof(float)); }
-    if(model->grads_acts_memory != 
-                                  ((void *)0)
-                                      ) { memset(model->grads_acts_memory, 0, model->num_activations * sizeof(float)); }
+    if(model->grads_memory != ((void *)0)) { __builtin___memset_chk (model->grads_memory, 0, model->num_parameters * sizeof(float), __builtin_object_size (model->grads_memory, 0)); }
+    if(model->grads_acts_memory != ((void *)0)) { __builtin___memset_chk (model->grads_acts_memory, 0, model->num_activations * sizeof(float), __builtin_object_size (model->grads_acts_memory, 0)); }
 }
 
 void gpt2_backward(GPT2 *model) {
@@ -5345,9 +3635,7 @@ void gpt2_backward(GPT2 *model) {
     }
 
 
-    if (model->grads_memory == 
-                              ((void *)0)
-                                  ) {
+    if (model->grads_memory == ((void *)0)) {
         model->grads_memory = malloc_and_point_parameters(&model->grads, model->param_sizes);
         model->grads_acts_memory = malloc_and_point_activations(&model->grads_acts, model->act_sizes);
         gpt2_zero_grad(model);
@@ -5375,9 +3663,7 @@ void gpt2_backward(GPT2 *model) {
     for (int i = 0; i < B*T; i++) { grads_acts.losses[i] = dloss_mean; }
 
     crossentropy_softmax_backward(grads_acts.logits, grads_acts.losses, acts.probs, model->targets, B, T, V, Vp);
-    matmul_backward(grads_acts.lnf, grads.wte, 
-                                              ((void *)0)
-                                                  , grads_acts.logits, acts.lnf, params.wte, B, T, C, Vp);
+    matmul_backward(grads_acts.lnf, grads.wte, ((void *)0), grads_acts.logits, acts.lnf, params.wte, B, T, C, Vp);
     float* residual = acts.residual3 + (L-1) * B * T * C;
     float* dresidual = grads_acts.residual3 + (L-1) * B * T * C;
     layernorm_backward(dresidual, grads.lnfw, grads.lnfb, grads_acts.lnf, residual, params.lnfw, acts.lnf_mean, acts.lnf_rstd, B, T, C);
@@ -5453,9 +3739,7 @@ void gpt2_update(GPT2 *model, float learning_rate, float beta1, float beta2, flo
 
 
 
-    if (model->m_memory == 
-                          ((void *)0)
-                              ) {
+    if (model->m_memory == ((void *)0)) {
         model->m_memory = (float*)calloc(model->num_parameters, sizeof(float));
         model->v_memory = (float*)calloc(model->num_parameters, sizeof(float));
     }
@@ -5511,21 +3795,15 @@ void dataloader_init(DataLoader *loader, const char* filename, int B, int T) {
 
 
     loader->tokens_file = fopen(filename, "rb");
-    if (loader->tokens_file == 
-                              ((void *)0)
-                                  ) {
+    if (loader->tokens_file == ((void *)0)) {
         printf("Error opening tokens file\n");
         exit(1);
     }
 
 
-    fseek_check(loader->tokens_file, 0, 
-   2
-   , "/root/llm.c/train_gpt2.c", 1028);
+    fseek_check(loader->tokens_file, 0, 2, "train_gpt2.c", 1028);
     loader->file_size = ftell(loader->tokens_file);
-    fseek_check(loader->tokens_file, 0, 
-   0
-   , "/root/llm.c/train_gpt2.c", 1030);
+    fseek_check(loader->tokens_file, 0, 0, "train_gpt2.c", 1030);
     if (loader->file_size < (B * T + 1) * sizeof(int)) {
         printf("Error: file size is too small for the batch size and sequence length\n");
         exit(1);
@@ -5533,7 +3811,7 @@ void dataloader_init(DataLoader *loader, const char* filename, int B, int T) {
     loader->current_position = 0;
 
 
-    loader->batch = (int*) malloc_check((B * T + 1) * sizeof(int), "/root/llm.c/train_gpt2.c", 1038);
+    loader->batch = (int*) malloc_check((B * T + 1) * sizeof(int), "train_gpt2.c", 1038);
     loader->inputs = loader->batch;
     loader->targets = loader->batch + 1;
     loader->num_batches = loader->file_size / (B * T * sizeof(int));
@@ -5551,16 +3829,14 @@ void dataloader_next_batch(DataLoader *loader) {
         loader->current_position = 0;
     }
 
-    fseek_check(loader->tokens_file, loader->current_position, 
-   0
-   , "/root/llm.c/train_gpt2.c", 1056);
-    fread_check(loader->batch, sizeof(int), B*T+1, loader->tokens_file, "/root/llm.c/train_gpt2.c", 1057);
+    fseek_check(loader->tokens_file, loader->current_position, 0, "train_gpt2.c", 1056);
+    fread_check(loader->batch, sizeof(int), B*T+1, loader->tokens_file, "train_gpt2.c", 1057);
 
     loader->current_position += B*T * sizeof(int);
 }
 
 void dataloader_free(DataLoader *loader) {
-    fclose_check(loader->tokens_file, "/root/llm.c/train_gpt2.c", 1063);
+    fclose_check(loader->tokens_file, "train_gpt2.c", 1063);
     free(loader->batch);
 }
 
@@ -5607,12 +3883,8 @@ int main() {
     const char* tiny_stories_val = "data/TinyStories_val.bin";
     const char* tiny_shakespeare_train = "data/tiny_shakespeare_train.bin";
     const char* tiny_shakespeare_val = "data/tiny_shakespeare_val.bin";
-    const char* train_tokens = access(tiny_shakespeare_train, 
-                                                             0
-                                                                 ) != -1 ? tiny_shakespeare_train : tiny_stories_train;
-    const char* val_tokens = access(tiny_shakespeare_val, 
-                                                         0
-                                                             ) != -1 ? tiny_shakespeare_val : tiny_stories_val;
+    const char* train_tokens = access(tiny_shakespeare_train, 0) != -1 ? tiny_shakespeare_train : tiny_stories_train;
+    const char* val_tokens = access(tiny_shakespeare_val, 0) != -1 ? tiny_shakespeare_val : tiny_stories_val;
     int B = 4;
     int T = 64;
     DataLoader train_loader;
@@ -5629,7 +3901,7 @@ int main() {
 
 
     unsigned long long rng_state = 1337;
-    int* gen_tokens = (int*)malloc_check(B * T * sizeof(int), "/root/llm.c/train_gpt2.c", 1128);
+    int* gen_tokens = (int*)malloc_check(B * T * sizeof(int), "train_gpt2.c", 1128);
     const int genT = 64;
 
 
@@ -5662,9 +3934,7 @@ int main() {
 
 
 
-                gpt2_forward(&model, gen_tokens, 
-                                                ((void *)0)
-                                                    , B, T);
+                gpt2_forward(&model, gen_tokens, ((void *)0), B, T);
 
 
 
@@ -5683,25 +3953,19 @@ int main() {
 
                     printf("%d ", next_token);
                 }
-                fflush(
-                      stdout
-                            );
+                fflush(__stdoutp);
             }
             printf("\n---\n");
         }
 
 
-        clock_gettime(
-                     1
-                                    , &start);
+        clock_gettime(_CLOCK_MONOTONIC, &start);
         dataloader_next_batch(&train_loader);
         gpt2_forward(&model, train_loader.inputs, train_loader.targets, B, T);
         gpt2_zero_grad(&model);
         gpt2_backward(&model);
         gpt2_update(&model, 1e-4f, 0.9f, 0.999f, 1e-8f, 0.0f, step+1);
-        clock_gettime(
-                     1
-                                    , &end);
+        clock_gettime(_CLOCK_MONOTONIC, &end);
         double time_elapsed_s = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
         printf("step %d: train loss %f (took %f ms)\n", step, model.mean_loss, time_elapsed_s * 1000);
     }

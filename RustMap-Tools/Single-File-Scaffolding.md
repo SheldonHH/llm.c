@@ -1,4 +1,23 @@
-Single File Scaffolding
+
+
+# install tree-sitter-cli
+```bash
+cd RustMap-Tools
+rm -rf tree-sitter-c
+git clone https://github.com/tree-sitter/tree-sitter-c.git
+cd tree-sitter-c
+tree-sitter generate
+gcc -shared -o tree-sitter-c.so -fPIC src/parser.c 
+mv tree-sitter-c.so ..
+cd ..
+rm -rf tree-sitter-c
+mkdir tree-sitter-c && mv tree-sitter-c.so tree-sitter-c
+```
+
+
+
+
+# Single File Scaffolding
 ```bash
 
 git clone https//github.com/sheldonhh/llm.c.git
@@ -44,6 +63,10 @@ cd /root/llm.c/RustMap-Tools
 # 生成callgraph
 python3 cflow_single_two_args.py /root/llm.c/train_gpt2.i
 
+
+
+# delete existing scaffolding
+rm -rf /root/llm.c/RustMap-Tools/train_gpt2_rs_gpt
 # 根据callgraph生成给予.i的脚手架
 python3 scaffolding-singlefile.py /root/llm.c/i-train_gpt2-callgraph.dot
 

@@ -33,18 +33,8 @@ mv tree-sitter-c.so ..
 cd ..
 rm -rf tree-sitter-c
 mkdir tree-sitter-c && mv tree-sitter-c.so tree-sitter-c
-
-
 ```
 
 
-```bash
-gcc -shared -o tree-sitter-c.so -fPIC src/parser.c
-```
 
 
-# 针对train_gpt2.c,必须要先变成train_gpt2.i
-```bash
-gcc -E train_gpt2.c -o train_gpt2.i
-sed -i '' '/^# [0-9]/d' *.i
-```
