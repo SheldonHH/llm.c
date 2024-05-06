@@ -58,13 +58,10 @@ OS=$(uname -s)
 [[ "$OS" == "Darwin" ]] && sed -i '' '/^# [0-9]/d' "$FILE_PATH" || sed -i '/^# [0-9]/d' "$FILE_PATH"
 
 
-
+##### 👇下面完整执行👇 ####
 cd /root/llm.c/RustMap-Tools
 # 生成callgraph
 python3 cflow_single_two_args.py /root/llm.c/train_gpt2.i
-
-
-
 # delete existing scaffolding
 rm -rf /root/llm.c/RustMap-Tools/train_gpt2_rs_gpt
 # 根据callgraph生成给予.i的脚手架

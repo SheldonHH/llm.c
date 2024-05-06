@@ -756,18 +756,25 @@ with open(callgraph_dot_file, "r") as f:
     header_content = ""
     for k, v in new_function_relations.items():
         scc_file = k
+        print("scc_file", scc_file)
+        header_content = ""
         # filename_folder_key_str = scc_file.split("/")[-1].split(".rs")[0]
         for each_v in v:
-            print("each_v",each_v)
+            print("each_v", each_v)
             folder_name = filename_to_folder_map.get(each_v)
-            header_content += f"// use crate::{folder_name}::{each_v}::*;\\n"
-            print("header_content",header_content)
-            
-        
+            header_content += f"use crate::{folder_name}::{each_v}::*;\n"
+            print("header_content", header_content)
 
-        # Use sed to prepend header content to the file
-        # sed_command = f"sed -i '1i {header_content}' {scc_file}"
-        # os.system(sed_command)
+        # Open the file and prepend the header content
+        try:
+            # Open the file and prepend the header content
+            with open(scc_file, 'r+') as file:
+                content = file.read()
+                file.seek(0, 0)
+                file.write(header_content + content)
+            print(f"✅Header content:{header_content} added to {scc_file} successfully.")
+        except Exception as e:
+            print(f"❌Error occurred while adding header content to {scc_file}: {str(e)}")
 
         # print(scc_file, "scc_file updated with sed")
 
