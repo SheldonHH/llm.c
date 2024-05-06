@@ -18,8 +18,13 @@ docker exec -it $CONTAINER_ID /bin/bash
 
 # for ubuntu
 apt update -y
-apt install cflow sudo python3-pip -y
-sudo apt install python3-graphviz python3-imageio python3-cairosvg -y
+apt install cflow sudo pip python3.11-venv -y
+
+python3 -m venv ~/my_project_env
+source ~/my_project_env/bin/activate
+pip3 install graphviz imageio cairosvg tree_sitter bidict
+
+
 # pip3 install graphviz imageio
 
 
