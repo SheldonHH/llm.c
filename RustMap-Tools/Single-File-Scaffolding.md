@@ -54,6 +54,8 @@ cd /root/llm.c/
 gcc -E /root/llm.c/train_gpt2.c -o /root/llm.c/train_gpt2.i
 #!/bin/bash
 FILE_PATH="/root/llm.c/train_gpt2.i"
+
+# 根据不同os系统选择不同的sed方式，移除所有#开头的
 OS=$(uname -s)
 [[ "$OS" == "Darwin" ]] && sed -i '' '/^# [0-9]/d' "$FILE_PATH" || sed -i '/^# [0-9]/d' "$FILE_PATH"
 
