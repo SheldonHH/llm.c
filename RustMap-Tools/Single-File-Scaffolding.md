@@ -2,22 +2,40 @@ Single File Scaffolding
 ```bash
 
 git clone https//github.com/sheldonhh/llm.c.git
+cd llm.c
+current_path=$(pwd)
+# 构建-v参数的值，这里假设你想映射的文件是在当前目录下的llm.c
+volume_path="${current_path}:/root/llm.c"
+docker run -itd -v "$volume_path" rust
+
+# 使用 docker ps 命令配合 grep 来快速查找这个容器
+CONTAINER_ID=$(docker ps -a --filter "ancestor=rust" --latest --format "{{.ID}}")
+# 输出的容器ID存储在变量 CONTAINER_ID 中，你可以使用以下命令进入该容器：
+docker exec -it $CONTAINER_ID /bin/bash
+
+# docker run -itd -v "/Users/mac/sheldonhh-fork/llm.c:/root/llm.c" rust
+
 
 # for ubuntu
 apt update -y
 apt install cflow sudo python3-pip -y
-
-sudo apt install python3-graphviz python3-imageio -y
+sudo apt install python3-graphviz python3-imageio python3-cairosvg -y
 # pip3 install graphviz imageio
 
 
 
 
+
+cd /root/llm.c/
 gcc -E /root/llm.c/train_gpt2.c -o /root/llm.c/train_gpt2.i
-sed -i '' '/^# [0-9]/d' /root/llm.c/train_gpt2.i
+#!/bin/bash
+FILE_PATH="/root/llm.c/train_gpt2.i"
+OS=$(uname -s)
+[[ "$OS" == "Darwin" ]] && sed -i '' '/^# [0-9]/d' "$FILE_PATH" || sed -i '/^# [0-9]/d' "$FILE_PATH"
 
 
-cd RustMap-Tools
+
+cd /root/llm.c/RustMap-Tools
 # 生成callgraph
 python3 cflow_single_two_args.py /root/llm.c/train_gpt2.i
 
@@ -25,7 +43,6 @@ python3 cflow_single_two_args.py /root/llm.c/train_gpt2.i
 python3 scaffolding-singlefile.py /root/llm.c/i-train_gpt2-callgraph.dot
 
 # 查看生成的内容
-
 # 根据原本.c的所依赖的header,生成.h.rs脚手架
 python3 create_headers.py
 

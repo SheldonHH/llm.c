@@ -578,11 +578,11 @@ with open(callgraph_dot_file, "r") as f:
             reverse_function_relations[dest].add(src)
     print("reverse_function_relations: ",reverse_function_relations)
     # function_relations = reverse_function_relations
+
+
     print("callgraph_dot_file:",callgraph_dot_file)
     single_file_belong_dir = os.path.dirname(callgraph_dot_file)
     single_file_name = os.path.basename(callgraph_dot_file)
-    # c_proj_path = os.path.dirname(callgraph_dot_file)
-    # print("c_proj_path:",c_proj_path)
     new_project_name = create_rust_project(callgraph_dot_file)
     
     # time.sleep(5)
@@ -624,52 +624,9 @@ with open(callgraph_dot_file, "r") as f:
     rs_dir = os.path.join(new_project_name, "src")
     if not os.path.exists(rs_dir):
         os.makedirs(rs_dir)
+
+
     # 👆 Create mod.rs inside the src directory 👆      
-    
-    
-    # 1st iteration
-    # fns_file_map = {}
-    # total_cnt = leaf_scc_count = 1
-    # with open(seq_filename, 'w', encoding='utf-8') as f:
-    #     for idx, o in enumerate(order):
-    #         fn_names_list = sccs[o]
-    #         fn_names = ', '.join(fn_names_list)
-
-    # for idx, o in enumerate(order):
-    #         # 从fn_names的第一个函数名中提取文件名
-    #     input_fname_list = []
-    #     # double modf (double __x, double *__iptr)units_222/parse.tab.i:1039 fn_names
-    #     file_matches = re.findall(r'([a-zA-Z0-9_\-\.]+)\.(c|i|h):', fn_names)
-    #     if len(file_matches) > 1:
-    #         output_fname = "multi_files"
-    #         for subf in file_matches:
-    #             input_fname_list.append(subf[0] + '.' + subf[1])
-    #     else:
-    #         output_fname = file_matches[0][0] + '.' + file_matches[0][1]
-    #         input_fname_list.append(output_fname)
-    #         if output_fname.endswith("tab.i"):
-    #             print(file_matches,"file_matches",fn_names,"fn_names")
-    #         if output_fname.endswith('.i'):
-    #             output_fname = output_fname[:-2]
-    #     folder_path = os.path.join(rs_dir, output_fname)
-    #     fn_name_arr = []
-    #     for fn in sccs[o]:
-    #         cleaned_fn_name = clean_string(extract_short_fn_name(fn))
-    #         fn_name_arr.append(cleaned_fn_name)
-    #     linked_fn_name_str = "_".join(fn_name_arr)
-    #     abc = ""
-    #     if o in leaf_scc_indices: 
-    #         abc = "scc_"+str(total_cnt)+"_leaf_"+str(leaf_scc_count)+"_"+linked_fn_name_str+".rs"
-    #         leaf_scc_count += 1
-    #     else:
-    #         abc = "scc_"+str(total_cnt)+"_"+linked_fn_name_str+".rs"      
-    #     fns_file_map[linked_fn_name_str] = abc
-    #     total_cnt += 1
-        
-
-
-            
-
     # 第二遍遍历
     filename_to_cnt_map = bidict() 
     filename_to_folder_map = {}
