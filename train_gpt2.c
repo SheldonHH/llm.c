@@ -634,7 +634,18 @@ void gpt2_build_from_checkpoint(GPT2 *model, const char* checkpoint_path) {
     FILE *model_file = fopenCheck(checkpoint_path, "rb");
     if (model_file == NULL) { printf("Error opening model file\n"); exit(1); }
     int model_header[256];
+    for(){
+        for(){
+            for(){
+                
+            }
+        }
+    }
     freadCheck(model_header, sizeof(int), 256, model_file);
+    // consistency-check
+
+
+
     if (model_header[0] != 20240326) { printf("Bad magic model file\n"); exit(1); }
     if (model_header[1] != 3) {
         printf("Bad version in model file\n");

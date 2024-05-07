@@ -14,6 +14,7 @@ import json
 import glob
 import subprocess
 from  rust_headers_generation import * 
+from  find_it import * 
 from bidict import bidict
 
 import sys
@@ -838,9 +839,145 @@ with open(callgraph_dot_file, "r") as f:
             create_mod_rs(subdir_path)
 
 
+
+
+# 1. 👇 files level👇
+#TODO: paper中根据整体描述
     # 0507生成headers
-    rust_headers_generation(original_c_file, src_directory)
-    # 
+    includes = rust_headers_generation(original_c_file, src_directory) # 生成headers
+    # c: ".h"
+    c_defines = extract_defines(original_c_file) # 抓取headers
+    write_rust_module(c_defines) #填入headers
+# TODO: typedef扔到globals
+# TODO: paper解释不同globals处理
+# TODO: #pragma float_control(precise, on, push)
+# TODO: 复杂宏不需要
+# TODO: global variables 放到globals_里面
+# TODO: C的Globals不同处理各种可能的包括structs和globals
+
+#TODO: threat to validity, 处理这几种情况，其他没考虑
+
+
+#TODO: 同时提供两个struct，生成文件的时候，放到同样的文件里面
+#TODO：scc-放在
+#TODO：表达清楚
+
+
+# 1.5 新。c
+# - 简单宏：变成C，脚本
+# - (把复杂宏，变成fn，生成新的.*c项目  然后再)，手工
+
+
+# rossta code(简单程序。c给gpt)
+# 做testcases，重用
+
+
+
+# 2. 为什么生成scc，是为了function (也是global一种) *.i（根据1.5步骤的*.c）
+# scc_👆 project level fn-call👆 *.i-call graph
+# globals:
+# fns
+
+
+
+
+
+
+# 3. function-level
+# 根据 topological sort order转换
+# 处理leaf节点，步骤：C函数给GPT,到Rust（GPT4构造testcases）若有编译错误
+# 通过简单testcases
+# 然后处理他们的parents
+# 一旦碰到EState复杂input，那么从main开始，testcases难以构造
+# 此时大部分function有雏形了，然后从main函数做转换
+
+
+
+
+# Files/fns
+# -> compile error GPT (无需太多)
+# -> compile successs !
+#  -> h-in-loop
+# interception: before-state, after-state  consistency
+
+# 从main开始处理
+# 构造fn-body: one-by-one(dfs) 加入语句之后，
+#(non-lib function SEQUENial-basic block，没有涉及到cfgchange的一块): C-Rust consistency check
+# non-lib+不超过多少行（translation-fragment）做consistency check
+
+
+
+
+
+
+# Test Case准备，运行main函数
+# crash/inconsistency with C
+# 1. 情况1: crash位置 
+# 2. 情况2: 运行结束：程序的结束，输出点作为比较Compare地方
+
+# compare with C outputs to find inconsistency，然后backtrack
+# delta-debugging: 大致二分add breakpoint to the same fn in C and rust (narrow ->)
+# compare output( dynamical monitor program state) of C and rust fn output
+# if same consistent, 二分查找后序代码，继续narrow down
+# if not consistent: 
+# - 继续narrow down， 二分查找上半部分
+#           到一个code snippet
+#           narrow down到一个function，
+#  termination condition: （范围提及）
+#                         adhoc
+#                         simple code block
+#                         ≤ 10 lines (不包含多个control-flow-statement) or 1 control-flow-statement
+
+
+
+
+# Loop  code-fragment-level
+#  dynamically monitor program state,before-state after-state (C)
+# 调用GPT，翻译为rust
+# 从main函数开始{rust code-fragmentation} 
+
+# Function-Level
+# 对fn函数
+
+
+
+
+# 4. 增加test-coverage-tests
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# unit-test
+# 1. leaf delta-interception C code function
+# 对C程序由testcase，截取了，对任何rust function
+
+# 2. 
+
+
+
+# 1. find code
+#  before-state, main{c code} after-state  
+#  before-state, main{__GPT_填写_rust_placeholder___} expected_after-state  
+
+
+
+
+
+
+    # 遍历.c，抓取所有#define，然后
 
 
 #     # 创建lib.rs

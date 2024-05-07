@@ -45,6 +45,7 @@ def rust_headers_generation(source_file, target_directory):
         print(f"Created {mod_rs_path}")
 
     print("Completed!")
+    return includes
 
 if __name__ == "__main__":
     # Get .c file path and target directory path from command line arguments
