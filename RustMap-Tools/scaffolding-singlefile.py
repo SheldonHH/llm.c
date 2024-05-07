@@ -868,6 +868,8 @@ with open(callgraph_dot_file, "r") as f:
 # - (把复杂宏，变成fn，生成新的.*c项目  然后再)，手工
 
 
+# 文本写清楚
+
 # rossta code(简单程序。c给gpt)
 # 做testcases，重用
 
