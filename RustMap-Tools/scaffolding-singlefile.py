@@ -13,6 +13,7 @@ import shutil
 import json
 import glob
 import subprocess
+from  rust_headers_generation import * 
 from bidict import bidict
 
 import sys
@@ -402,6 +403,13 @@ def create_mod_rs(directory):
         directory = directory[:-2]
     if not os.path.exists(directory):
         os.makedirs(directory)
+    
+
+    directory_name = os.path.basename(directory)  # 获取路径的最后一部分
+    glob_filename = "globals_" + directory_name + ".rs"  # 拼接字符串
+    globals_rs_path = os.path.join(directory, glob_filename)
+    with open(globals_rs_path, 'a', encoding='utf-8') as gf:
+        pass
         
     rs_files = [f[:-3] for f in os.listdir(directory) if f.endswith('.rs') and f != "mod.rs"]
     mod_rs_path = os.path.join(directory, "mod.rs")
@@ -520,6 +528,35 @@ def create_file_with_directories_20240504(relative_path):
     print(f"File created or already exists: {relative_path}")
 
 
+def convert_c_headers_to_rust_modules(source_directory, target_directory):
+    # Ensure the target directory exists
+    os.makedirs(target_directory, exist_ok=True)
+
+    # Iterate over all .c files in the source directory
+    for filename in os.listdir(source_directory):
+        if filename.endswith('.c'):
+            # Read the contents of each file
+            with open(os.path.join(source_directory, filename), 'r') as file:
+                content = file.read()
+            
+            # Use regular expression to find all matching #include statements
+            includes = re.findall(r'#include\s+"([^"]+)"', content)
+            
+            # Create a new .rs file for each found header file
+            for header in includes:
+                rs_filename = header.replace('.h', '.rs')
+                rs_filepath = os.path.join(target_directory, rs_filename)
+                
+                # Create .rs file if it does not exist yet
+                if not os.path.exists(rs_filepath):
+                    with open(rs_filepath, 'w') as new_file:
+                        new_file.write('// Rust module corresponding to {}\n'.format(header))
+                        print(f'Created {rs_filepath}')
+
+    print("Conversion completed!")
+
+
+    
 def return_dot_content(folder_path):
     # 遍历文件夹内的所有 .i 文件
     c_files = [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.c')]
@@ -538,12 +575,13 @@ def return_dot_content(folder_path):
 
 
 # Verify that the correct number of arguments has been provided
-if len(sys.argv) < 2:
-    print("Usage: python scaffolding.py <path_to_callgraph.dot>")
+if len(sys.argv) < 3:
+    print("Usage: python scaffolding.py <path_to_callgraph.dot> <original single c file>")
     sys.exit(1)
 
 # Path to the callgraph.dot file passed as the first command line argument
 callgraph_dot_file = sys.argv[1]
+original_c_file = sys.argv[2]
 
 # Read the content of the provided callgraph.dot file
 try:
@@ -622,6 +660,7 @@ with open(callgraph_dot_file, "r") as f:
 
     # Ensure the directory for the .rs files exists
     rs_dir = os.path.join(new_project_name, "src")
+    print("rs_dir",rs_dir)
     if not os.path.exists(rs_dir):
         os.makedirs(rs_dir)
 
@@ -631,6 +670,8 @@ with open(callgraph_dot_file, "r") as f:
     filename_to_cnt_map = bidict() 
     filename_to_folder_map = {}
     all_mismatched_key = set()
+
+
     with open(seq_filename, 'w', encoding='utf-8') as f:
         total_cnt = leaf_scc_count = 0
         for idx, o in enumerate(order):
@@ -777,51 +818,31 @@ with open(callgraph_dot_file, "r") as f:
             print(f"❌Error occurred while adding header content to {scc_file}: {str(e)}")
 
         # print(scc_file, "scc_file updated with sed")
-
-#             # 提取文件名
-#             # base_name = os.path.basename(file)
-#             # pure_filename, _ = os.path.splitext(base_name)
-#             # print("base_name",base_name)
-#             # print(f"Processing: 🔥{pure_filename}")
-#             # abc_fn = extract_fn_from_filename(pure_filename)
-#             # print("abc_fn", abc_fn)
-#         # Now, read the entire file and rearrange
-#         with open(scc_file, 'r+', encoding='utf-8') as file:
-#             content = file.read()
-#             # Move the appended header content to the beginning of the file
-#             content = header_content + content.replace(header_content, '', 1)
-
             
 # # First append the header content to the end of the file
     
 
-                            
+                        
 
-        
-#         # file.seek(0)
-#         # file.write(content)
-#         # file.truncate()  # Truncate to ensure no leftover data
+    print("rs_filename",rs_filename)
+    base_directory = os.path.dirname(os.path.abspath(rs_filename))
+    src_directory = os.path.dirname(base_directory)
+    print("src_directory",src_directory)
+    # 遍历该目录下的所有子文件夹，创建mod.rs
+    for subdir in os.listdir(src_directory):
+        subdir_path = os.path.join(src_directory, subdir)       # subdir_path /root/llm.c/RustMap-Tools/train_gpt2_rs_gpt/src/train_gpt2  
+        # 确保它是一个文件夹
+        if os.path.isdir(subdir_path) and subdir != 'bin':
+            # 对每一个子文件夹调用 create_mod_rs
+            print("subdir_path",subdir_path)
+            create_mod_rs(subdir_path)
 
-#     print(all_mismatched_key,"all_mismatched_key",len(all_mismatched_key))
-#     amk_path = os.path.join(rs_dir, "all_mismatched_key.txt")
-    
+
+    # 0507生成headers
+    rust_headers_generation(original_c_file, src_directory)
+    # 
 
 
-    
-#     with open(amk_path, "w", encoding="utf-8") as f:
-#         for item in all_mismatched_key:
-#             f.write(item + "\n")
-#         f.write(str(len(all_mismatched_key)))
-    
-#     base_directory = os.path.dirname(os.path.abspath(rs_filename))
-#     src_directory = os.path.dirname(base_directory)
-#     # 遍历该目录下的所有子文件夹，创建mod.rs
-#     for subdir in os.listdir(src_directory):
-#         subdir_path = os.path.join(src_directory, subdir)        
-#         # 确保它是一个文件夹
-#         if os.path.isdir(subdir_path) and subdir != 'bin':
-#             # 对每一个子文件夹调用 create_mod_rs
-#             create_mod_rs(subdir_path)
 #     # 创建lib.rs
 #     print(src_directory,"src_directory🐶")
 #     if os.path.exists(src_directory):

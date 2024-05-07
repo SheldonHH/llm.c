@@ -31,7 +31,7 @@ docker run -itd -v "$volume_path" rust
 CONTAINER_ID=$(docker ps -a --filter "ancestor=rust" --latest --format "{{.ID}}")
 # 输出的容器ID存储在变量 CONTAINER_ID 中，你可以使用以下命令进入该容器：
 docker exec -it $CONTAINER_ID /bin/bash
-
+cd /root/llm.c/RustMap-Tools
 # docker run -itd -v "/Users/mac/sheldonhh-fork/llm.c:/root/llm.c" rust
 
 
@@ -40,7 +40,12 @@ apt update -y
 apt install cflow sudo pip python3.11-venv -y
 
 python3 -m venv ~/my_project_env
+
+##### 👇若失败，则执行下面的命令👇 ####
 source ~/my_project_env/bin/activate
+## 👆👆👆👆👆 ##
+
+
 pip3 install graphviz imageio cairosvg tree_sitter bidict
 
 
@@ -67,7 +72,7 @@ python3 cflow_single_two_args.py /root/llm.c/train_gpt2.i
 # delete existing scaffolding
 rm -rf /root/llm.c/RustMap-Tools/train_gpt2_rs_gpt
 # 根据callgraph生成给予.i的脚手架
-python3 scaffolding-singlefile.py /root/llm.c/i-train_gpt2-callgraph.dot
+python3 scaffolding-singlefile.py /root/llm.c/i-train_gpt2-callgraph.dot /root/llm.c/train_gpt2.c
 
 # 查看生成的内容
 # 根据原本.c的所依赖的header,生成.h.rs脚手架
