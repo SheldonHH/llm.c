@@ -417,6 +417,7 @@ def create_mod_rs(directory):
     with open(mod_rs_path, 'w', encoding='utf-8') as mod_file:
         for rs_file in rs_files:
             mod_file.write(f"pub mod {rs_file};\n")
+    return globals_rs_path
 
 def extract_function_pointer_level(function_name):
     # Count the number of leading '*' characters
@@ -830,13 +831,14 @@ with open(callgraph_dot_file, "r") as f:
     src_directory = os.path.dirname(base_directory)
     print("src_directory",src_directory)
     # 遍历该目录下的所有子文件夹，创建mod.rs
+    #  对于single-file其实就是一个啦
+    global_path = ""
     for subdir in os.listdir(src_directory):
         subdir_path = os.path.join(src_directory, subdir)       # subdir_path /root/llm.c/RustMap-Tools/train_gpt2_rs_gpt/src/train_gpt2  
         # 确保它是一个文件夹
         if os.path.isdir(subdir_path) and subdir != 'bin':
-            # 对每一个子文件夹调用 create_mod_rs
             print("subdir_path",subdir_path)
-            create_mod_rs(subdir_path)
+            global_path = create_mod_rs(subdir_path)
 
 
 
@@ -847,7 +849,7 @@ with open(callgraph_dot_file, "r") as f:
     includes = rust_headers_generation(original_c_file, src_directory) # 生成headers
     # c: ".h"
     c_defines = extract_defines(original_c_file) # 抓取headers
-    write_rust_module(c_defines) #填入headers
+    write_rust_module(c_defines, global_path) #填入headers# 以及 global_
 # TODO: typedef扔到globals
 # TODO: paper解释不同globals处理
 # TODO: #pragma float_control(precise, on, push)
